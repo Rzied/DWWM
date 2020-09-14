@@ -1,0 +1,10 @@
+	i = 1
+    j = n
+ 
+    TantQue (i < j) Faire
+        x = T[j]
+        T[j] = T[i]
+        T[i] = x
+        i = i + 1
+        j = j - 1
+    FinTantQue

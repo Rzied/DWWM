@@ -1,0 +1,17 @@
+
+i=1
+trouve="faux"
+tantque (i<n et trouve="faux") faire
+	si t[i]=mot alors
+		trouve="vrai"
+		rang=i
+		i=n+1
+	sinon 
+		i=i+1
+	finsi
+fintantque
+si trouve="vrai" alors
+	ecrirte "le mot existe dans le tableau en rang:",rang
+sinon
+	ecrire"le mot n'existe pas"
+finsi

@@ -1,0 +1,7 @@
+s=0
+pour i=1 JUSQU'A n1 faire
+	pour j=1 JUSQU'A n2 faire
+	s=s+t[i]*t[j]
+	finpour
+finpour
+ecrire s

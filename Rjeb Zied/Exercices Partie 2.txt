@@ -1,0 +1,46 @@
+Exercice 2.1:
+TRAITEMENT:
+Val=231
+double=462
+Affichage:
+231
+462
+
+
+Exercice 2.2:
+Variable val en Numérique
+début
+Ecrire "entrer un nombre :"
+Lire val
+val=val*2
+Ecrire "le carré de ce nombre est:",val
+
+
+Exercice 2.3:
+Variable HT,TTC,nb,taux en Numérique
+			T en réel
+début
+Ecrire "entrer le prix HT :"
+Lire HT
+Ecrire "entrer le nembre d'article :"
+Lire nb
+Ecrire "entrer le taux de TVA :"
+Lire Taux
+T <(ht/100)*taux
+TTC <(t+ht)*nb
+Ecrire TTC
+
+
+Exercice 2.4:
+Variable O,V1,V2,V3,V4 en chaines de caracteres
+début
+o="Belle Marquise, vos beaux yeux me font mourir d’amour"
+V1="D’amour mourir me font, belle Marquise, vos beaux yeux"
+V2="Vos yeux beaux d’amour me font, belle Marquise, mourir"
+V3="Mourir vos beaux yeux, belle Marquise, d’amour me font"
+V4="Me font vos yeux beaux mourir, belle Marquise, d’amour."
+Ecrire o
+Ecrire V1
+Ecrire V2
+Ecrire V3
+Ecrire V4

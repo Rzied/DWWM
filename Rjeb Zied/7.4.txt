@@ -1,0 +1,11 @@
+
+
+	Ecrire "indice de la valeur à supprimer "
+	Lire S
+	Pour i ← S jusqu'a (n-2) Faire
+ 
+        T[i] = T[i+1]
+ 
+    FinPour
+ 
+     n=n-1

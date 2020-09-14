@@ -1,0 +1,4 @@
+s=0
+pour i=1 JUSQU'A n faire
+	s=s+t[i]
+finpour

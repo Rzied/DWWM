@@ -1,0 +1,10 @@
+Exercice 3.1:
+Variable a en Numérique
+début
+Ecrire "entrer un nombre :"
+Lire a
+si a < 0 Alors
+Ecrire "le nombre est négatif"
+sinon ecrire "le nombre est positif"
+
+Exercice 3.2:
