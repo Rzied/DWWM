@@ -3,8 +3,7 @@
 $age = readline("Entrer Lage de lenfant : ");
 
 switch ($age) {
-    case '6':
-    case '7':
+    case ($age > 5 && $age < 8):
         echo "Poussin";
         break;
 
