@@ -1,14 +1,11 @@
 <?php
-    $a= readline("entrer une valeur A ");
-    $b= readline("entrer une valeur B ");
-    
-    $c=$a;
-    $a=$b;
-    $b=$c;
+$a = readline("entrer une valeur A ");
+$b = readline("entrer une valeur B ");
 
-    echo "A: ",$a,"\n";
+$c = $a;
+$a = $b;
+$b = $c;
 
-    echo "B: ",$b;
+echo "A: ", $a, "\n";
 
-
-?>
+echo "B: ", $b;
