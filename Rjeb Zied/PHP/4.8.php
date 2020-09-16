@@ -9,23 +9,28 @@ do {
 do {
     $A = readline("Entrer l'année\n");
 } while ($A < 1);
-if (($M==4 or $M==6 or $M==9 or $M==11 )&& ($J>30) or ($M==2 && $J>29)) {
-    echo "La date est invalide";
-}
-elseif ($M==2 && $J==29) {
+$test = true;
 
-if ($A%4) {
-    if ($A%400) {
-        echo "L'année est Bissextile";
-    }
-    elseif ($A%100) {
-        echo "L'année est non Bissextile";
-    }
-    else {
-        echo "L'année est Bissextile";
-    }
+if (($M == 4 or $M == 6 or $M == 9 or $M == 11) && ($J > 30) or ($M == 2 && $J > 29)) {
+
+    $test = false;
 }
+if ($M == 2 && $J == 29) {
+
+    if ($A % 4) {
+        if ($A % 400) {
+            $test = false;
+        } elseif ($A % 100) {
+            $test = true;
+        } else {
+            $test = true;
+        }
+    }
+
 }
-else {
-    echo "L'année est non Bissextile";
+
+if ($test) {
+    echo "l'année est valide ";
+} else {
+    echo "l'année n'est pas valide ";
 }
