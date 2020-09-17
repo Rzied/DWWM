@@ -22,7 +22,7 @@ function remplir($n)
     }
     return $tab;
 }
-
+// fonction d'affichage
 function affichage($tab)
 {
     for ($i = 0; $i < count($tab); $i++) {
@@ -30,21 +30,22 @@ function affichage($tab)
     }
 }
 
-// tester et faire le tri decroissant du tableau
-
 $n = saisi();
 $tab = remplir($n);
-$test = true;
-while ($test) {
-    $test = false;
-    for ($i = 0; $i < $n - 1; $i++) {
-        if ($tab[$i] < $tab[$i + 1]) {
-            $temp = $tab[$i];
-            $tab[$i] = $tab[$i + 1];
-            $tab[$i + 1] = $temp;
-            $test = true;
+
+// tester et faire le tri decroissant du tableau
+for ($i = 0; $i < $n - 2; $i++) {
+    $p = $i;
+    for ($j = $i + 1; $j < $n; $j++) {
+        if ($tab[$j] > $tab[$p]) {
+            $p = $j;
         }
     }
+    $temp = $tab[$p];
+    $tab[$p] = $tab[$i];
+    $tab[$i] = $temp;
+
 }
+
 echo "\n Le tableau trié dans l’ordre décroissant : \n";
 affichage($tab);
