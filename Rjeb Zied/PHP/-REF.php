@@ -65,6 +65,8 @@ function factorielle($nombre) //calcule la factorielle d'un nombre
     return $facto;
 }
 
+// *****************************************
+
 function addition ($n1,$n2)
 {
     return $n1+$n2;
