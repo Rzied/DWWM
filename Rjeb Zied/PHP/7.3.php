@@ -23,7 +23,7 @@ function remplir($n)
     }
     return $tab;
 }
-
+// Fonction d'affichage
 function affichage($tab)
 {
     for ($i = 0; $i < count($tab); $i++) {

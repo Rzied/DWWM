@@ -114,7 +114,7 @@ return  : renvoi le tableau rempli
 function creerTableauAvecTaille($tailleTableau)
 {
     for ($i = 0; $i < $tailleTableau; $i++) {
-        $tab[] = demandeEntier("Entrer une valeur");
+        $tab[] = demandeEntier("Entrer la valeur N° ".($i+1)." : ");
     }
     return $tab;
 }
