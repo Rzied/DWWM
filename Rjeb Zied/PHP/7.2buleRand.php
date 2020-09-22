@@ -16,8 +16,8 @@ function remplir($n)
 {
 
     for ($i = 0; $i < $n; $i++) {
-            $tab[$i] = rand(1,100);
-            echo $tab[$i]."\t";
+        $tab[$i] = rand(1, 100);
+        // echo $tab[$i] . "\t";
     }
     return $tab;
 }
@@ -30,10 +30,9 @@ function affichage($tab)
 }
 // Programme Principale
 
-
-$n=saisi();
+$n = saisi();
 echo "Le tableau avant le tri : \n";
-$tab=remplir($n);
+$tab = remplir($n);
 
 // tester et faire le tri decroissant du tableau
 
@@ -47,9 +46,9 @@ do {
             $tab[$i + 1] = $temps;
             $yapermut = true;
         }
-
+        echo $tab[$i] . "\t";
     }
-
+    echo "\n";
 } while ($yapermut);
 
 // affichage

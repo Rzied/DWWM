@@ -6,16 +6,15 @@ $n = demandeEntierPhrase("Entrer la taille du tableau :");
 $tab = creerTableauAvecTaille($n);
 
 // vérification de tableau
-$test=true;
-for ($i=1; $i <$n ; $i++) { 
-    if ($tab[$i]<> ($tab[$i-1]+1) ) {
-        $test=false;
+$test = true;
+for ($i = 1; $i < $n; $i++) {
+    if (($tab[$i] != ($tab[$i - 1] + 1)) && ($tab[$i] != ($tab[$i - 1] - 1))) {
+        $test = false;
     }
 }
 
-if ($test==true) {
+if ($test == true) {
     echo "les éléments du tableau sont tous consécutifs";
-}
-else {
+} else {
     echo "les éléments du tableau ne sont pas tous consécutifs";
 }

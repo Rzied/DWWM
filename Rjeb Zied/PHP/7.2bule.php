@@ -31,9 +31,8 @@ function affichage($tab)
 }
 // Programme Principale
 
-
-$n=saisi();
-$tab=remplir($n);
+$n = saisi();
+$tab = remplir($n);
 
 // tester et faire le tri decroissant du tableau
 
