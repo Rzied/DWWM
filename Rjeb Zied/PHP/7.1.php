@@ -7,10 +7,23 @@ $tab = creerTableauAvecTaille($n);
 
 // vérification de tableau
 $test = true;
-for ($i = 1; $i < $n; $i++) {
-    if (($tab[$i] != ($tab[$i - 1] + 1)or($tab[$i] != ($tab[$i - 2] + 1) )) && ($tab[$i] != ($tab[$i - 1] - 1))or($tab[$i] != ($tab[$i - 2] - 1) )) {
-        $test = false;
+$sens = "";
+$i=1;
+if ($tab[0] > $tab[1]) {
+    $sens = "c";}
+while ($i < $n ) {
+
+    if ($sens == "c") {
+        if ($tab[$i] != $tab[$i - 1] - 1) {
+            $test = false;
+        }
+
+    } else {
+        if ($tab[$i] != $tab[$i - 1] + 1) {
+            $test = false;
+        }
     }
+    $i++;
 }
 
 if ($test == true) {
