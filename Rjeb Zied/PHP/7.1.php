@@ -8,7 +8,7 @@ $tab = creerTableauAvecTaille($n);
 // vérification de tableau
 $test = true;
 for ($i = 1; $i < $n; $i++) {
-    if (($tab[$i] != ($tab[$i - 1] + 1)) && ($tab[$i] != ($tab[$i - 1] - 1))) {
+    if (($tab[$i] != ($tab[$i - 1] + 1)or($tab[$i] != ($tab[$i - 2] + 1) )) && ($tab[$i] != ($tab[$i - 1] - 1))or($tab[$i] != ($tab[$i - 2] - 1) )) {
         $test = false;
     }
 }
