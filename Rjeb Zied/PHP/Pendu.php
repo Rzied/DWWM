@@ -1,73 +1,5 @@
 <?php
-
-function afficherTableau($tab)
-{
-    echo "\n";
-    foreach ($tab as $elt) // le tableau est parcouru de la 1ere à la dernière case, les cases sont mises tour à tous dans $elt
-    {
-        echo $elt . " ";
-    }
-    echo "\n";
-}
-
-function coderMot($mot)
-{
-    for ($i = 0; $i < strlen($mot); $i++) {
-        $tab[] = "_";
-    }
-    return $tab;
-}
-
-function testerLettre($lettre, $tab, $depart)
-{
-    // $j = 0;
-    // for ($i = $depart; $i < count($tab); $i++) {
-    //     if ($tab[$i] == $lettre) {
-    //         $pos[$j] = $i;
-    //         $j++;
-    //     }
-    // }
-    // return $pos;
-
-    $tabRec = array_slice($tab, $depart);
-    $res = (array_search($lettre, $tabRec));
-    if ($res === false) {
-        return [];
-    } else {
-
-        $reponse[] = $res + $depart;
-        return $positions = array_merge($reponse, testerLettre($lettre, $tab, $res + $depart + 1));
-
-    }
-}
-
-function ajouterUneLettre($lettre, $tab, $position)
-{
-    for ($i = $position; $i < ($position + 1); $i++) {
-        $tab[$i] = $lettre;
-    }
-    return $tab;
-}
-
-function ajouterLesLettres($lettre, $tab, $listePosition)
-{
-    foreach ($listePosition as $pos) {
-        $tab = ajouterUneLettre($lettre, $tab, $pos);
-    }
-    return $tab;
-
-}
-
-function afficherMauvaisesLettres($listeLettres)
-{
-    for ($i = 0; $i < count($liste); $i++) {
-        foreach ($liste as $elt) // le tableau est parcouru de la 1ere à la dernière case, les cases sont mises tour à tous dans $elt
-        {
-            echo $elt . "\t";
-        }
-        echo "\n";
-    }
-}
+require "Pendu_fn.php";
 
 // $t = array( 'B', 'O', 'N', 'J', 'O', 'U', 'R' );
 // Echo "Cette méthode doit donner B O N J O U R et ca donne : \n" ,afficherTableau($t);
@@ -92,7 +24,16 @@ function afficherMauvaisesLettres($listeLettres)
 // echo "Cette méthode doit donner B O N J O U _ et ca donne ";
 // afficherTableau(ajouterLesLettres('O', $t, testerLettre('O', str_split($motATrouver), 0)));
 // // en l’absence des autres methodes
-// // Print_r(ajouterLesLettres('O', $t,[1,4]);
-$liste = array('A','B','C') ;
-echo "Cette méthode doit donner :\n Les lettres non présentes sont A,B,C \n et ca donne \n" ;
-afficherMauvaisesLettres($liste);
+// Print_r(ajouterLesLettres('O', $t,[1,4]));
+
+// $liste = array('A','B','C') ;
+// echo "Cette méthode doit donner :\n Les lettres non présentes sont A,B,C \n et ca donne \n" ;
+// afficherMauvaisesLettres($liste);
+
+// $c = DemanderLettre();
+// echo $c;
+$t = array( 'B', '_', 'N', 'J', 'O', 'U', 'R' );
+Echo "Cette méthode doit donner -1 et ca donne " . testerGagner(9, $t)."\n";
+Echo "Cette méthode doit donner 0 et ca donne " . testerGagner(3, $t)."\n";
+$t[1] =  'O' ;
+Echo "Cette méthode doit donner 1 et ca donne " . testerGagner(2, $t)."\n";
