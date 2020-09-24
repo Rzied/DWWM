@@ -32,3 +32,4 @@ if ($test) {
 else {
     echo "Le mot que vous cherchez n'existe pas !!";
 }
+// commentaire
