@@ -16,6 +16,15 @@ function afficherTableau($tab)
     echo "\n";
 }
 
+/**
+ * prend un mot en paramètre d'entrée et qui renvoi 
+ * un tableau de caractères contenant autant 
+ * de case que de lettres dans le mot. 
+ *
+ * @param   string   $mot    chaine de caractere contenant un mot.
+ *
+ * @return  array   $tab     tableau contenant le mot: une lettre par case
+ */
 function coderMot($mot)
 {
     for ($i = 0; $i < strlen($mot); $i++) {
@@ -24,6 +33,16 @@ function coderMot($mot)
     return $tab;
 }
 
+/**
+ * cherche toutes les occurrences d'une lettre
+ *  passée en paramètre dans un tableau
+ *  de caractères passé aussi en paramètre 
+ *
+ * @param   string   $lettre    la lettre à chercher.
+ * @param   array   $tab        tableau contenant le mot: une lettre par case
+ * @param   int     $depart     position de départ de verification
+ * @return  array   $positions   tableau contenant des entier : position desn lettres
+ */
 function testerLettre($lettre, $tab, $depart)
 {
     // $j = 0;
