@@ -981,7 +981,7 @@ function lancerPartie()
     $nbErreur = 0;
     $gagne = false;
     $mL = [];
-    echo $motATrouver, "\n";
+    // echo $motATrouver, "\n";
     do {
         afficherTableau($motCode);
         if (!empty($mL)) {
