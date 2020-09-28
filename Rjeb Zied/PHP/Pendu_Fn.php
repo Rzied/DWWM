@@ -56,13 +56,16 @@ function testerLettre($lettre, $tab, $depart)
 
     $tabRec = array_slice($tab, $depart);
     $res = (array_search($lettre, $tabRec));
+    // var_dump($res);
+    // var_dump($tabRec);
+    // var_dump($lettre);
     if ($res === false) {
         return [];
     } else {
 
         $reponse[] = $res + $depart;
-        return $positions = array_merge($reponse, testerLettre($lettre, $tab, $res + $depart + 1));
-
+        $positions = array_merge($reponse, testerLettre($lettre, $tab, $res + $depart + 1));
+        return $positions;
     }
 }
 
@@ -80,19 +83,17 @@ function ajouterLesLettres($lettre, $tab, $listePosition)
         $tab = ajouterUneLettre($lettre, $tab, $pos);
     }
     return $tab;
-
 }
 
 function afficherMauvaisesLettres($listeLettres)
 {
-    echo "\nLes lettres non présentes sont ";
+    echo "\nLes lettres non présentes sont   ";
     for ($i = 0; $i < count($listeLettres); $i++) {
         if ($i == count($listeLettres) - 1) {
-            echo $listeLettres[$i];
+            echo $listeLettres[$i], "\t";
         } else {
             echo $listeLettres[$i], ",";
         }
-
     }
 }
 
@@ -936,6 +937,13 @@ function creer_dico()
     return $tabMots;
 }
 
+function choisirMot()
+{
+    $dico = creer_dico();
+    $nb = rand(0, count($dico) - 1);
+    return $dico[$nb];
+}
+
 function demanderLettre()
 {
     do {
@@ -945,29 +953,59 @@ function demanderLettre()
             $test = false;
         }
     } while ($test == false);
-    return $v;
+    return strtoupper($v);
 }
 
 function testerGagner($nberreur, $tab)
 {
-    if (in_array("_",$tab)) {
-       if ($nberreur>=9) {
-        $res=-1 ;  
-        echo $res," : Vous avez perdu.";
-       }
-       else {
-        $res=0 ;
-           echo $res," : la partie continue.";
-       }
-    }
-    else {
-        $res=1 ;
-        echo $res," : la partie est gagné.";
+    if (in_array("_", $tab) != false) {
+        if ($nberreur >= 9) {
+            $res = -1;
+            echo $res, "-Jeu perdue\n";
+        } else {
+            $res = 0;
+            echo $res, "-Le jeu continue\n";
+        }
+    } else {
+        $res = 1;
+        echo $res, "\t ";
     }
     return $res;
 }
 
-function lancerPartie() 
+function lancerPartie()
 {
-    
+    $motATrouver = choisirMot();
+    $tabMotAT = str_split($motATrouver);
+    $motCode = coderMot($motATrouver);
+    $nbErreur = 0;
+    $gagne = false;
+    $mL = [];
+    echo $motATrouver, "\n";
+    do {
+        afficherTableau($motCode);
+        if (!empty($mL)) {
+            afficherMauvaisesLettres($mL);
+        }
+        $l = demanderLettre();
+        $lesPos = testerLettre($l, $tabMotAT, 0);
+        // var_dump($lesPos);
+        if (empty($lesPos)) {
+            $nbErreur++;
+
+            $mL[] = $l;
+        } else {
+            $motCode = ajouterLesLettres($l, $motCode, $lesPos);
+            // var_dump($motCode);
+        }
+        echo "\n Nombres d'erreurs : ", $nbErreur;
+        DessinerPendu($nbErreur);
+
+        $gagne = testerGagner($nbErreur, $motCode);
+    } while ($gagne == 0);
+    if ($gagne == 1) {
+        echo "Vous avez gagné. \nLe mot était $motATrouver";
+    } else {
+        echo "Vous avez perdu.\nLe mot était $motATrouver";
+    }
 }
