@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Affiche le tableau entré en paramètre
  * et sépare les lettres par des espaces.
@@ -10,201 +9,40 @@
  */
 function afficherTableau($tab)
 {
-    foreach ($tab as $ele) {
+    foreach ($tab as $ele)
+    {
         echo $ele . " ";
     }
     echo "\n";
 }
-
 /**
- * prend un mot en paramètre d'entrée et qui renvoi 
- * un tableau de caractères contenant autant 
- * de case que de lettres dans le mot. 
+ * méthode qui prend un mot en paramètre d'entrée et qui renvoi un tableau de caractères contenant autant de case que de lettres dans le mot.
+ * si Niveau =1 les cases du milieu contiennent des _, les 1eres et dernières lettres restent apparantes
+ * sinon Chacune de ces cases contient un _
  *
- * @param   string   $mot    chaine de caractere contenant un mot.
- *@param    int     $niv     Niveau de difficulté
- * @return  array   $tab     tableau contenant le mot: une lettre par case
+ * @param string $mot
+ * @param int $niveau   //niveau de difficulté
+ * @return void array
  */
-function coderMot($mot, $niv)
+function coderMot($mot, $niveau)
 {
-    for ($i = 0; $i < strlen($mot); $i++) {
-        $tab[$i] = $mot[$i];
-    }
-    $i = 0;
-    if ($niv == 0) {
-        for ($i = 1; $i < count($tab) - 1; $i++) {
-            $tab[$i] = "_";
-        }
-    } else {
-        for ($i = 0; $i < count($tab); $i++) {
+    $tab = str_split($mot);
+    if ($niveau == 1)
+    {
+        for ($i = 1; $i < (count($tab) - 1); $i++)
+        {
             $tab[$i] = "_";
         }
     }
-    return $tab;
-}
-
-/**
- * cherche toutes les occurrences d'une lettre
- *  passée en paramètre dans un tableau
- *  de caractères passé aussi en paramètre 
- *
- * @param   string   $lettre    la lettre à chercher.
- * @param   array   $tab        tableau contenant le mot: une lettre par case
- * @param   int     $depart     position de départ de verification
- * @return  array   $positions   tableau contenant des entier : position desn lettres
- */
-function testerLettre($lettre, $tab, $depart)
-{
-    // $j = 0;
-    // for ($i = $depart; $i < count($tab); $i++) {
-    //     if ($tab[$i] == $lettre) {
-    //         $pos[$j] = $i;
-    //         $j++;
-    //     }
-    // }
-    // return $pos;
-
-    $tabRec = array_slice($tab, $depart);
-    $res = (array_search($lettre, $tabRec));
-    // var_dump($res);
-    // var_dump($tabRec);
-    // var_dump($lettre);
-    if ($res === false) {
-        return [];
-    } else {
-
-        $reponse[] = $res + $depart;
-        $positions = array_merge($reponse, testerLettre($lettre, $tab, $res + $depart + 1));
-        return $positions;
-    }
-}
-
-function ajouterUneLettre($lettre, $tab, $position)
-{
-    for ($i = $position; $i < ($position + 1); $i++) {
-        $tab[$i] = $lettre;
-    }
-    return $tab;
-}
-
-function ajouterLesLettres($lettre, $tab, $listePosition)
-{
-    foreach ($listePosition as $pos) {
-        $tab = ajouterUneLettre($lettre, $tab, $pos);
-    }
-    return $tab;
-}
-
-function afficherMauvaisesLettres($listeLettres)
-{
-    echo "\nLes lettres non présentes sont   ";
-    for ($i = 0; $i < count($listeLettres); $i++) {
-        if ($i == count($listeLettres) - 1) {
-            echo $listeLettres[$i], "\t";
-        } else {
-            echo $listeLettres[$i], ",";
+    else
+    {
+        for ($i = 0; $i < count($tab); $i++)
+        {
+            $tab[$i] = "_";
         }
     }
+    return $tab;
 }
-
-function DessinerPendu($nbErreur)
-{
-    switch ($nbErreur) {
-        case 0:
-            echo "                      " . "\n";
-            echo "                      " . "\n";
-            echo "                      " . "\n";
-            echo "                      " . "\n";
-            echo "                      " . "\n";
-            echo "                      " . "\n";
-            echo "                      " . "\n";
-            echo "                      " . "\n";
-            break;
-        case 1:
-            echo "                      " . "\n";
-            echo "                      " . "\n";
-            echo "                      " . "\n";
-            echo "                      " . "\n";
-            echo "                      " . "\n";
-            echo "                      " . "\n";
-            echo "                      " . "\n";
-            echo "     ________         " . "\n";
-            break;
-        case 2:
-            echo "                      " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "     _|_______        " . "\n";
-            break;
-        case 3:
-            echo "     ________         " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "     _|_______        " . "\n";
-            break;
-        case 4:
-            echo "     ________         " . "\n";
-            echo "      |     |         " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "     _|_______        " . "\n";
-            break;
-        case 5:
-            echo "     ________         " . "\n";
-            echo "      |     |         " . "\n";
-            echo "      |     O         " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "     _|_______        " . "\n";
-            break;
-        case 6:
-            echo "     ________         " . "\n";
-            echo "      |     |         " . "\n";
-            echo "      |     O         " . "\n";
-            echo "      |     |         " . "\n";
-            echo "      |     |         " . "\n";
-            echo "      |               " . "\n";
-            echo "      |               " . "\n";
-            echo "     _|_______        " . "\n";
-            break;
-        case 7:
-            echo "     ________          " . "\n";
-            echo "      |     |          " . "\n";
-            echo "      |     O          " . "\n";
-            echo "      |    /|\\        " . "\n";
-            echo "      |     |          " . "\n";
-            echo "      |                " . "\n";
-            echo "      |                " . "\n";
-            echo "     _|_______         " . "\n";
-            break;
-        case 8:
-            echo "     ________          " . "\n";
-            echo "      |     |          " . "\n";
-            echo "      |     O          " . "\n";
-            echo "      |    /|\\        " . "\n";
-            echo "      |     |          " . "\n";
-            echo "      |    / \\        " . "\n";
-            echo "      |                " . "\n";
-            echo "     _|_______         " . "\n";
-            break;
-        default:
-            break;
-    }
-}
-
 function creer_dico()
 {
     //Cree le dictionnaire de mots
@@ -373,6 +211,7 @@ function creer_dico()
     $tabMots[] = "CRAIE";
     $tabMots[] = "CRAVATE";
     $tabMots[] = "CROCHET";
+    $tabMots[] = "CROISSANT";
     $tabMots[] = "CUBE";
     $tabMots[] = "CUILLERE";
     $tabMots[] = "CUISSE";
@@ -947,95 +786,377 @@ function creer_dico()
     return $tabMots;
 }
 
+function dessinerPendu($nbErreur)
+{
+    switch ($nbErreur)
+    {
+        case 0:
+            echo "                      " . "\n";
+            echo "                      " . "\n";
+            echo "                      " . "\n";
+            echo "                      " . "\n";
+            echo "                      " . "\n";
+            echo "                      " . "\n";
+            echo "                      " . "\n";
+            echo "                      " . "\n";
+            break;
+        case 1:
+            echo "                      " . "\n";
+            echo "                      " . "\n";
+            echo "                      " . "\n";
+            echo "                      " . "\n";
+            echo "                      " . "\n";
+            echo "                      " . "\n";
+            echo "                      " . "\n";
+            echo "     ________         " . "\n";
+            break;
+        case 2:
+            echo "                      " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "     _|_______        " . "\n";
+            break;
+        case 3:
+            echo "     ________         " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "     _|_______        " . "\n";
+            break;
+        case 4:
+            echo "     ________         " . "\n";
+            echo "      |     |         " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "     _|_______        " . "\n";
+            break;
+        case 5:
+            echo "     ________         " . "\n";
+            echo "      |     |         " . "\n";
+            echo "      |     O         " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "     _|_______        " . "\n";
+            break;
+        case 6:
+            echo "     ________         " . "\n";
+            echo "      |     |         " . "\n";
+            echo "      |     O         " . "\n";
+            echo "      |     |         " . "\n";
+            echo "      |     |         " . "\n";
+            echo "      |               " . "\n";
+            echo "      |               " . "\n";
+            echo "     _|_______        " . "\n";
+            break;
+        case 7:
+            echo "     ________          " . "\n";
+            echo "      |     |          " . "\n";
+            echo "      |     O          " . "\n";
+            echo "      |    /|\\        " . "\n";
+            echo "      |     |          " . "\n";
+            echo "      |                " . "\n";
+            echo "      |                " . "\n";
+            echo "     _|_______         " . "\n";
+            break;
+        case 8:
+            echo "     ________          " . "\n";
+            echo "      |     |          " . "\n";
+            echo "      |     O          " . "\n";
+            echo "      |    /|\\        " . "\n";
+            echo "      |     |          " . "\n";
+            echo "      |    / \\        " . "\n";
+            echo "      |                " . "\n";
+            echo "     _|_______         " . "\n";
+            break;
+        default:
+            break;
+    }
+}
+/**
+ * méthode qui cherche toutes les occurrences d'une lettre passée en paramètre
+ * dans un tableau de caractères passé aussi en paramètre. Cette méthode retourne toutes les positions dans un tableau
+ *
+ * @param char $lettre
+ * @param array $tab
+ * @param int $depart  represente le point de depart de la recherche
+ * @return void
+ */
+function testerLettre($lettre, $tab, $depart)
+{
+    $tabRec = array_slice($tab, $depart); // on détermine le tableau de recherche en fonction de la position depart.
+    //Array_slice, permet d'extraire le sous tableau en fonction de la position
+    // exemple array_slice(['B','O','N','J','O','U','R'], 5) donne ['U','R']
+    $res = array_search($lettre, $tabRec); //recherche la lettre dans le tableau
+    if ($res === false) // === false pour eviter la confusion entre 0 et false
+    {
+        return [];
+    }
+    else
+    {
+        $reponse[] = $res + $depart;
+        $tabPos = array_merge($reponse, testerLettre($lettre, $tab, $res + $depart + 1)); // array_merge permet de fusionner le tableau résultat avec le tableau de l'appel recursif
+        // array_merge de [1,2] et [4] donne [1,2,4]
+        return $tabPos;
+    }
+}
+/**
+ * méthode qui modifie le tableau passé en paramètre en affectant la lettre à la position passée en paramètre
+ *
+ * @param char $lettre    lettre à placer
+ * @param array $tab       tableau dans lequel mettre la lettre
+ * @param int $pos       position à laquelle mettre la lettre
+ * @return void             le tableau est mis à jour
+ */
+function ajouterUneLettre($lettre, $tab, $pos)
+{
+    $tab[$pos] = $lettre;
+    return $tab;
+}
+
+/**
+ *
+ * methode qui permet d'echanger plusieurs valeurs dans un meme tableau et renvoi le tableau remplit
+ * renvoi le tableau remplis
+ * @param char val    la lettre  a ajouter
+ * @param array tab    le tableau dans lequel on doit ajouter les valeurs
+ * @param array tabpos le tableau avec les positions qui indique quels valeurs sont echanger dans le tableau initial
+ *
+ */
+function ajouterLesLettres($val, $tab, $tabpos, $niveau)
+{
+    switch ($niveau)
+    {
+        case 1:
+            for ($i = 0; $i < count($tabpos); $i++) //boucle permettant de parcourir le tableau des positions
+                {
+                $tab = ajouterUneLettre($val, $tab, $tabpos[$i]);
+            }
+            return $tab;
+        case 2:
+        case 4:
+            //on place les lettres une à une de gauche à droite
+            for ($i = 0; $i < count($tabpos); $i++) //on parcours les positions
+                {
+                $posEtudiee = $tabpos[$i];
+                //on verifie que la position n'est pas occupée
+                if ($tab[$posEtudiee] != $val)
+                {
+                    $tab = ajouterUneLettre($val, $tab, $posEtudiee);
+                    return $tab;
+                }
+            }
+            return -1; // plus de place pour la lettre
+        case 3:
+            // on place les lettres aléatoirement
+            $long=count($tabpos);
+            for ($i = 0; $i < count($tabpos); $i++) //on parcours les positions
+                {
+                $posEtudiee = $tabpos[$i];
+                //on verifie que la position n'est pas occupée
+                if ($tab[$posEtudiee] != $val)
+                {
+                    $tab = ajouterUneLettre($val, $tab, rand(0,$long));
+                    return $tab;
+                }
+
+    }
+    return -1;
+}
+/**
+ * Permet d'afficher les caractères contenus dans la liste
+ * passée en paramètre
+ *
+ * @param array $listeLettres contenant la liste de lettres à afficher
+ */
+function afficherMauvaisesLettres($listeLettres)
+{
+    echo "\n Les lettres non présentes sont ";
+    $taille = count($listeLettres);
+    for ($i = 0; $i < $taille; $i++)
+    {
+        if ($i == $taille - 1) // evite la , après la dernière lettre
+        {
+            echo $listeLettres[$i] . "\n";
+        }
+        else
+        {
+            echo $listeLettres[$i] . ",";
+        }
+    }
+}
+
+/**
+ * méthode qui renvoi un mot en le choisissant au hasard parmi une liste de mots
+ *
+ * si le niveau =3, le mot sera inférieur ou égal à 4 lettres
+ *
+ * @param int $niv  niveau de difficulté
+ * @return  string  $mot    le mot choisi le dictionnaire
+ *
+ */
+// function choisirMot()
+// {
+
+//     $dico = creer_dico();
+//     $nb = rand(0, count($dico) - 1);
+//     return $dico[$nb]; // ou  return $dico[array_rand($dico)]
+// }
 function choisirMot($niv)
 {
     $dico = creer_dico();
-    if ($niv == 2) {
-
-        do {
-
+    if ($niv == 4) // mot <= à 4 lettres
+    {
+        do
+        {
             $nb = rand(0, count($dico) - 1);
-        } while (strlen($dico[$nb]) >= 4);
+        } while (strlen($dico[$nb]) > 4);
+        return $dico[$nb];
     }
-    return $dico[$nb];
+    else
+    { //mot au hasard dans tout le dico
+        return $dico[array_rand($dico)];
+    }
 }
-
+/**
+ * méthode qui demande une lettre à l’utilisateur, elle vérifie que le caractère saisi est une lettre et le renvoi en majuscule.
+ */
 function demanderLettre()
 {
-    do {
-        $test = true;
-        $v = readline("Entrer une Lettre : ");
-        if (strlen($v) > 1 or (!ctype_alpha($v))) {
-            $test = false;
-        }
-    } while ($test == false);
-    return strtoupper($v);
+    do
+    {
+        echo "\n";
+        $lettre = strtoupper(readline("entrez une lettre : "));
+    } while ((!ctype_alpha($lettre)) || (strlen($lettre) > 1)); // ou utilisation de  while (!IntlChar::isalpha($lettre))
+    return $lettre;
 }
-
+/**
+ * méthode qui renvoi 1 si la partie est gagné, -1 si la partie est perdu, 0 si la partie continue.
+ * Elle reçoit en paramètre le nombre d’erreurs et le tableau contenant le mot composé
+ *
+ * @param int $nberreur
+ * @param array $tab
+ * @return void //0 si la partie est toujours en cours, 1 si c'est gagné, -1 sinon
+ */
 function testerGagner($nberreur, $tab)
 {
-    if (in_array("_", $tab) != false) {
-        if ($nberreur >= 9) {
-            $res = -1;
-            echo $res, "-Jeu perdue\n";
-        } else {
-            $res = 0;
-            echo $res, "-Le jeu continue\n";
-        }
-    } else {
-        $res = 1;
-        echo $res, "\t ";
+    if ($nberreur == 9) // si nb erreur =9, partie perdue
+    {
+        return -1;
     }
-    return $res;
+    else if (in_array("_", $tab) === false) // s'il y a un _ dans le tableau, la partie est en cours
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+
 }
-function demandeEntier($invite) // Demande un entier à l'utilisateur
-
+/**
+ * Demande le niveau à l'utilisateur
+ *
+ * @return int le niveau de difficulté
+ */
+function choisirNiveau()
 {
-    do {
-        do {
-            $nombre = readline($invite);
-        } while (!is_numeric($nombre)); // on verifie que la chaine de caracterer ne contient que des chiffres
-    } while (!is_int($nombre * 1)); // on vérifie que le nombre est entier (pas réel)
-    return $nombre; //renvoi le nombre saisi
+    do
+    {
+        echo ("\t\tNiveau de difficulé :\n");
+        echo ("\tFacile (1)\t Normal (2)\t Difficile (3)\t Court(4)");
+        $niveau = readline(" : ");
+
+        if ($niveau > 4 || $niveau < 1)
+        {
+            echo ("\nSaisie invalide ! Recommencer (rappel : 1 ou 2 ou 3 ou 4) \n");
+        }
+    } while ($niveau > 4 || $niveau < 1);
+    switch ($niveau)
+    {
+        case "1":
+            echo "\nNiveau Facile ! C'est parti ! \n";
+            break;
+        case "2":
+            echo "\nNiveau Normal ! C'est parti ! \n";
+            break;
+        case "3":
+            echo "\nNiveau Difficile ! C'est parti ! \n";
+            break;
+        case "4":
+            echo "\nNiveau Court ! C'est parti ! \n";
+            break;
+    }
+    return $niveau;
 }
 
-
-function lancerPartie()
+/**
+ * Permet de gérer la partie
+ *
+ * @return void
+ */
+function lancerPartie($niveau)
 {
-    $niv = demandeEntier("Entrer le niveau de difficulté :\n");
-    $motATrouver = choisirMot($niv);
-    var_dump($motATrouver);
-    $tabMotAT = str_split($motATrouver);
-    $motCode = coderMot($motATrouver, $niv);
-    $nbErreur = 0;
+    $motATrouver = choisirMot($niveau); // determine la mot à trouver
+    echo $motATrouver . "\n";
+    $tabMotATrouver = str_split($motATrouver); // toutes les functions travaillent avec des tableaux, on transforme la haine en tableau
+    $motCode = coderMot($motATrouver, $niveau);
+    $nbErreur = 0; // compte le nombre d'erreur
     $gagne = false;
-    $mL = [];
-    // echo $motATrouver, "\n";
-    do {
-        afficherTableau($motCode);
-        if (!empty($mL)) {
-            afficherMauvaisesLettres($mL);
+    $mauvaisesLettres = []; // tableau contenant les mauvaises lettres
+    do
+    {
+        echo "\n\n\t";
+        afficherTableau($motCode); // on affiche le mot contenant les _
+        dessinerPendu($nbErreur);
+        if (!empty($mauvaisesLettres))
+        { //s'il y a des mauvaises lettres, on les affiche
+            afficherMauvaisesLettres($mauvaisesLettres);
         }
-        $l = demanderLettre();
-        $lesPos = testerLettre($l, $tabMotAT, 0);
-        // var_dump($lesPos);
-        if (empty($lesPos)) {
+        $lettre = demanderLettre();
+        $lesPositions = testerLettre($lettre, $tabMotATrouver, 0); //on recupere toutes les positions de cette lettre dans le mot
+        if (empty($lesPositions))
+        { //la lettre n'est pas dans le mot
             $nbErreur++;
-
-            $mL[] = $l;
-        } else {
-            $motCode = ajouterLesLettres($l, $motCode, $lesPos);
-            // var_dump($motCode);
+            $mauvaisesLettres[] = $lettre;
         }
-        echo "\n Nombres d'erreurs : ", $nbErreur;
-        DessinerPendu($nbErreur);
+        else
+        {
+            $reponse = ajouterLesLettres($lettre, $motCode, $lesPositions, $niveau); //motCode = pour récuperer le tableau mis à jour
+            if ($reponse == -1) // la lettre ne peut plus etre placée
+            {
+                $nbErreur++;
+                $mauvaisesLettres[] = $lettre;
+            }
+            else
+            {
+                $motCode = $reponse;
+            }
+        }
 
-        $gagne = testerGagner($nbErreur, $motCode);
+        $gagne = testerGagner($nbErreur, $motCode); // on teste l'état de la partie
+        echo chr(27) . chr(91) . 'H' . chr(27) . chr(91) . 'J'; //permet de vider l'écran
     } while ($gagne == 0);
-    if ($gagne == 1) {
-        echo "Vous avez gagné. \nLe mot était $motATrouver";
-    } else {
-        echo "Vous avez perdu.\nLe mot était $motATrouver";
+    if ($gagne == 1)
+    {
+        echo "Bravo!! vous avez gagné. Le mot été $motATrouver\n";
+    }
+    else
+    {
+        echo "Vous avez perdu. Le mot été $motATrouver\n";
     }
 }
-lancerPartie();
+
+$niv = choisirNiveau();
+lancerPartie($niv);
