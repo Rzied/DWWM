@@ -27,15 +27,18 @@ function afficherTableau($tab)
  */
 function coderMot($mot, $niv)
 {
+    for ($i = 0; $i < strlen($mot); $i++) {
+        $tab[$i] = $mot[$i];
+    }
+    $i = 0;
     if ($niv == 0) {
-        for ($i = 1; $i < strlen($mot)-1; $i++) {
+        for ($i = 1; $i < count($tab) - 1; $i++) {
             $tab[$i] = "_";
         }
-    }
-    else {
-        for ($i = 0; $i < strlen($mot); $i++) {
-            $tab[] = "_";
-    }
+    } else {
+        for ($i = 0; $i < count($tab); $i++) {
+            $tab[$i] = "_";
+        }
     }
     return $tab;
 }
@@ -993,13 +996,10 @@ function demandeEntier($invite) // Demande un entier à l'utilisateur
 
 function lancerPartie()
 {
-    $niv=demandeEntier("Entrer le niveau de difficulté :\n");
-    var_dump($niv);
+    $niv = demandeEntier("Entrer le niveau de difficulté :\n");
     $motATrouver = choisirMot();
     $tabMotAT = str_split($motATrouver);
-    var_dump($tabMotAT);
-    $motCode = coderMot($motATrouver,$niv);
-    var_dump($motCode);
+    $motCode = coderMot($motATrouver, $niv);
     $nbErreur = 0;
     $gagne = false;
     $mL = [];
