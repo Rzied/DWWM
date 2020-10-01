@@ -1,0 +1,28 @@
+
+-	Modifier selectionPosition:
+Au lieu de choisir la position de pion, on doit vérifier si la colonne qu’on a choisie n’est pas pleine, sinon on redemande de choisir une autre colonne.
+Il faut aussi faire la vérification pour pas dépasser le nombre de colonne (un emplacement valide).
+-	Modifier remplirTableau :
+Il faut compter le nombre des cases pleine en partant du bas du tableau, et vérifier si la valeur qu’on a trouvée est inférieure à la taille de la colonne, si c’est le cas on rajoute le symbole dans la colonne choisie sinon on demande une autre colonne.
+-	Modifier lancerPpartie :
+On ne demande pas le nombre de ligne.
+Comment tu verifies que la partie est terminée?
+quand tout les colonnes sont pleines
+il te faut une fonction qui verifies si la colonne est pleine
+
+
+
+
+Fonction pour verifier si la partie est fini(les colonnes sont pleines)
+
+Function plateauPlein($plateau)
+{
+    for ($i = count($plateau); $i ==0; $i--)
+    {
+        if (in_array(".", $plateau[$i]))
+        {
+            return false;
+        }
+    }
+    return true;
+}
