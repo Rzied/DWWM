@@ -1,2 +1,6 @@
 <?php
-echo date(d,m,y);
+function ChargerClasse($classe)
+{
+    require $classe.".Class.php";
+}
+spl_autoload_register("ChargerClasse");
