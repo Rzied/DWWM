@@ -8,14 +8,15 @@ class Personne
     private $_prenom;
     private $_age;
     private $_genre;
-
+    private $_voiture;
     //Constructeur
-    public function __construct($n, $p, $a, $g)
+    public function __construct($n, $p, $a, $g, Voiture $v)
     {
         $this->setNom($n);
         $this->setPrenom($p);
         $this->setAge($a);
         $this->setGenre($g);
+        $this->setVoiture($v);
     }
 
     //Assesseurs
@@ -39,16 +40,20 @@ class Personne
     {
         return $this->_genre;
     }
+    public function getVoiture()
+    {
+        return $this->_voiture;
+    }
 
     //SETTER
 
     public function setNom($n)
     {
-        $this->_nom = $n;
+        $this->_nom = strtoupper($n);
     }
     public function setPrenom($p)
     {
-        $this->_prenom = $p;
+        $this->_prenom = ucfirst($p);
     }
     public function setAge($a)
     {
@@ -58,6 +63,10 @@ class Personne
     {
         $this->_genre = $g;
     }
+    public function setVoiture(Voiture $v)
+    {
+        $this->_voiture = $v;
+    }
 
     //autre methode
 
@@ -65,27 +74,33 @@ class Personne
     {
         $reponse = "La personner s'appelle $this->_Nom $this->_Prenom , a $this->_Age et de Genre $this->_Genre.\n";
     }
-    public function equalTo($obj)
+
+    public function equalTo(Personne $obj)
     {
-        if ($this->_genre==$obj->getGenre()&& $this->_age==$obj->getAge() ) {
+        if ($this->getGenre() == $obj->getGenre() && $this->getAge() == $obj->getAge()) {
             return true;
         }
         return false;
     }
-    public function compareTo($obj)
+    public function compareTo(Personne $obj)
     {
-        if ($this->_genre>$obj->getGenre()) {
+        if ($this->getNom() > $obj->getNom()) {
             return 1;
-        }
-        elseif ($this->_genre<$obj->etGenre()) {
+        } else if ($this->getNom() < $obj->getNom()) {
             return -1;
-        }
-        else {
-            return 0;
+        } else    // égalité sur les noms
+        {
+            if ($this->getPrenom() > $obj->getPrenom()) {
+                return 1;
+            } else if ($this->getPrenom() < $obj->getPrenom()) {
+                return -1;
+            } else {   // égalité sur les personnes
+                return 0;
+            }
         }
     }
 }
 
-$p1 = new Personne("Rjeb", "Zied", 29,"Male");
-var_dump($p1);
-echo $p1->getPrenom();
+// $p1 = new Personne("Rjeb", "Zied", 29, "Male",$v);
+// var_dump($p1);
+// echo $p1->getPrenom();
