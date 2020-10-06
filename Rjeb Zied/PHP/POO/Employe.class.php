@@ -11,7 +11,7 @@ class Employe
     /*****************Attributs***************** */
     private $_nom;
     private $_prenom;
-    private $_dated;
+    private $_dateEmbauche;
     private $_poste;
     private $_salaire;
     private $_service;
@@ -37,14 +37,14 @@ class Employe
         $this->_prenom = $prenom;
     }
 
-    public function getDated()
+    public function getDateEmbauche()
     {
-        return $this->_dated;
+        return $this->_dateEmbauche;
     }
 
-    public function setDated($dated)
+    public function setDateEmbauche($dateEmbauche)
     {
-        $this->_dated = $dated;
+        $this->_dateEmbauche = $dateEmbauche;
     }
 
     public function getPoste()
@@ -136,15 +136,36 @@ class Employe
 
     public function Anciennete()
     {
-        return date("y") - $this->getDated();
+        $date = $this->getDateEmbauche();
+        $date1 = new DateTime("now");
+        $diff = $date1->diff($date);
+
+        $diff->format('%y');
+        $anne = $diff->format("%y") * 1;
+        return $anne;
     }
 
-    public function prime()
+    private function primeSalair()
     {
 
-        $prime=((($this->getSalaire()*1000)/100)*5)+((($this->getSalaire()*1000)/100)*2);
+        $prime = ((($this->getSalaire() * 1000) / 100) * 5);
+        return $prime;
+    }
+    private function primeAnciennete()
+    {
+
+        $prime = ((($this->getSalaire() * 1000) / 100) *2 );
         return $prime;
     }
 
 
+    
+    // public function ordrePrime()
+    // {
+    //     $date1=new DateTime("now");
+    //     if ($date1->format("d-m")==("30-11")) {
+    //         "l’ordre de transfert a été envoyé à la banque";
+    // }
+
+    
 }

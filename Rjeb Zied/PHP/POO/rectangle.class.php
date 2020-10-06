@@ -29,7 +29,7 @@ class Rectangle
     }
 
     //constructeur
- // **********       Version Manuel     **********
+    // **********       Version Manuel     **********
     // public function __construct($lar, $lon)
     // {
     //     $this->setLargeur($lar);
@@ -37,7 +37,7 @@ class Rectangle
     // }
 
     // **********       Version Moderne     **********
-public function __construct(array $options = [])
+    public function __construct(array $options = [])
     {
         if (!empty($options)) // empty : renvoi vrai si le tableau est vide
         {
@@ -46,8 +46,7 @@ public function __construct(array $options = [])
     }
     public function hydrate($data)
     {
-        foreach ($data as $key => $value)
-        {
+        foreach ($data as $key => $value) {
             $methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
             if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
             {
@@ -58,28 +57,26 @@ public function __construct(array $options = [])
     //autres méthodes
     public function perimetre()
     {
-        return 2*($this->getLargeur()+$this->getLongueur());
+        return 2 * ($this->getLargeur() + $this->getLongueur());
     }
 
     public function aire()
     {
-        return "L'aire est : ".$this->getLargeur()*$this->getLongueur()."\n";
+        return "L'aire est : " . $this->getLargeur() * $this->getLongueur() . "\n";
     }
 
     public function EstCarre()
     {
-        return ($this->getLargeur()==$this->getLongueur()) ? "C'est un carré":"C'est un rectangle\n";
+        return ($this->getLargeur() == $this->getLongueur()) ? "C'est un carré" : "C'est un rectangle\n";
     }
 
     public function AfficherRectangle()
     {
-        return "Longueur : ".$this->getLongueur()." - Largeur : ".$this->getLargeur()." - Périmètre : ".$this->perimetre()." - ".$this->aire()." - ".$this->EstCarre();
-    } 
-
-
+        return "Longueur : " . $this->getLongueur() . " - Largeur : " . $this->getLargeur() . " - Périmètre : " . $this->perimetre() . " - " . $this->aire() . " - " . $this->EstCarre();
+    }
 }
 
-$r= new Rectangle(["Largeur"=>10,"Longueur"=>5]);
+$r = new Rectangle(["Largeur" => 10, "Longueur" => 5]);
 // var_dump($r);
 echo $r->aire();
 echo $r->EstCarre();
