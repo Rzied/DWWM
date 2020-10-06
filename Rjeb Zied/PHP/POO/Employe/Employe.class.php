@@ -1,9 +1,4 @@
 <?php
-function ChargerClasse($classe)
-{
-    require $classe . ".Class.php";
-}
-spl_autoload_register("ChargerClasse");
 
 class Employe
 {
@@ -12,9 +7,10 @@ class Employe
     private $_nom;
     private $_prenom;
     private $_dateEmbauche;
-    private $_poste;
-    private $_salaire;
+    private $_fonction;
+    private $_salaireAnnuel;
     private $_service;
+    private static $_compteur = 0;
 
     /*****************Accesseurs***************** */
     public function getNom()
@@ -36,35 +32,34 @@ class Employe
     {
         $this->_prenom = $prenom;
     }
-
     public function getDateEmbauche()
     {
         return $this->_dateEmbauche;
     }
 
-    public function setDateEmbauche($dateEmbauche)
+    public function setDateEmbauche(DateTime $dateEmbauche)
     {
         $this->_dateEmbauche = $dateEmbauche;
     }
 
-    public function getPoste()
+    public function getSalaireAnnuel()
     {
-        return $this->_poste;
+        return $this->_salaireAnnuel;
     }
 
-    public function setPoste($poste)
+    public function setSalaireAnnuel($salaireAnnuel)
     {
-        $this->_poste = $poste;
+        $this->_salaireAnnuel = $salaireAnnuel;
     }
 
-    public function getSalaire()
+    public function getFonction()
     {
-        return $this->_salaire;
+        return $this->_fonction;
     }
 
-    public function setSalaire($salaire)
+    public function setFonction($fonction)
     {
-        $this->_salaire = $salaire;
+        $this->_fonction = $fonction;
     }
 
     public function getService()
@@ -76,6 +71,16 @@ class Employe
     {
         $this->_service = $service;
     }
+    public static function getCompteur()
+    {
+        return self::$_compteur;
+    }
+
+    public static function setCompteur($compteur)
+    {
+        self::$_compteur = $compteur;
+    }
+
 
     /*****************Constructeur***************** */
 
@@ -85,7 +90,9 @@ class Employe
         {
             $this->hydrate($options);
         }
+        self::$_compteur++;
     }
+
     public function hydrate($data)
     {
         foreach ($data as $key => $value) {
@@ -106,8 +113,10 @@ class Employe
      */
     public function toString()
     {
-        return "";
+        echo "\n";
+        return "\nLe nom:" . $this->getNom() . "\nLe prenom:" . $this->getPrenom() . "\nDate d'embauche: " . $this->getDateEmbauche()->format("d,m,y") . "\nFonction: " . $this->getFonction() . "\nSalaire Annuel: " . $this->getSalaireAnnuel() . "K" . "\nService: " . $this->getService() . "\n";
     }
+
 
     /**
      * Renvoi vrai si l'objet en paramètre est égal à l'objet appelant
@@ -129,9 +138,39 @@ class Employe
      * @param [type] $obj2
      * @return void
      */
-    public static function compareTo($obj1, $obj2)
+    public static function compareToNomPrenom($obj1, $obj2)
     {
+        if ($obj1->getNom() < $obj2->getNom()) {
+            return -1;
+        } else if ($obj1->getNom() > $obj2->getNom()) {
+            return 1;
+        } else if ($obj1->getPrenom() < $obj2->getPrenom()) {
+            return -1;
+        } else if ($obj1->getPrenom() > $obj2->getPrenom()) {
+            return 1;
+        }
+
         return 0;
+    }
+    /**
+     * Compare 2 objets sur le nom et le prénom
+     * Renvoi 1 si le 1er est >
+     *        0 si ils sont égaux
+     *        -1 si le 1er est <
+     *
+     * @param [type] $obj1
+     * @param [type] $obj2
+     * @return void
+     */
+    public static function compareToServiceNomPrenom($obj1, $obj2)
+    {
+        if ($obj1->getService() < $obj2->getService()) {
+            return -1;
+        } else if ($obj1->getService() > $obj2->getService()) {
+            return 1;
+        } else {
+            return self::compareToNomPrenom($obj1, $obj2);
+        }
     }
 
     public function Anciennete()
@@ -139,7 +178,6 @@ class Employe
         $date = $this->getDateEmbauche();
         $date1 = new DateTime("now");
         $diff = $date1->diff($date);
-
         $diff->format('%y');
         $anne = $diff->format("%y") * 1;
         return $anne;
@@ -148,24 +186,26 @@ class Employe
     private function primeSalair()
     {
 
-        $prime = ((($this->getSalaire() * 1000) / 100) * 5);
+        $prime = ((($this->getSalaireAnnuel() * 1000) / 100) * 5);
         return $prime;
     }
     private function primeAnciennete()
     {
 
-        $prime = ((($this->getSalaire() * 1000) / 100) *2 );
+        $prime = ((($this->getSalaireAnnuel() * 1000) / 100) * 2);
         return $prime;
     }
-
-
-    
-    // public function ordrePrime()
-    // {
-    //     $date1=new DateTime("now");
-    //     if ($date1->format("d-m")==("30-11")) {
-    //         "l’ordre de transfert a été envoyé à la banque";
-    // }
-
-    
+    private function prime()
+    {
+        return $this->primeSalair() + $this->primeAnciennete();
+    }
+    /**
+     * Renvoi la masse salariale de l'employé
+     *
+     * @return void
+     */
+    public function masseSalariale()
+    {
+        return $this->getSalaireAnnuel()*1000+ $this->prime();
+    }
 }
