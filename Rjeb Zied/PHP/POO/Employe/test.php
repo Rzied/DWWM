@@ -5,7 +5,6 @@ function ChargerClasse($classe)
 }
 spl_autoload_register("ChargerClasse");
 
-
 $a1 = new Agence(["nomAgence" => "Codeours", "adress" => "40, rue Paul Bousquet", "codePostal" => "18273", "ville" => "Paris", "restaurant" => "OUI"]);
 $a2 = new Agence(["nomAgence" => "Codenid", "adress" => "603, chemin de Louis", "codePostal" => "88839", "ville" => "Marseille", "restaurant" => "OUI"]);
 $a3 = new Agence(["nomAgence" => "Smashcode", "adress" => "8, avenue Muller", "codePostal" => "33406", "ville" => "Lyon", "restaurant" => "NON"]);
@@ -21,7 +20,6 @@ $enf6 = new Enfants(["Nom" => "Courquin", "Prenom" => "Patrick", "Age" => "24"])
 $enf7 = new Enfants(["Nom" => "Courquin", "Prenom" => "Patricia", "Age" => "14"]);
 $liEnfants = [$enf1, $enf2, $enf3, $enf4, $enf5, $enf6, $enf7];
 
-
 $date1 = new DateTime("30-12-2020");
 $date3 = new DateTime("30-10-2002");
 $date4 = new DateTime("10-05-1999");
@@ -33,7 +31,6 @@ $e4 = new Employe(["nom" => "Cugny", "prenom" => "Maxime", "dateEmbauche" => $da
 $e5 = new Employe(["nom" => "Courquin", "prenom" => "Pierre", "dateEmbauche" => $date5, "fonction" => "Psychologue", "SalaireAnnuel" => 15, "service" => "Médico-social", "agence" => $a5, "Enfants" => [$enf6, $enf7]]);
 $liste = [$e1, $e2, $e3, $e4, $e5];
 
-
 echo "Le nombre d’employés de l’entreprise est : ", Employe::getCompteur();
 asort($liste);
 
@@ -42,15 +39,12 @@ foreach ($liste as $key) {
 }
 echo "\n";
 
-
 //Masse Salariale
 $masseSalarialeTotale = 0;
 foreach ($liste as $elt) {
     $masseSalarialeTotale += $elt->masseSalariale();
 }
 echo "La masse salariale totale est de " . $masseSalarialeTotale . " K\n";
-
-
 
 //Ordre de transfert
 $dateAujourdhui = new DateTime('now');

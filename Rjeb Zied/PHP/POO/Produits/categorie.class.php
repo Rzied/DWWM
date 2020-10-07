@@ -1,64 +1,38 @@
 <?php
-class Agence
+function ChargerClasse($classe)
+{
+    require $classe . ".Class.php";
+}
+spl_autoload_register("ChargerClasse");
+
+class Categorie
 {
 
     /*****************Attributs***************** */
-    private $_nomAgence;
-    private $_adress;
-    private $_codePostal;
-    private $_ville;
-    private $_restaurant;
+    private $_libelle;
+    private $_TVA;
 
     /*****************Accesseurs***************** */
-
-    public function getNomAgence()
+    public function getLibelle()
     {
-        return $this->_nomAgence;
+        return $this->_libelle;
     }
 
-    public function setNomAgence($nomAgence)
+    public function setLibelle($libelle)
     {
-        $this->_nomAgence = $nomAgence;
+        $this->_libelle = $libelle;
     }
 
-    public function getAdress()
+    public function getTVA()
     {
-        return $this->_adress;
+        return $this->_TVA;
     }
 
-    public function setAdress($adress)
+    public function setTVA($TVA)
     {
-        $this->_adress = $adress;
+        $this->_TVA = $TVA;
     }
 
-    public function getCodePostal()
-    {
-        return $this->_codePostal;
-    }
-
-    public function setCodePostal($codePostal)
-    {
-        $this->_codePostal = $codePostal;
-    }
-
-    public function getVille()
-    {
-        return $this->_ville;
-    }
-
-    public function setVille($ville)
-    {
-        $this->_ville = $ville;
-    }
-    public function getRestaurant()
-    {
-        return $this->_restaurant;
-    }
-
-    public function setRestaurant($restaurant)
-    {
-        $this->_restaurant = $restaurant;
-    }
     /*****************Constructeur***************** */
 
     public function __construct(array $options = [])
@@ -88,7 +62,7 @@ class Agence
      */
     public function toString()
     {
-        return "Nom d'agence :" . $this->getNomAgence() . "\nAdresse :" . $this->getAdress() . "\nCode Postale :" . $this->getCodePostal() . "\nVille :" . $this->getVille() . "\nRestauration :" . $this->getRestaurant() . ". " . $this->ticketsRes();
+        return "";
     }
 
     /**
@@ -116,10 +90,4 @@ class Agence
         return 0;
     }
 
-    public function ticketsRes()
-    {
-        if ($this->getRestaurant() == "NON") {
-            return "Dispose de tickets restaurants.";
-        }
-    }
 }

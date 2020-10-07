@@ -87,7 +87,7 @@ class Employe
         return $this->_agence;
     }
 
-    public function setAgence($agence)
+    public function setAgence(Agence $agence)
     {
         $this->_agence = $agence;
     }
@@ -96,7 +96,7 @@ class Employe
         return $this->_enfants;
     }
 
-    public function setEnfants($enfants)
+    public function setEnfants(Enfants $enfants)
     {
         $this->_enfants = $enfants;
     }
@@ -140,7 +140,6 @@ class Employe
         echo "\t                *\n";
         return "\nLe nom:" . $this->getNom() . "\nLe prenom:" . $this->getPrenom() . "\nDate d'embauche: " . $this->getDateEmbauche()->format("d,m,y") . "\nFonction: " . $this->getFonction() . "\nSalaire Annuel: " . $this->getSalaireAnnuel() . "K" . "\nService: " . $this->getService() . "\n" . $this->getAgence()->toString() . $this->chVacances() . "\n" . $this->affEnfants() . "\n";
     }
-
 
     /**
      * Renvoi vrai si l'objet en paramètre est égal à l'objet appelant
@@ -232,7 +231,6 @@ class Employe
     {
         return $this->getSalaireAnnuel() * 1000 + $this->prime();
     }
-
 
     public function chVacances()
     {

@@ -10,6 +10,7 @@ class Enfants
     /*****************Accesseurs***************** */
     public function getNom()
     {
+
         return $this->_nom;
     }
 
