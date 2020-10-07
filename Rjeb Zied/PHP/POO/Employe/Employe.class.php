@@ -10,6 +10,8 @@ class Employe
     private $_fonction;
     private $_salaireAnnuel;
     private $_service;
+    private $_agence;
+    private $_enfants;
     private static $_compteur = 0;
 
     /*****************Accesseurs***************** */
@@ -80,7 +82,24 @@ class Employe
     {
         self::$_compteur = $compteur;
     }
+    public function getAgence()
+    {
+        return $this->_agence;
+    }
 
+    public function setAgence($agence)
+    {
+        $this->_agence = $agence;
+    }
+    public function getEnfants()
+    {
+        return $this->_enfants;
+    }
+
+    public function setEnfants($enfants)
+    {
+        $this->_enfants = $enfants;
+    }
 
     /*****************Constructeur***************** */
 
@@ -114,7 +133,12 @@ class Employe
     public function toString()
     {
         echo "\n";
-        return "\nLe nom:" . $this->getNom() . "\nLe prenom:" . $this->getPrenom() . "\nDate d'embauche: " . $this->getDateEmbauche()->format("d,m,y") . "\nFonction: " . $this->getFonction() . "\nSalaire Annuel: " . $this->getSalaireAnnuel() . "K" . "\nService: " . $this->getService() . "\n";
+        echo "\t *********************************\n";
+        echo "\t       ********************\n";
+        echo "\t           ************\n";
+        echo "\t               ***\n";
+        echo "\t                *\n";
+        return "\nLe nom:" . $this->getNom() . "\nLe prenom:" . $this->getPrenom() . "\nDate d'embauche: " . $this->getDateEmbauche()->format("d,m,y") . "\nFonction: " . $this->getFonction() . "\nSalaire Annuel: " . $this->getSalaireAnnuel() . "K" . "\nService: " . $this->getService() . "\n" . $this->getAgence()->toString() . $this->chVacances() . "\n" . $this->affEnfants() . "\n";
     }
 
 
@@ -195,7 +219,7 @@ class Employe
         $prime = ((($this->getSalaireAnnuel() * 1000) / 100) * 2);
         return $prime;
     }
-    private function prime()
+    public function prime()
     {
         return $this->primeSalair() + $this->primeAnciennete();
     }
@@ -206,6 +230,25 @@ class Employe
      */
     public function masseSalariale()
     {
-        return $this->getSalaireAnnuel()*1000+ $this->prime();
+        return $this->getSalaireAnnuel() * 1000 + $this->prime();
+    }
+
+
+    public function chVacances()
+    {
+        if ($this->Anciennete() >= 1) {
+            return "\nDispose de chèques vacances ";
+        } else {
+            return "\nNe dispose pas de chèques vacances ";
+        }
+    }
+
+    public function affEnfants()
+    {
+        $aff = "";
+        foreach ($this->getEnfants() as $elt) {
+            $aff .= $elt->toString();
+        }
+        return $aff;
     }
 }

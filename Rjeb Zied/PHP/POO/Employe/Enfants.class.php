@@ -1,64 +1,43 @@
 <?php
-class Agence
+class Enfants
 {
 
     /*****************Attributs***************** */
-    private $_nomAgence;
-    private $_adress;
-    private $_codePostal;
-    private $_ville;
-    private $_restaurant;
+    private $_nom;
+    private $_prenom;
+    private $_age;
 
     /*****************Accesseurs***************** */
-
-    public function getNomAgence()
+    public function getNom()
     {
-        return $this->_nomAgence;
+        return $this->_nom;
     }
 
-    public function setNomAgence($nomAgence)
+    public function setNom($nom)
     {
-        $this->_nomAgence = $nomAgence;
+        $this->_nom = $nom;
     }
 
-    public function getAdress()
+    public function getPrenom()
     {
-        return $this->_adress;
+        return $this->_prenom;
     }
 
-    public function setAdress($adress)
+    public function setPrenom($prenom)
     {
-        $this->_adress = $adress;
+        $this->_prenom = $prenom;
     }
 
-    public function getCodePostal()
+    public function getAge()
     {
-        return $this->_codePostal;
+        return $this->_age;
     }
 
-    public function setCodePostal($codePostal)
+    public function setAge($age)
     {
-        $this->_codePostal = $codePostal;
+        $this->_age = $age;
     }
 
-    public function getVille()
-    {
-        return $this->_ville;
-    }
-
-    public function setVille($ville)
-    {
-        $this->_ville = $ville;
-    }
-    public function getRestaurant()
-    {
-        return $this->_restaurant;
-    }
-
-    public function setRestaurant($restaurant)
-    {
-        $this->_restaurant = $restaurant;
-    }
     /*****************Constructeur***************** */
 
     public function __construct(array $options = [])
@@ -88,7 +67,7 @@ class Agence
      */
     public function toString()
     {
-        return "Nom d'agence :" . $this->getNomAgence() . "\nAdresse :" . $this->getAdress() . "\nCode Postale :" . $this->getCodePostal() . "\nVille :" . $this->getVille() . "\nRestauration :" . $this->getRestaurant() . ". " . $this->ticketsRes();
+        return "Nom d'enfant :" . $this->getNom() . "\nPrenom d'enfant :" . $this->getPrenom() . "\nAge :" . $this->getAge() . "\nCheque Noel:" . $this->chNoel() . "\n";
     }
 
     /**
@@ -115,12 +94,22 @@ class Agence
     {
         return 0;
     }
-
-
-    public function ticketsRes()
+    public function chNoel()
     {
-        if ($this->getRestaurant() == "NON") {
-            return "Dispose de tickets restaurants.";
+        $a = $this->getAge();
+        switch ($a) {
+            case ($a > 0 && $a < 11):
+                return " Cheque de 20 euros ";
+                break;
+            case ($a > 10 && $a < 16):
+                return " Cheque de 30 euros ";
+                break;
+            case ($a > 15 && $a < 19):
+                return " Cheque de 50 euros ";
+                break;
+            default:
+                return " DSL, Pas de cheque ";
+                break;
         }
     }
 }
