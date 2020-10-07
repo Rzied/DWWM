@@ -73,7 +73,7 @@ class LieuDeStockage
      */
     public function toString()
     {
-        return "";
+        return "Num d'entrepot: ".$this->getNumEntrepot()."Zone: ".$this->getZone()."Ville: ".$this->getVille();
     }
 
     /**

@@ -62,7 +62,7 @@ class Categorie
      */
     public function toString()
     {
-        return "";
+        return "Libelle: ".$this->getLibelle()."TVA: ".$this->getTVA();
     }
 
     /**

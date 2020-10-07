@@ -18,12 +18,12 @@ class Produit
     private static $_compteur = 0;
 
     /*****************Accesseurs***************** */
-    public function getN()
+    public function getNum()
     {
         return $this->_num;
     }
 
-    public function setN($num)
+    public function setNum($num)
     {
         $this->_num = $num;
     }
@@ -63,7 +63,7 @@ class Produit
         return $this->_categorie;
     }
 
-    public function setCategorie($categorie)
+    public function setCategorie(Categorie $categorie)
     {
         $this->_categorie = $categorie;
     }
@@ -73,7 +73,7 @@ class Produit
         return $this->_lieuStockage;
     }
 
-    public function setLieuStockage($lieuStockage)
+    public function setLieuStockage(LieuDeStockage $lieuStockage)
     {
         $this->_lieuStockage = $lieuStockage;
     }
@@ -88,12 +88,12 @@ class Produit
         $this->_prixHT = $prixHT;
     }
 
-    public function getCompteur()
+    public static function getCompteur()
     {
         return self::$_compteur;
     }
 
-    public function setCompteur($compteur)
+    public static function setCompteur($compteur)
     {
         self::$_compteur = $compteur;
     }
@@ -105,6 +105,7 @@ class Produit
         {
             $this->hydrate($options);
         }
+        self::$_compteur++;
     }
     public function hydrate($data)
     {
@@ -126,7 +127,11 @@ class Produit
      */
     public function toString()
     {
-        return "";
+        $aff="";
+         $aff.="Numero: ".$this->getNum()."Designation: ".$this->getDesignation();
+        $aff.="Couleur: ".$this->getCouleur()."DLC: ".$this->getDlc()."Categorie: ".$this->getCategorie();
+        $aff.="\nLieu de Stockage: ".$this->getLieuStockage()."\nPrix HT: ".$this->getPrixHT();
+        return $aff;
     }
 
     /**
