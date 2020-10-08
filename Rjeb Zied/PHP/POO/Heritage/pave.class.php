@@ -1,10 +1,8 @@
 <?php
-
-class TriangleRectangle
+class Pave extends Rectangle
 {
 
     /*****************Attributs***************** */
-    private $_base;
     private $_hauteur;
 
     /*****************Accesseurs***************** */
@@ -17,21 +15,11 @@ class TriangleRectangle
     {
         $this->_hauteur = $hauteur;
     }
-
-    public function getBase()
-    {
-        return $this->_base;
-    }
-
-    public function setBase($base)
-    {
-        $this->_base = $base;
-    }
-
     /*****************Constructeur***************** */
 
     public function __construct(array $options = [])
     {
+        parent::__construct($options);
         if (!empty($options)) // empty : renvoi vrai si le tableau est vide
         {
             $this->hydrate($options);
@@ -57,7 +45,7 @@ class TriangleRectangle
      */
     public function toString()
     {
-        return "\nBase :" . $this->getBase() . "\tHauteur :" . $this->getHauteur() . "\tPerimetre :" . $this->perimetre() . "\tAire :" . $this->aire();
+        return "\nLe Pavé : \nLargeur :".$this->getLargeur()."\tLongueur :".$this->getLongueur()."\tHauteur :".$this->getHauteur()."\tPerimetre :".$this->perimetre()."\tVolume :".$this->aire();
     }
 
     /**
@@ -87,12 +75,11 @@ class TriangleRectangle
 
     public function perimetre()
     {
-        $cote3 = pow($this->getBase(), 2) + pow($this->getHauteur(), 2);
-        return sqrt($cote3) + $this->getBase() + $this->getHauteur();
+        return 4*($this->getLargeur()+$this->getLongueur()+$this->getHauteur());
     }
+    
     public function aire()
     {
-        return ($this->getBase() * $this->getHauteur()) / 2;
+        return 2*(($this->getLargeur()*$this->getLongueur())+($this->getLargeur()*$this->getHauteur())+($this->getLongueur()*$this->getHauteur()));
     }
-
 }

@@ -1,33 +1,13 @@
 <?php
-
-class TriangleRectangle
+class Sphere extends Cercle
 {
 
     /*****************Attributs***************** */
-    private $_base;
-    private $_hauteur;
+    
 
     /*****************Accesseurs***************** */
-    public function getHauteur()
-    {
-        return $this->_hauteur;
-    }
 
-    public function setHauteur($hauteur)
-    {
-        $this->_hauteur = $hauteur;
-    }
-
-    public function getBase()
-    {
-        return $this->_base;
-    }
-
-    public function setBase($base)
-    {
-        $this->_base = $base;
-    }
-
+    
     /*****************Constructeur***************** */
 
     public function __construct(array $options = [])
@@ -39,7 +19,8 @@ class TriangleRectangle
     }
     public function hydrate($data)
     {
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value)
+        {
             $methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
             if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
             {
@@ -49,7 +30,7 @@ class TriangleRectangle
     }
 
     /*****************Autres Méthodes***************** */
-
+    
     /**
      * Transforme l'objet en chaine de caractères
      *
@@ -57,7 +38,7 @@ class TriangleRectangle
      */
     public function toString()
     {
-        return "\nBase :" . $this->getBase() . "\tHauteur :" . $this->getHauteur() . "\tPerimetre :" . $this->perimetre() . "\tAire :" . $this->aire();
+        return "\nLe Sphere : \nDiametre :".parent::getDiametre()."\tAire :".$this->aire()."\tVolume :".$this->volume();
     }
 
     /**
@@ -85,14 +66,15 @@ class TriangleRectangle
         return 0;
     }
 
-    public function perimetre()
-    {
-        $cote3 = pow($this->getBase(), 2) + pow($this->getHauteur(), 2);
-        return sqrt($cote3) + $this->getBase() + $this->getHauteur();
-    }
     public function aire()
     {
-        return ($this->getBase() * $this->getHauteur()) / 2;
+        return 4*pi()*((parent::getDiametre()/2)*(parent::getDiametre()/2));
+    }
+
+    public function volume()
+    {
+        $r=(parent::getDiametre()/2);
+        return 4/3*(pi()*$r*$r*$r);
     }
 
 }
