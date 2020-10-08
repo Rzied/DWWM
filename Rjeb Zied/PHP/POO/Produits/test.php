@@ -6,7 +6,7 @@ function ChargerClasse($classe)
 spl_autoload_register("ChargerClasse");
 
 
-
+$a
 
 
 
