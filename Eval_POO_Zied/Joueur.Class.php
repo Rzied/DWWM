@@ -3,30 +3,21 @@ class Joueur extends De
 {
 
     /*****************Attributs***************** */
-    private $_estVivant;
-    private $_compteur = 50;
+
+    private static $_compteur = 50;
 
     /*****************Accesseurs***************** */
 
     public function getCompteur()
     {
-        return $this->_compteur;
+        return self::$_compteur;
     }
 
     public function setCompteur($compteur)
     {
-        $this->_compteur = $compteur;
+        self::$_compteur = $compteur;
     }
 
-    public function getEstVivant()
-    {
-        return $this->_estVivant;
-    }
-
-    public function setEstVivant($estVivant)
-    {
-        $this->_estVivant = $estVivant;
-    }
     /*****************Constructeur***************** */
 
     public function __construct(array $options = [])
@@ -35,6 +26,7 @@ class Joueur extends De
         {
             $this->hydrate($options);
         }
+        self::setCompteur(self::getCompteur()-$this->SubitDegats($degat));
     }
     public function hydrate($data)
     {
@@ -89,7 +81,7 @@ class Joueur extends De
         if ($this->Bouclier() == false);
         {
             $compteur = $this->getCompteur() - $degat;
-            
+
         }
         return $compteur;
     }
@@ -129,5 +121,10 @@ class Joueur extends De
         }
 
         return;
+    }
+
+    public function EstVivant()
+    {
+        return $this->getCompteur() < 1 ? true : false;
     }
 }
