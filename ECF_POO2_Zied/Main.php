@@ -43,12 +43,14 @@ $d1 = new Document(["Auteur" => $a1, "Titre" => "Héritage", "estEmprunte" => st
 $d2 = new Document(["Auteur" => $a2, "Titre" => "Dosadi", "estEmprunte" => strtoupper("oui")]);
 $d3 = new Document(["Auteur" => $a3, "Titre" => "Sauve-moi", "estEmprunte" => strtoupper("non")]);
 
+// AFFICHAGE des DOCUMENTS
 echo "\n", $d1->toString();
 echo "\n", $d2->toString();
 echo "\n", $d3->toString();
 echo "\n";
 var_dump($d3->equalsTo($d2));
 
+//AFFICHAGE DES AUTEUS !
 // echo $a1->toString(),"\n";
 // echo $a2->toString(),"\n";
 // // var_dump( $a2->equalsTo($a3));
@@ -58,9 +60,9 @@ $l1 = new Livre(["Titre" => "Heritage", "Auteur" => $a1, "nbPage" => 430]);
 echo "\n--Le livre :", $l1->toString();
 echo "\n";
 // Les ENREGISTREMENTS
-$En1 = new Enraudio(["Titre" => "Espionnage","Duree"=>"1 Heure", "Auteur" => $a2]);
+$En1 = new Enraudio(["Titre" => "Espionnage", "Duree" => "1 Heure", "Auteur" => $a2]);
 echo "\n--L'enregistrement : ", $En1->toString();
 echo "\n";
 // Les ENREGISTREMENTS
-$V1 = new Enraudio(["Titre" => "Guerre","Duree"=>"3 Heure", "Auteur" => $a3]);
+$V1 = new Enraudio(["Titre" => "Guerre", "Duree" => "3 Heure", "Auteur" => $a3]);
 echo "\n--Video : ", $V1->toString();

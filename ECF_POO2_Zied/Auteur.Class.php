@@ -106,10 +106,31 @@ class Auteur
      * @param [type] $obj2
      * @return void
      */
-    public static function compareTo($obj1, $obj2)
+    public static function compareTo(Auteur $obj1, Auteur $obj2)
     {
-        return 0;
+        if ($obj1->getNom() < $obj2->getNom()) {
+            return -1;
+        } elseif ($obj1->getNom() > $obj2->getNom()) {
+            return 1;
+        } elseif ($obj1->getPrenom() < $obj2->getPrenom()) {
+            return -1;
+        } elseif ($obj1->getPrenom() > $obj2->getPrenom()) {
+            return 1;
+        } elseif ($obj1->getDNais() < $obj2->getDNais()) {
+            return -1;
+        } elseif ($obj1->getDNais() > $obj2->getDNais()) {
+            return 1;
+        } elseif ($obj1->getDDeces() < $obj2->getDDeces()) {
+            return -1;
+        } elseif ($obj1->getDDeces() > $obj2->getDDeces()) {
+            return 1;
+        } else {
+            return 0;
+        }
+
     }
+
+    //renvoi un boolean pour verifier si vivant ou pas
     public function estVivant()
     {
         return $this->getDDeces() ? true : false;

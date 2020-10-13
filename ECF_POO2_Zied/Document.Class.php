@@ -38,7 +38,7 @@ class Document
     {
         $this->_emprunte = $emprunte;
     }
-    
+
     public function getEstEmprunte()
     {
         return $this->_estEmprunte;
@@ -77,11 +77,11 @@ class Document
      * @return String
      */
     public function toString()
-    {   /* ****************************** AVANT LA MODIFICATION 3.5 ************************************* */
-        // return "\nCe document:\nAuteur : ".$this->getAuteur()."\nTitre : ".$this->getTitre()."\nEst Emprente : ".$this->getEstEmprunte();  
+    { /* ****************************** AVANT LA MODIFICATION 3.5 ************************************* */
+        // return "\nCe document:\nAuteur : ".$this->getAuteur()."\nTitre : ".$this->getTitre()."\nEst Emprente : ".$this->getEstEmprunte();
 
         /* ****************************** APRES LA MODIFICATION 3.5 ************************************* */
-        $aff= "\nCe document:\nAuteur : ".$this->getAuteur()->toString()."\nTitre : ".$this->getTitre()."\nEst Emprente : ".$this->getEstEmprunte();
+        $aff = "\nCe document:\nAuteur : " . $this->getAuteur()->toString() . "\nTitre : " . $this->getTitre() . "\nEst Emprente : " . $this->getEstEmprunte();
         return $aff;
     }
 
@@ -94,9 +94,7 @@ class Document
     public function equalsTo(document $o)
     {
         // return ($this->getAuteur()== $o->getAuteur() && $this->getTitre()==$o->getTitre());
-        return ($this->getAuteur()== $o->getAuteur() && $this->getTitre()==$o->getTitre());
+        return ($this->getAuteur() == $o->getAuteur() && $this->getTitre() == $o->getTitre());
     }
-    
-
 
 }
