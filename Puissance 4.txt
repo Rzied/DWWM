@@ -26,3 +26,8 @@ Function plateauPlein($plateau)
     }
     return true;
 }
+je prefereais une fonction colonnePleine et plateau plein appele colonne Pleine
+
+Function colonnePleine($plateau,)
+
+
