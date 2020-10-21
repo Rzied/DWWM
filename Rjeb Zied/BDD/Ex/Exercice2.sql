@@ -9,14 +9,18 @@ commande a-t-il été calculé ? '
 
 A)Afficher le montant le plus élevé de commande.
 SELECT MAX(cde_total) FROM commandes
+SELECT MAX(`quantiteCommande`*articles.prixArticle) FROM `commandes` INNER JOIN articles ON commandes.idArticle = articles.idArticle;
 B) Afficher le montant moyen des commandes.
 SELECT ROUND (AVG(cde_total),2) FROM commandes
+SELECT ROUND(AVG(`quantiteCommande`*articles.prixArticle),2) as `montant moyen` FROM `commandes` INNER JOIN articles ON commandes.idArticle = articles.idArticle;
 C) Afficher le montant le plus bas de commande.
 SELECT MIN(cde_total) FROM commandes
+SELECT MIN(`quantiteCommande`*articles.prixArticle) as `montant moyen` FROM `commandes` INNER JOIN articles ON commandes.idArticle = articles.idArticle
 D) Afficher le nombre de commandes qui ont été passées.
 SELECT COUNT(*) FROM commandes
 E) Afficher le montant moyen de commande par client
 SELECT AVG(cde_total),idClient FROM commandes GROUP BY idClient
+SELECT ROUND(AVG(`quantiteCommande`*articles.prixArticle),2) as `montant moyen` FROM `commandes` INNER JOIN articles ON commandes.idArticle = articles.idArticle GROUP BY idClient
 F) Afficher le montant le plus élevé de commande par client.
 SELECT MAX(cde_total),idClient FROM commandes GROUP BY idClient
 G) Afficher le nombre de commandes par client.
