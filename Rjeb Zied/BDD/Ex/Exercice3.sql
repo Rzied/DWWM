@@ -5,8 +5,9 @@ tables correspondantes.
 A)Les noms des étudiants nés avant l''étudiant « JULES LECLERCQ »
 SELECT `nomEtudiant`, `prenomEtudiant`, `dateNaissanceEtudiant` FROM `etudiants` WHERE `dateNaissanceEtudiant` <( SELECT `dateNaissanceEtudiant` FROM `etudiants` WHERE `nomEtudiant` = "LECLERCQ" AND prenomEtudiant = "Jules" )
 B) Les noms et notes des étudiants qui ont,à l''épreuve 4, une note supérieure à la moyenne de cette épreuve.
-SELECT et.`NomEtudiant`, et.`PrenomEtudiant`, an.idEtudiant FROM avoir_note AS an INNER JOIN `Etudiant` AS et ON an.idEtudiant=et.idEtudiant
-SELECT AVG(`note`) FROM avoir_note
+SELECT CONCAT(nomEtudiant, " ", prenomEtudiant) FROM etudiants WHERE idEtudiant IN
+    (SELECT idEtudiant FROM avoir_note WHERE idEpreuve=4 AND note>
+        (SELECT ROUND(AVG(note)) FROM avoir_note WHERE idEpreuve=4))
 
 C) Le nom des étudiants qui ont obtenu un 12 ou plus.
 D)Le nom des étudiants qui ont dans l''épreuve 4 une note supérieure à celle obtenue par « LUC DUPONT »(à cette même épreuve).
