@@ -51,7 +51,7 @@ SELECT `nom`,`salaire`,`tauxcom`,`titre` FROM `employe` WHERE `tauxcom` >15
 26.Afficher le nom, le salaire, le taux de commission et la commission des employés dont le taux de commission n est pas nul.(la commission est calculée en multipliant le salaire par le taux de commission)
 SELECT `nom`,`salaire`,`tauxcom`,ROUND((`salaire`*`tauxcom`)/100,2) AS commission FROM `employe` WHERE `tauxcom` is NOT NULL
 27.Afficher le nom, le salaire, le taux de commission, la commission des employés dont le taux de commission n est pas nul, classé par taux de commission croissant. 
-SELECT `nom`,`salaire`,`tauxcom`,ROUND((`salaire`*`tauxcom`)/100,2) AS commission FROM `employe` WHERE `tauxcom` is NOT NULL ORDER BY commission
+SELECT `nom`,`salaire`,`tauxcom`,(`salaire`*`tauxcom`) AS commission FROM `employe` WHERE `tauxcom` is NOT NULL ORDER BY `tauxcom`
 28. Afficher le nom et le prénom (concaténés) des employés. Renommer les colonnes
 SELECT CONCAT (`nom`," ",`prenom`) AS nomEmploye FROM `employe`
 29.Afficher les 5 premières lettres du nom des employés. 
