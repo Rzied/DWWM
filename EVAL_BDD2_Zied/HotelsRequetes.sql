@@ -26,8 +26,7 @@ GROUP BY stations.nomStation
 INNER JOIN chambres ON chambres.IdChambre=reservations.IdChambre
 INNER JOIN hotels ON hotels.idHotel=chambres.idHotel
 INNER JOIN clients ON clients.idClient=reservations.idClient
-WHERE reservations.idClient =
-(SELECT idClient FROM clients WHERE clients.nomClient="Squire")
+WHERE reservations.idClient =(SELECT idClient FROM clients WHERE clients.nomClient="Squire")
 15.SELECT stations.nomStation,ROUND(AVG( DATEDIFF(`dateFinSejour`,`dateDebutSejour`)),2) AS "Duree moyenne de Reservation" FROM `reservations`
 INNER JOIN chambres ON chambres.IdChambre=reservations.IdChambre
 INNER JOIN hotels ON hotels.idHotel=chambres.idHotel
@@ -39,4 +38,5 @@ INNER JOIN chambres ON chambres.idHotel=hotels.idHotel
 17.CREATE VIEW StationChambreLeft AS SELECT stations.nomStation,stations.altitudeStation,hotels.*,chambres.`IdChambre`,chambres.`numChambre`,chambres.`typeChambre`,chambres.`capaciteChambre` FROM chambres
 LEFT JOIN hotels ON hotels.idHotel=chambres.idHotel
 LEFT JOIN stations ON stations.idStation=hotels.idStation
-18.
+18.ALTER TABLE `reservations` ADD `archivé` VARCHAR(3)  NULL AFTER `IdChambre`
+19.CREATE PROCEDURE stockee() BEGIN UPDATE `reservations` SET `archive` = "oui" WHERE (SELECT now())> (SELECT reservations.dateFinSejour FROM reservations); END
