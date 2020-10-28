@@ -47,3 +47,4 @@ SELECT employe.nodep, dept.nom, employe.nom FROM dept INNER JOIN employe ON empl
 
 --CREATE VIEW
 CREATE VIEW dl AS SELECT employe.nom, dept.nom AS "nomdept", dept.nodept FROM dept LEFT JOIN employe ON employe.nodep=dept.nodept
+
