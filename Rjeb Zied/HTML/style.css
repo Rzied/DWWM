@@ -1,0 +1,41 @@
+
+header{
+    background-color: chartreuse;
+    text-transform:uppercase;
+    text-align: center;
+    float: right;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+body{
+    background-color: rgb(102, 226, 226);
+    margin-top: 20px;
+    border: black 1px solid;
+   
+    
+}
+h1{
+    font-size: 50px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-style: italic;
+    text-align: center;
+    color: lightcoral;
+    margin-top: 120px;
+    margin-bottom: 200px;
+}
+footer{
+    background-color: rgb(243, 131, 91);
+}
+
+li{
+    list-style-type: none;
+}
+div{
+    background-color: lightcyan;
+    
+}
+p{
+    font-size: 25px;
+    
+}
