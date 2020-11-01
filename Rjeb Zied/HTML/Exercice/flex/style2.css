@@ -1,0 +1,56 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    background-color: blue;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: space-between;
+}
+.orange{
+    background-color: orangered;
+    /* flex: 1; */
+    height: 150px;
+}
+.group{
+   display: flex;
+   flex-direction: row;
+    /* flex: 2; */
+    height: 250px;
+}
+.gris{
+    background-color: grey;
+    flex: 1;
+    margin: 5px;
+}
+.trois{
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+    /* padding: 10px; */
+    margin: 5px;
+    justify-content: space-between;
+}
+.jaune{
+    background-color: yellow;
+    height: 70px;
+    /* flex: 1; */
+}
+.ciel{
+    background-color: teal;
+    height: 70px;
+    /* flex: 1; */
+}
+.pistach{
+    background-color: rgb(164, 235, 22);
+    height: 70px;
+    /* flex: 1; */
+}
+.vert{
+    background-color: green;
+    /* flex: 1; */
+    height: 150px;
+}
