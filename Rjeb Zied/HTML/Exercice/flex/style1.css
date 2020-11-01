@@ -1,0 +1,52 @@
+.mere{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-around;
+    padding: 10px;
+    
+}
+.colonne{
+    align-content: space-around;
+    align-content: space-between;
+
+}
+.grisjaune{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    padding-left: 0;
+    padding-right: 0;
+   
+}
+
+.bleu{
+    background: blue;
+    height: 600px;
+    
+}  
+.orange{
+    background: orangered;
+    height: 100px;
+
+}
+.gris{
+    background: grey;
+    height: 400px;
+    flex: 1;
+    margin: 5px;
+    margin-left: 0;
+    
+}
+.jaune{
+    background: yellow;
+    height: 400px;
+    flex: 3;
+    margin: 5px;
+    margin-right: 0;
+    
+}
+.vert{
+    background: green;
+    height: 100px;
+}
