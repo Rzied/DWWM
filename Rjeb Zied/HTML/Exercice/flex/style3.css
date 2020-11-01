@@ -1,0 +1,67 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    background-color: blue;
+    height: 750px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+.deux{
+    display: flex;
+    flex-direction: row;
+    height: 125px;
+}
+.orange{
+    background-color: orangered;
+    flex: 1;
+    margin: 5px;
+    border: black solid 1px;
+}
+.gris{
+    background-color: gray;
+    flex: 1;
+    margin: 5px;
+    border: 1px solid black;
+}
+.un{
+    background-color:orange;
+    height: 125px;
+    margin: 5px;
+}
+.quatre{
+    display: flex;
+    flex-direction:row;
+    height: 180px;
+    justify-content: space-between;
+    padding-top: 40px;
+}
+
+.orange4{
+    background-color: orangered;
+    height: 125px;
+    margin:5px;
+    width: 150px;
+}
+.deuxj{
+    display: flex;
+    flex-direction: row;
+    height: 125px;
+    margin: 5px;
+    justify-content: space-between;
+}
+.jaune2{
+    background-color: orange;
+    height: 125px;
+    /* margin: 5px; */
+    width: 330px;
+    padding: 0;
+}
+.unv{
+    background-color: greenyellow;
+    height: 125px;
+    border: black solid 1px;
+    margin: 5px;
+}
