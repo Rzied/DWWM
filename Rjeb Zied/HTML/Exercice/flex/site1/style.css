@@ -9,6 +9,22 @@ header{
     flex: 1;
     border: solid 1px black;
 }
+
+nav{
+    display: flex;
+    justify-content: center;
+}
+nav ul {
+    display: flex;
+}
+nav li{
+    display: flex;
+    list-style-type: none;
+    text-align: center;
+    margin: 0.1em 2em;
+    /* padding: 1em; */
+    border: solid 1px black;
+}
 img {
     width: 100%;
     /* justify-content: center;
@@ -42,7 +58,7 @@ body{
 .group{
     /* background-color: blue; */
     display: flex;
-    flex: ;
+    /* flex: ; */
     border: solid 1px black;
     flex-direction: row;
     /* height: 300px; */
@@ -72,20 +88,39 @@ body{
     flex: 3;
     height: 100%;
     margin-left: 10px;
+    padding-left: 10px;
 }
 footer{
     flex: 2;
     height: 200px;
     display: flex;
+    flex-direction: column;
     /* background-color: chartreuse; */
     /* margin-top: 20px; */
 }
 .foot{
     background-color: chartreuse;
     display: flex;
-    flex: 1;
+    flex: 0.7;
     margin: 20px;
+    justify-content: space-around ;
+    text-align: center;
     
+}
+.foot ul{
+    display: flex;
+    /* justify-items: center; */
+    
+}
+.foot li{
+    display: flex;
+    list-style-type: none;
+    text-align: center;
+    margin: 0.1em 2em;
+    /* justify-items: center; */
+    /* padding: 1em; */
+    /* border: solid 1px black; */
+    align-items: center;
 }
 span{
     font-weight:bold ;
