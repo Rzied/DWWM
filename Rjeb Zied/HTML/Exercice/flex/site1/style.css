@@ -1,0 +1,95 @@
+.div{
+    display: flex;
+    /* flex: 1; */
+}
+header{
+    display: flex;
+    align-items: center;
+    /* justify-items: center; */
+    flex: 1;
+    border: solid 1px black;
+}
+img {
+    width: 100%;
+    /* justify-content: center;
+    align-items: center; */
+    /* border: solid 1px black; */
+}
+.logo{
+    flex: 1;
+    /* border: solid 1px black; */
+    /* justify-content: center;
+    align-items: center; */
+}
+.titre{
+    flex: 2;
+    /* justify-content: center;
+    align-items: center; */
+    text-align: center;
+    /* border: solid 1px black; */
+}
+.login{
+    flex: 1;
+    text-align: center;
+}
+body{
+    /* margin: 0; */
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    
+}
+.group{
+    /* background-color: blue; */
+    display: flex;
+    flex: ;
+    border: solid 1px black;
+    flex-direction: row;
+    /* height: 300px; */
+    padding: 20px;
+    margin-top: 20px;
+}
+.gauche{
+    background-color: brown;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    margin-right: 10px;
+    /* justify-content: center; */
+    align-items: center;
+    
+}
+.chien{
+    display: flex;
+    /* justify-content: center; */
+    width: 100%;
+    /* align-content: center; */
+    align-items: center;
+}
+.droite{
+    /* background-color: red; */
+    flex: 3;
+    height: 100%;
+    margin-left: 10px;
+}
+footer{
+    flex: 2;
+    height: 200px;
+    display: flex;
+    /* background-color: chartreuse; */
+    /* margin-top: 20px; */
+}
+.foot{
+    background-color: chartreuse;
+    display: flex;
+    flex: 1;
+    margin: 20px;
+    
+}
+span{
+    font-weight:bold ;
+    font-size: 0.9em;
+    color: rgb(55, 21, 180);
+}
+
