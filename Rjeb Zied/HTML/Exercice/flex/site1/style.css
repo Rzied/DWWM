@@ -25,6 +25,20 @@ nav li{
     /* padding: 1em; */
     border: solid 1px black;
 }
+.icone{
+    display: flex;
+    flex: 1;
+    /* justify-content: center; */
+    /* height: 50px; */
+}
+.l1{
+    /* justify-content: center; */
+    border: solid 1px black;
+    align-items: center;
+    text-align: center;
+    
+    
+}
 img {
     width: 100%;
     /* justify-content: center;
