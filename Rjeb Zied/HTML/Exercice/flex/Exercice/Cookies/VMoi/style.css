@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+    background-image: url(image/fond.jpg);
+}
+header{
+    /* border: solid 1px black; */
+    background-image: url(image/header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    /* flex: 1; */
+    margin: 2em 8em;
+    padding: 2em;
+}
+
+
+
+.logo{
+    flex: 1;
+    /* border: solid 1px rgb(116, 11, 202);     */
+    
+}
+.logo img{
+    height: 10em;
+}
+.title{
+    flex: 1;
+    /* border: solid 1px black; */
+    font-size: 3em;
+    font-weight: bolder;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* align-items: center; */
+    /* justify-items: center; */
+    /* justify-content: center; */
+    margin: auto;
+    
+}
+.vide{
+    flex: 1;
+    /* border: solid 1px rgb(196, 9, 9); */
+}
