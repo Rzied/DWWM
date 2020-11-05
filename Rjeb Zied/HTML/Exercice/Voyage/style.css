@@ -8,9 +8,6 @@ body{
     flex-direction: column;
     justify-content: center;
 }
-.page{
-    
-}
 header{
     display: flex;
     flex: 1;
@@ -21,7 +18,7 @@ header{
 }
 .logo{
     flex: 1;
-    margin: 2em;
+    margin: 3em;
 }
 image{
     width: 100%;
@@ -50,7 +47,7 @@ image{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border: rgb(0, 0, 0) solid 2px;
+    /* border: rgb(0, 0, 0) solid 2px; */
     margin: 10em 15em;
 }
 .contenue{
@@ -78,17 +75,18 @@ img{
     justify-items: center;
     align-items: center;
     font-size: 2em;
-    font-weight: bold;
-    font-family: monospace;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 2em;
+    text-align: center;
 }
 .text{
     flex: 1;
     text-align: center;
-    font-size: 1em;
+    font-size: 1.5em;
     /* font-weight: bold; */
-    font-family: 'Times New Roman', Times, serif;
-    margin: 1.5em;
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 2em;
     text-align: justify;
 }
 .part2{
@@ -103,9 +101,9 @@ img{
     /* align-items: center; */
     /* border: rgb(0, 0, 0) solid 2px; */
     text-align: center;
-    font-size: 2em;
+    font-size: 2.6em;
     font-weight: bolder;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:  Helvetica, sans-serif;
     letter-spacing: 0.4em;
 }
 .part3{
@@ -182,4 +180,22 @@ img{
 }
 footer{
     background-image: url(images/pp.jpg);
+    background-size: cover;
+}
+.piedP{
+    padding: 0.5em;
+}
+
+@media screen and (max-width:800px)
+{
+    .part1{
+        margin: 2em 3em;
+    }
+    .contenue{
+        flex: 2;
+        /* background-color: yellow; */
+    }
+    .image{
+        flex: 1;
+    }
 }

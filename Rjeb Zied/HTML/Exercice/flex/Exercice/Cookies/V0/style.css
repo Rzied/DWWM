@@ -222,6 +222,7 @@ footer{
     font-size: 1.2em;
     font-weight: bolder;
     font-family: Georgia, 'Times New Roman', Times, serif;
+}
 
 @media screen and (max-width:1200px)
 {
