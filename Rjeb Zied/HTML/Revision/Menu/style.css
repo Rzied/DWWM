@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: turquoise;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.logo {
+    flex: 1;
+    align-items: center;
+    padding: 1em;
+    /* border: solid 1px red; */
+}
+
+nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    /* flex-direction: row; */
+}
+
+.menu {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+.bouton{
+    position: relative;
+
+}
+.pere {
+    flex: 1;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bolder;
+    /* border: solid 1px red; */
+    background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    color: white;
+    padding: 0.1em;
+    margin: 0 10px;
+    border-radius: 0.3em;
+    
+}
+
+.pere:hover {
+    padding: 0.3em;
+    border-top: yellowgreen 6px solid;
+    background: linear-gradient(353deg, rgba(2, 0, 36, 1) 1%, rgba(9, 9, 121, 1) 25%, rgba(0, 212, 255, 1) 62%);
+}
+
+.espace {
+    flex: 1;
+    /* border: solid 1px red; */ 
+}
+.sousmenu{
+    /* flex: 1; */
+    display: none;
+    position: absolute;
+    justify-content: center;
+    left: 32px;
+    
+
+}
+.item{
+    text-align: center;
+    background-color:grey;
+    padding: 0.4em;
+    margin: 0 10px;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    /* justify-content: center; */
+    
+    border-radius: 0.3em;
+}
+.bouton:hover .sousmenu{
+    display: flex;
+    flex-direction: column;
+    /* text-align: center; */
+    /* border: solid 1px red; */
+    
+}
