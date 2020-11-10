@@ -1,0 +1,17 @@
+@media screen and (max-width:800px)
+{
+.page{
+    width: 97vw;
+}
+.contenuesem{
+    flex-direction: column;
+}
+.titreSemaine {
+    
+    font-size: 0.8em;
+}
+.photoSemaine{
+    width: 50%;
+    align-self: center;
+}
+}

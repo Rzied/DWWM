@@ -1,0 +1,29 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.menu{
+    display: flex;
+}
+.espace{
+    flex: 0.5;
+}
+.bouton{
+    flex: 1;
+    padding: 0.5em;
+    font-weight: bolder;
+}
+.cadre{
+    flex: 1;
+    border: orange solid 1px;
+}
+/* .groupe{
+    flex: 1;
+    flex-direction:column;
+} */
+.item{
+    display: none;
+}
+.groupe:hover .item{
+    display: flex;
+}
