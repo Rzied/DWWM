@@ -41,7 +41,7 @@ header {
 
 .bloc {
     display: flex;
-    border: solid 1px red;
+    /* border: solid 1px red; */
     justify-content: center;
 }
 
@@ -90,14 +90,14 @@ ul {
     flex: 1;
     display: flex;
     flex-direction: column;
-    border: solid 1px orangered;
+    /* border: solid 1px orangered; */
 }
 
 .blocD {
     flex: 1;
     display: flex;
     flex-direction: column;
-    border: solid 1px yellow;
+    /* border: solid 1px yellow; */
 }
 
 .textGras {
@@ -194,5 +194,5 @@ Aside.p2{
 }
 .contenue1{
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
 }
