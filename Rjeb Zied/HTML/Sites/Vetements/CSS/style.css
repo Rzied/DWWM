@@ -21,18 +21,29 @@ img, video {
 	display: flex;
 } */
 header{
-	
-	border:  solid red 1px;
+	flex: 0.5;
+	/* border:  solid red 1px; */
+	justify-content: center;
 }
 .logo{
-	flex: 0.3;
+	flex: 0.5;
+	/* padding: 1em; */
+}
+.menu{
+	flex: 1;
+	/* justify-content: center; */
+	align-items: center;
+	/* justify-content: space-around; */
+	display: flex;
+	flex: 0.7;
 }
 .titrepage{
-	flex: 1.3;
+	flex: 1;
 	align-items: center;
+	justify-content: center;
 	/* border: solid black 1px; */
-	font-size: 9em;
-	font-family: 'Courgette', cursive;
+	font-size: 6em;
+	font-family: 'Great Vibes', cursive;
 	font-weight: bold;
 	color: goldenrod;
 }
@@ -60,10 +71,11 @@ a{
 	flex: 0.1;
 }
 .imagearr{
-	flex: 0.7;
-	background-image: url(../IMG/Accueil/FotoJet.jpg);
+	flex: 1;
+	background-image: url(../IMG/Accueil/MS.jpg);
 	background-size: cover;
 	background-position: center;
-	height: 60vh;
+	height: 100vh;
 	border: double 5px black;
+	color: white;
 }
