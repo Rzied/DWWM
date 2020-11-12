@@ -48,18 +48,8 @@ header{
 	color: goldenrod;
 }
 .bouton{
-	font-size: 1.7em;
-	font-weight: bolder;
-	border-top: solid 2px goldenrod;
-	border-bottom: solid 2px goldenrod;
-
-}
-.bouton:hover{
-	font-size: 2.2em;
-	font-weight: 1900;
-	border-top: double 4px goldenrod;
-	border-bottom: double 5px goldenrod;
-	
+	font-size: 1.4em;
+	font-weight: bold;
 
 }
 .espaceh{
@@ -69,12 +59,9 @@ a{
 	text-decoration: none;
 	color: black;
 }
-a:hover{
-	color: goldenrod;
-}
 .container{
 	flex: 1;
-	/* border:  solid rgb(30, 255, 0) 1px */
+	border:  solid rgb(30, 255, 0) 1px
 }
 .espace{
 	flex: none;
@@ -100,14 +87,4 @@ footer{
 	font-size: 2em;
 	color: white;
 	padding: 0.3em;
-}
-.top {
-    height: 10vh;
-    width: 10vh;
-    /* display: none; */
-    position: relative;
-    z-index: 1000;
-    /* bottom: 150px; */
-    /* right: 40px; */
-    left: 90vw;
 }
