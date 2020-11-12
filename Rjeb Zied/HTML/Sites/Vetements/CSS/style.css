@@ -17,9 +17,9 @@ img, video {
 	display: flex;
 	flex-direction: column;
 }
-/* .page{
-	display: flex;
-} */
+.page{
+	/* display: flex; */
+}
 header{
 	flex: 0.5;
 	/* border:  solid red 1px; */
@@ -75,6 +75,7 @@ a:hover{
 .container{
 	flex: 1;
 	/* border:  solid rgb(30, 255, 0) 1px */
+	background-color: #F6A200;
 }
 .espace{
 	flex: none;
@@ -109,5 +110,6 @@ footer{
     z-index: 1000;
     /* bottom: 150px; */
     /* right: 40px; */
-    left: 90vw;
+	left: 93vw;
+	bottom: 20px;
 }
