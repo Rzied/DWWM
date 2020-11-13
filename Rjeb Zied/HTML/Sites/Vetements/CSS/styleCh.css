@@ -132,3 +132,7 @@ footer {
     /* right: 40px; */
     left: 90vw;
 }
+
+html{
+	scroll-behavior: smooth;
+}

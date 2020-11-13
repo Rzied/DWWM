@@ -113,3 +113,6 @@ footer{
 	left: 93vw;
 	bottom: 20px;
 }
+html{
+	scroll-behavior: smooth;
+}
