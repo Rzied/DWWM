@@ -1,0 +1,75 @@
+@media screen and (max-width: 800px) {
+    /* nav{display: block; */
+    /* flex-direction: column; */
+
+.logo {
+    flex: 0.08;
+}
+
+.menu {
+    display: block;
+    /* visibility: hidden; */
+}
+
+.im1, .titrep {
+    display: none;
+}
+
+.im2 {
+    display: flex;
+}
+
+.container {
+    margin: 1em 2em;
+}
+
+.titrebas, .titre, .contenue {
+    font-size: 1em;
+}
+
+.article1, .article {
+    flex-direction: column;
+}
+
+.disp {
+    display: none;
+}
+
+.phone {
+    display: block;
+    margin: 2em 5em;
+    /* flex: 1; */
+    /* height: 100%; */
+}
+
+.text {
+    padding: 0 0;
+    font-size: 1em;
+}
+
+.icones img {
+    flex: 0.2;
+    height: 20px;
+    width: 20px;
+    margin-right: 0.7em;
+}
+
+.espacebas {
+    flex: 1.8;
+}
+
+footer {
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 10em;
+}
+
+footer .titre {
+    border-bottom: white 1px solid;
+}
+footer .contenue {
+    flex: 0.005;
+    
+
+}
+}
