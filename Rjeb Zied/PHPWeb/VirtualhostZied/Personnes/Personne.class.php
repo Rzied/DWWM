@@ -3,11 +3,21 @@ class Personne
 {
 
     /*****************Attributs***************** */
+    private $_id;
     private $_nom;
     private $_prenom;
     private $_age;
 
     /*****************Accesseurs***************** */
+    public function getId()
+    {
+        return $this->_id;
+    }
+
+    public function setId($id)
+    {
+        $this->_id = $id;
+    }
     public function getNom()
     {
         return $this->_nom;
@@ -57,4 +67,6 @@ class Personne
             }
         }
     }
+
+    
 }

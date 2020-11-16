@@ -13,3 +13,6 @@ div{
 .age{
     /* background-color: blue; */
 }
+.cache{
+    display: none;
+}
