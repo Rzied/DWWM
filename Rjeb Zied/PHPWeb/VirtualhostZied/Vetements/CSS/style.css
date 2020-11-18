@@ -1,0 +1,90 @@
+/****  GENERAL ****/
+html, body {
+	margin : 0;
+	padding : 0;
+}
+
+div, header, footer, nav, article {
+	display : flex;
+	flex : 1;
+	justify-content: center;
+}
+
+img, video {
+	width : 100%;
+}
+.colonne{
+	display: flex;
+	flex-direction: column;
+}
+/* .page{
+	display: flex;
+} */
+header{
+	flex: 0.5;
+	/* border:  solid red 1px; */
+	justify-content: center;
+}
+.logo{
+	flex: 0.5;
+	/* padding: 1em; */
+}
+.menu{
+	flex: 1;
+	/* justify-content: center; */
+	align-items: center;
+	/* justify-content: space-around; */
+	display: flex;
+	flex: 0.7;
+}
+.titrepage{
+	flex: 1;
+	align-items: center;
+	justify-content: center;
+	/* border: solid black 1px; */
+	font-size: 6em;
+	font-family: 'Great Vibes', cursive;
+	font-weight: bold;
+	color: goldenrod;
+}
+.bouton{
+	font-size: 1.4em;
+	font-weight: bold;
+
+}
+.espaceh{
+	flex: 0.5;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+.container{
+	flex: 1;
+	border:  solid rgb(30, 255, 0) 1px
+}
+.espace{
+	flex: none;
+	height: 6vh;
+}
+.espacev{
+	flex: 0.1;
+}
+.imagearr{
+	flex: 1;
+	background-image: url(../IMG/Accueil/MS.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
+	border: double 5px black;
+	color: white;
+}
+footer{
+
+	background-color: black;
+}
+.seeyou{
+	font-size: 2em;
+	color: white;
+	padding: 0.3em;
+}

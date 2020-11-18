@@ -1,0 +1,43 @@
+@media screen and (max-width: 800px) {
+    /* nav{display: block; */
+    /* flex-direction: column; */
+
+.logo {
+    flex: 0.08;
+}
+
+.menu {
+    display: block;
+    /* visibility: hidden; */
+}
+
+.im1, .titrep {
+    display: none;
+}
+
+.im2 {
+    display: flex;
+}
+
+.container {
+    margin: 1em 2em;
+}
+
+.titrebas, .titre, .contenue {
+    font-size: 1em;
+}
+
+.article1, .article {
+    flex-direction: column;
+}
+
+.disp {
+    display: none;
+}
+
+.phone {
+    display: block;
+    margin: 2em 5em;
+    /* flex: 1; */
+    /* height: 100%; */
+}
