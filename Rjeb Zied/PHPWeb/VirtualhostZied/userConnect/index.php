@@ -41,6 +41,20 @@ function crypte($mot) //fonction qui crypte le mot de passe
 //on active la connexion à la base de données
 DbConnect::init();
 session_start();  // initialise la variable de Session
+
+if (isset($_GET['langue']))
+{
+    $_SESSION['langue']=$_GET['langue'];
+}
+
+$langue=isset($_SESSION['langue'])? $_SESSION['langue']:'FR';
+
+ function Trad($codeTexte)
+{
+    global $langue;
+    return TexteManager::findByCodes($langue, $codeTexte);
+}
+
 /* création d'u tableau de redirection, en fonction du codePage, on choisit la page à afficher */
 $routes = [
     "default" => ["PHP/VIEW/", "Accueil", "Accueil"],
