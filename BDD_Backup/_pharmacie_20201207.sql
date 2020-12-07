@@ -92,7 +92,7 @@ CREATE TABLE `lieuxdestockages` (
   `Rayon` varchar(50) NOT NULL,
   `Etagere` int(11) NOT NULL,
   PRIMARY KEY (`idLieuxDeStockage`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,7 +160,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (2,'Admin'),(3,'User');
+INSERT INTO `roles` VALUES (1,'Inconnu'),(2,'Admin'),(3,'User');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,11 +173,11 @@ DROP TABLE IF EXISTS `texte`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `texte` (
   `idTexte` int(11) NOT NULL AUTO_INCREMENT,
-  `codeTexte` varchar(200) NOT NULL,
-  `codeLangue` varchar(2000) NOT NULL,
-  `Texte` varchar(1118) NOT NULL,
+  `codeTexte` varchar(1118) NOT NULL,
+  `codeLangue` varchar(1118) NOT NULL,
+  `Texte` text NOT NULL,
   PRIMARY KEY (`idTexte`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,7 +186,7 @@ CREATE TABLE `texte` (
 
 LOCK TABLES `texte` WRITE;
 /*!40000 ALTER TABLE `texte` DISABLE KEYS */;
-INSERT INTO `texte` VALUES (1,'Header','FR','Bienvenue sur le site de la Pharmacie'),(2,'Header','EN','Welcome to the Pharmacy website'),(3,'Les Produits','FR','Les Produits'),(4,'Les Produits','FR','Les Produits'),(5,'Les Lieux de Stockage','FR','Les Lieux de Stockage'),(6,'Les Users','FR','Les Users'),(7,'Les Roles','FR','Les Roles'),(8,'Les Categories','FR','Les Categories'),(9,'Les Commandes','FR','Les Commandes'),(10,'Inscriptions','FR','Inscriptions'),(11,'Les Produits','EN','Products'),(12,'Les Lieux de Stockage','EN','Storage places'),(13,'Les Users','EN','Users'),(14,'Les Roles','EN','Roles'),(15,'Les Categories','EN','Categories'),(16,'Les Commandes','EN','Orders'),(17,'Inscriptions','EN','registration'),(18,'BONJOUR ET BIENVENUE','FR','BONJOUR ET BIENVENUE'),(19,'BONJOUR ET BIENVENUE','EN','HELLO AND WELCOME'),(20,'Contact','EN','Contact'),(21,'Adresse Postal','EN','Postal Address'),(22,'Adresse Mail','EN','Mail Address'),(23,'N° Telephone','EN','Phone N°'),(24,'N° SIRET','EN','SIRET N° '),(25,'Reseaux','EN','Network'),(26,'Contact','FR','Contact'),(27,'Adresse Postal','FR','Adresse Postal'),(28,'Adresse Mail','FR','Adresse Mail'),(29,'N° Telephone','FR','N° Telephone'),(30,'N° SIRET','FR','N° SIRET'),(31,'Reseaux','FR','Reseaux'),(32,'Connexions','FR','Connexions'),(33,'Connexions','EN','connection');
+INSERT INTO `texte` VALUES (1,'Header','FR','Bienvenue sur le site de la Pharmacie'),(2,'Header','EN','Welcome to the Pharmacy website'),(3,'btnproduitnav','FR','Les Produits'),(4,'btnstocknav','FR','Les Lieux de Stockage'),(5,'btnusernav','FR','Les Users'),(6,'btnrolenav','FR','Les Roles'),(7,'btncatnav','FR','Les Categories'),(8,'btncommandenav','FR','Les Commandes'),(9,'btninscnav','FR','Inscription'),(10,'btnconnectnav','FR','Connexion'),(11,'btndeconnectnav','FR','Deconnexion'),(12,'btnproduitnav','EN','Products'),(13,'btnstocknav','EN','Storage places'),(14,'btnusernav','EN','Users'),(15,'btnrolenav','EN','Roles'),(16,'btncatnav','EN','Categories'),(17,'btncommandenav','EN','Orders'),(18,'btninscnav','EN','registration'),(19,'btnconnectnav','EN','connection'),(20,'btndeconnectnav','EN','Deconnexion'),(21,'Contact','FR','Contact'),(22,'Adresse Postal','FR','Adresse Postal'),(23,'Adresse Mail','FR','Adresse Mail'),(24,'N° Telephone','FR','N° Telephone'),(25,'N° SIRET','FR','N° SIRET'),(26,'Reseaux','FR','Reseaux'),(27,'Contact','EN','Contact'),(28,'Adresse Postal','EN','Postal Address'),(29,'Adresse Mail','EN','Mail Address'),(30,'N° Telephone','EN','Phone N°'),(31,'N° SIRET','EN','SIRET N° '),(32,'Reseaux','EN','Network'),(33,'Nom','EN','First Name'),(34,'Prenom','EN','Last Name'),(35,'Mot de passe','EN','Password'),(36,'confirmer mot de passe','EN','Repeat password'),(37,'Age','EN','Age'),(38,'Role','EN','Role'),(39,'Pseudo','EN','Nikname'),(40,'Inscrire','EN','Register'),(41,'Retour','EN','Go back'),(42,'Nom','FR','Nom'),(43,'Prenom','FR','Prenom'),(44,'Mot de passe','FR','Mot de passe'),(45,'confirmer mot de passe','FR','confirmer mot de passe'),(46,'Age','FR','Age'),(47,'Role','FR','Role'),(48,'Pseudo','FR','Pseudo'),(49,'Inscrire','FR','Inscrire'),(50,'Retour','FR','Retour'),(51,'Ajouter une Commande','EN','Add an Order'),(52,'Ajouter une Commande','FR','Ajouter une Commande'),(53,'Ajouter un Lieu','EN','Add a Place'),(54,'Details','EN','Details'),(55,'Modifier','EN','Edit'),(56,'Supprimer','EN','Delete'),(57,'Ajouter un Lieu','FR','Ajouter un Lieu'),(58,'Details','FR','Details'),(59,'Modifier','FR','Modifier'),(60,'Supprimer','FR','Supprimer'),(61,'Date de Commande','EN','Date of Order'),(62,'Date de reception','EN','Reception Date'),(63,'Date de Commande','FR','Date de Commande'),(64,'Date de reception','FR','Date de reception');
 /*!40000 ALTER TABLE `texte` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -202,6 +202,8 @@ CREATE TABLE `users` (
   `nomUser` varchar(100) NOT NULL,
   `prenomUser` varchar(100) NOT NULL,
   `ageUser` int(11) NOT NULL,
+  `pseudoUser` varchar(50) NOT NULL,
+  `motDePasseUser` varchar(50) NOT NULL,
   `idRole` int(11) NOT NULL,
   PRIMARY KEY (`idUser`),
   KEY `FK_Users_Roles` (`idRole`),
@@ -215,7 +217,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Rodriguez','Alberto',35,2),(2,'Dupont','Toto',25,3),(3,'Dupont','Titi',25,3),(4,'Dupont','Tata',25,3),(5,'Rodriguez','Albertine',35,2);
+INSERT INTO `users` VALUES (1,'Rodriguez','Alberto',35,'RodriguezAlberto','RodriguezAlberto',2),(2,'Dupont','Toto',25,'DupontToto','DupontToto',3),(3,'Dupont','Titi',25,'DupontTiti','DupontTiti',3),(4,'Dupont','Tata',25,'DupontTata','DupontTata',3),(5,'Rodriguez','Albertine',35,'lol','ec0e60929ec1dddae97fd87b301304ce',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -228,4 +230,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-06 17:21:54
+-- Dump completed on 2020-12-07 12:10:52
