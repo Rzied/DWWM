@@ -2,8 +2,6 @@
 
 $mode = $_GET['mode'];
 
-$listeCategories = CategoriesManager::getList();
-
 switch ($mode)
 {
     case "ajouter":
@@ -47,97 +45,32 @@ if (isset($_GET['id']))
             </div>
             <div>
                 <div class="espace"></div>
-                <input class="libelle" type="text" if($mode=="details" || $mode=="supprimer") echo '" disabled "' name="nomProduit" placeholder="Nom du Produit" value="<?php if ($mode != "ajouter") echo $choix->getNomProduit() ;?>"/>
+                <input class="libelle" type="text" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>name="nomProduit" placeholder="Nom du Produit" value="<?php if ($mode != "ajouter") echo $choix->getNomProduit() ;?>"/>
                 <div class="espace"></div>
             </div>
         </div>
         <div class="colonne marginLight">
             <div class="titreDescriptif centre">
-                Description du Produit
+                Couleur du Produit
             </div>
             <div>
                 <div class="espace"></div>
-                <input class="libelle" type="text" if($mode=="details" || $mode=="supprimer") echo '" disabled "' name="descriptionProduit" placeholder="Description du Produit" value="<?php if ($mode != "ajouter") echo $choix->getDescriptionProduit() ;?>"/>
+                <input class="libelle" type="text" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>name="couleurProduit" placeholder="Couleur du Produit" value="<?php if ($mode != "ajouter") echo $choix->getCouleurProduit() ;?>"/>
                 <div class="espace"></div>
             </div>
         </div>
         <div class="colonne marginLight">
             <div class="titreDescriptif centre">
-                Restriction du Produit
+                Poids du Produit
             </div>
             <div>
                 <div class="espace"></div>
-                <input class="libelle" type="text" if($mode=="details" || $mode=="supprimer") echo '" disabled "' name="restrictionProduit" placeholder="Restriction du Produit" value="<?php if ($mode != "ajouter") echo $choix->getRestrictionProduit() ;?>"/>
+                <input class="libelle" type="text" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?> name="poidsProduit" placeholder="Poids du Produit" value="<?php if ($mode != "ajouter") echo $choix->getPoidsProduit() ;?>"/>
                 <div class="espace"></div>
             </div>
         </div>
-        <div class="colonne marginLight">
-            <div class="titreDescriptif centre">
-                Date de Peremption du Produit
-            </div>
-            <div>
-                <div class="espace"></div>
-                <input class="libelle" type="date" if($mode=="details" || $mode=="supprimer") echo '" disabled "' name="datePeremptionProduit" placeholder="Date de Peremption" value="<?php if ($mode != "ajouter") echo $choix->getDatePeremptionProduit() ;?>"/>
-                <div class="espace"></div>
-            </div>
-        </div>
-        <div class="colonne marginLight">
-            <div class="titreDescriptif centre">
-                Prix du Produit
-            </div>
-            <div>
-                <div class="espace"></div>
-                <input class="libelle" type="text" if($mode=="details" || $mode=="supprimer") echo '" disabled "' name="prixProduit" placeholder="Prix du Produit" value="<?php if ($mode != "ajouter") echo $choix->getPrixProduit() ;?>"/>
-                <div class="espace"></div>
-            </div>
-        </div>
-        <div class="colonne marginLight">
-            <div class="titreDescriptif centre">
-                Quantite du Produit
-            </div>
-            <div>
-                <div class="espace"></div>
-                <input class="libelle" type="text" if($mode=="details" || $mode=="supprimer") echo '" disabled "' name="quantiteProduit" placeholder="Quantite du Produit" value="<?php if ($mode != "ajouter") echo $choix->getQuantiteProduit() ;?>"/>
-                <div class="espace"></div>
-            </div>
-        </div>
-    </div>
+        
     
-    <div>
-    <div class="espace"></div>
-        <select class="libelle marginLight" name="IdCategorie">
-
-        <?php 
-        foreach ( $listeCategories as $uneCategorie )
-        {
-            $sel = "";
-            if ($uneCategorie->getIdCategorie()==$id->getIdCategorie()){
-                $sel="selected";
-            }
-            echo '<option value="'.$uneCategorie->getIdCategorie().'"'.$sel.'>'.$uneCategorie->getNomCategorie().'</option>';
-        }
-        ?>
-
-        </select>
-        <div class="espace"></div>
-    </div>
-
-    <div>
-    <div class="espace"></div>
-        <select class="libelle marginLight" name="idLieuxDeStockage">';
-
-        <?php
-        foreach ( $listeLieuxDeStockage as $unLieuxDeStockage )
-        {
-            $sel = "";
-            if ($unLieuxDeStockage->getIdLieuxDeStockage()==$id->getIdLieuxDeStockage()){
-                $sel="selected";
-            }
-            echo '<option value="'.$unLieuxDeStockage->getIdLieuxDeStockage().'"'.$sel.'>'.$unLieuxDeStockage->getLibelleLieuxDeStockage().'</option>';      
-        }
-        ?>
-
-        </select>
         <div class="espace"></div>
     </div>
 

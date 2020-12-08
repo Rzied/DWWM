@@ -64,6 +64,17 @@ CREATE TABLE Users(
 )ENGINE=InnoDB;
 
 
+#------------------------------------------------------------
+# Table: Texte
+#------------------------------------------------------------
+DROP TABLE if exists Texte;
+CREATE TABLE Texte(
+        idTexte int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        codeTexte varchar(1118) NOT NULL,
+        codeLangue varchar(1118) NOT NULL,
+        Texte text NOT NULL
+)ENGINE=InnoDB;
+
 -- --------------------------------------------------------
 
 --

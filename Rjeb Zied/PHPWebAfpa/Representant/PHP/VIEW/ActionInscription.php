@@ -18,3 +18,4 @@ else
 {
     echo'La confirmation ne correspond pas au mot de passe';
 }
+header("location:index.php?page=Accueil");

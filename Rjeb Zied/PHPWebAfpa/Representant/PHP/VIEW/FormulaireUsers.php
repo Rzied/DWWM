@@ -42,10 +42,11 @@ if (isset($_GET['id'])) {
         </div>
         <div>
             <div class="espace"></div>
-            <input class="libelle" type="text" if($mode=="details" || $mode=="supprimer" ) echo '" disabled "' name="nomUser" placeholder="Nom du User" value="<?php if ($mode != "ajouter") {
-                                                                                                                                                                    echo $choix->getNomUser();
-                                                                                                                                                                }
-                                                                                                                                                                ?>" />
+            <input class="libelle" type="text" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>
+                name="nomUser" placeholder="Nom du User" value="<?php if ($mode != "ajouter") {
+            echo $choix->getNomUser();
+            }
+            ?>" />
             <div class="espace"></div>
         </div>
     </div>
@@ -55,10 +56,12 @@ if (isset($_GET['id'])) {
         </div>
         <div>
             <div class="espace"></div>
-            <input class="libelle" type="text" if($mode=="details" || $mode=="supprimer" ) echo '" disabled "' name="prenomUser" placeholder="Prenom du User" value="<?php if ($mode != "ajouter") {
-                                                                                                                                                                            echo $choix->getPrenomUser();
-                                                                                                                                                                        }
-                                                                                                                                                                        ?>" />
+            <input class="libelle" type="text" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>
+                name="prenomUser" placeholder="Prenom du User"
+                value="<?php if ($mode != "ajouter") {
+                echo $choix->getPrenomUser();
+            }
+             ?>" />
             <div class="espace"></div>
         </div>
     </div>
@@ -68,25 +71,73 @@ if (isset($_GET['id'])) {
         </div>
         <div>
             <div class="espace"></div>
-            <input class="libelle" type="text" if($mode=="details" || $mode=="supprimer" ) echo '" disabled "' name="ageUser" placeholder="Age du User" value="<?php if ($mode != "ajouter") {
-                                                                                                                                                                    echo $choix->getAgeUser();
-                                                                                                                                                                }
-                                                                                                                                                                ?>" />
+            <input class="libelle" type="text" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>
+                name="ageUser" placeholder="Age du User"
+                value="<?php if ($mode != "ajouter") {
+             echo $choix->getAgeUser();
+        }
+        ?>" />
+            <div class="espace"></div>
+        </div>
+    </div>
+    
+    <div class="colonne marginLight">
+        <div class="titreDescriptif centre">
+            Pseudo du User
+        </div>
+        <div>
+            <div class="espace"></div>
+            <input class="libelle" type="text" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>
+                name="pseudoUser" placeholder="Pseudo"
+                value="<?php if ($mode != "ajouter") {
+             echo $choix->getPseudoUser();
+        }
+        ?>" />
+            <div class="espace"></div>
+        </div>
+    </div>
+    <div class="colonne marginLight">
+        <div class="titreDescriptif centre">
+            Mot de passe du User
+        </div>
+        <div>
+            <div class="espace"></div>
+            <input class="libelle" type="PASSWORD" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>
+                name="motDePasseUser" placeholder="Mot de passe"
+                value="<?php if ($mode != "ajouter") {
+             echo $choix->getMotDePasseUser();
+        }
+        ?>" />
             <div class="espace"></div>
         </div>
     </div>
 </div>
 
 <div>
-    
-    <select class="libelle marginLight" name="IdRole">
+
+    <select class="libelle marginLight" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?> name="IdRole">
 
         <?php
 
-        echo '<option  value="">-----Selectionner un Role-----</option>';
-        echo '<option  value="1">Administrateur</option>';
-        echo '<option  value="2">Utilisateur</option>';
-
+        // echo '<option  value="">-----Selectionner un Role-----</option>';
+        // echo '<option  value="1">Administrateur</option>';
+        // echo '<option  value="2">Utilisateur</option>';
+        if ($mode != "ajouter") 
+        {
+            if ($choix->getIdRole()==1){
+                echo '<option  value="1" selected>Administrateur</option>';
+                echo '<option  value="2">Utilisateur</option>';
+            }else{
+                echo '<option  value="1">Administrateur</option>';
+                echo '<option  value="2" selected >Utilisateur</option>';
+            }
+         }
+         else{
+                echo '<option  value="">-----Selectionner un Role-----</option>';
+                echo '<option  value="1">Administrateur</option>';
+                echo '<option  value="2">Utilisateur</option>';
+         }
+       
         ?>
 
     </select>

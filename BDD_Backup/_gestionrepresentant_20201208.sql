@@ -61,7 +61,7 @@ CREATE TABLE `produits` (
   `CouleurProduit` varchar(25) DEFAULT NULL,
   `PoidsProduit` int(11) DEFAULT NULL,
   PRIMARY KEY (`IdProduit`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +70,7 @@ CREATE TABLE `produits` (
 
 LOCK TABLES `produits` WRITE;
 /*!40000 ALTER TABLE `produits` DISABLE KEYS */;
-INSERT INTO `produits` VALUES (1,'Trottinette','Black',3546),(2,'Trottinette','Bleu',1423),(3,'Chaise','Blanc',3827),(4,'Tapis','Rouge',1423),(6,'Clavier','Orange',200);
+INSERT INTO `produits` VALUES (1,'Trottinette','Rouge',3546),(2,'Trottinette','Bleu',1423),(3,'Chaise','Blanc',3827),(4,'Tapis','Rouge',1423),(6,'Clavier','Orange',200),(8,'Iphone','Orange',250);
 /*!40000 ALTER TABLE `produits` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,6 +100,32 @@ INSERT INTO `representants` VALUES (1,'Stephane','Lyon'),(2,'Benjamin','Paris'),
 UNLOCK TABLES;
 
 --
+-- Table structure for table `texte`
+--
+
+DROP TABLE IF EXISTS `texte`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `texte` (
+  `idTexte` int(11) NOT NULL AUTO_INCREMENT,
+  `codeTexte` varchar(1118) NOT NULL,
+  `codeLangue` varchar(1118) NOT NULL,
+  `Texte` text NOT NULL,
+  PRIMARY KEY (`idTexte`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `texte`
+--
+
+LOCK TABLES `texte` WRITE;
+/*!40000 ALTER TABLE `texte` DISABLE KEYS */;
+INSERT INTO `texte` VALUES (1,'Respresentant','EN','Agent'),(2,'Users','EN','Users'),(3,'Inscription','EN','Register'),(4,'Produits','EN','Products'),(5,'Deconnection','EN','Deconnection'),(6,'BONJOUR ET BIENVENUE','EN','HELLO AND WELCOME'),(7,'Contact','EN','Contact'),(8,'Adresse Postal','EN','Postal Adress'),(9,'Adresse Mail','EN','Mail Adress'),(10,'N° Telephone','EN','Phone N°'),(11,'N° SIRET','EN','SIRET N°'),(12,'Reseaux','EN','Network'),(13,'Respresentant','FR','Respresentant'),(14,'Users','FR','Users'),(15,'Inscription','FR','Inscription'),(16,'Produits','FR','Produits'),(17,'Deconnection','FR','Deconnection'),(18,'BONJOUR ET BIENVENUE Rjeb Zied','FR','BONJOUR ET BIENVENUE Rjeb Zied'),(19,'Contact','FR','Contact'),(20,'Adresse Postal','FR','Adresse Postal'),(21,'Adresse Mail','FR','Adresse Mail'),(22,'N° Telephone','FR','N° Telephone'),(23,'N° SIRET','FR','N° SIRET'),(24,'Reseaux','FR','Reseaux');
+/*!40000 ALTER TABLE `texte` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -115,7 +141,7 @@ CREATE TABLE `users` (
   `motDePasseUser` varchar(50) NOT NULL,
   `idRole` int(11) NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +150,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Rjeb','Zied',29,'Zied','2c7a5a6bfa4b5baee3b981b7803c3747',1);
+INSERT INTO `users` VALUES (1,'Rjeb','Zied',29,'Zied','2c7a5a6bfa4b5baee3b981b7803c3747',1),(4,'Poix','Martine',30,'Martine','ff92a240d11b05ebd392348c35f781b2',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,4 +196,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-08 12:10:52
+-- Dump completed on 2020-12-08 17:21:54

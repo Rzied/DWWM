@@ -1,7 +1,7 @@
 :root{
     --couleurHF: #d35a09;
     --body: #9ce9c7;
-    --colorNav: #9ce9c7;
+    --colorNav: #ffffff;
     --ajouter: linear-gradient(to bottom, #a2dda2 5%, #4bb42b 100%);
     --detail: linear-gradient(to bottom, #ccc77c 5%, #ebc548 100%);
     --modifier: linear-gradient(to bottom, #63dbad 5%, #40c6cf 100%);
@@ -96,6 +96,14 @@ img{
     font-size: 3em;
     font-weight: bolder;
     color: white;
+}
+.titrea{
+    flex: 6;
+    justify-content: center;
+    align-self: center;
+    font-size: 3em;
+    font-weight: bolder;
+    color: rgb(214, 8, 8);
 }
 
 .titreDescriptif{
