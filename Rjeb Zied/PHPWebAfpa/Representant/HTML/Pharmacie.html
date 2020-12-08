@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Produits</title>
+    <link href="../CSS/Style.css" rel="stylesheet">
+</head>
+
+<body class="colonne">
+    <header>
+        <div class="logo">
+            <img src="../IMG/logoPharmacie.jpg" alt="logo Pharmacie">
+        </div>
+        <div class="titre">Bienvenue sur le site de la Pharmacie</div>
+        <div class="espace"></div>
+    </header>
+
+    <nav>
+        <div><a class="centre size" href="ListeProduits.php">Les Produits</a></div>
+        <div><a class="centre size" href="ListeRoles.php">Les Roles</a></div>
+        <div><a class="centre size" href="ListeUsers.php">Les Users</a></div>
+        <div><a class="centre size" href="ListeCategories.php">Les Categories</a></div>
+        <div><a class="centre size" href="ListeCommandes.php"> Les Commandes</a></div>
+        <div><a class="centre size" href="ListeInscription.php">Inscriptions</a></div>
+        <div><a class="centre size" href="ListeConnexion.php">Connexions</a></div>
+    </nav>
+
+    <div class="contenu colonne">
+        <div class="margin">
+            <div class="espace"></div>
+            <div class="ajouter"><a class="centre size" href="index.php?page=FormulaireProduit&typeFormulaire=ajouter">Ajouter Produit</a></div>
+            <div class="espace"></div>
+        </div>
+        <div class="liste">
+            <div class="libelle centre marginBouton size">Libelle Produit</div>
+            <div class="details centre marginBouton"><a class="centre size" href="index.php?page=formulaireProduits&typeFormulaire=detail">Details</a></div>
+            <div class="modifier centre marginBouton"><a class="centre size" href="index.php?page=formulaire&type&typeFormulaire=modifier">Modifier</a></div>
+            <div class="supprimer centre marginBouton"><a class="centre size" href="index.php?page=formulaire&typeFormulaire=supprimer">Supprimer</a></div>
+        </div>
+        <div class="margin">
+            <div class="espace"></div>
+            <div class="return"><a class="centre size" href="index.php?page=ListeProduits">Retour</a></div>
+            <div class="espace"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="flex">
+            <div class="centre">Contact</div>
+        </div>
+        <div class="colonne flex">
+            <div class="centre">Adresse Postal</div>
+            <div class="centre">Adresse Mail</div>
+            <div class="centre">N° Telephone</div>
+            <div class="centre">N° SIRET</div>
+        </div>
+        <div class="colonne flex">
+            <div class="centre">Reseaux</div>
+        </div>
+        <div class="logo">
+            <img src="../IMG/logoPharmacie.jpg" alt="logo Pharmacie">
+        </div>
+    </footer>
+</body>
+
+</html>
