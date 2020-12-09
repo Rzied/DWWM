@@ -1,0 +1,64 @@
+
+ 1 - déclaration des variables
+    "=" pour ajouter une valeur a une variable exemple:
+    var a;
+    a=12
+    
+    var nom;
+    nom="Toto"
+ 
+ 2-Convertir une chaine en valeur numérique:
+   var a = "12"; valeur string
+   var c = 12; valeur int
+   var b = parseInt(a); valeur chaine qui passe en numérique
+
+ 3-Problème avec la concaténation ou l'addition:
+   var a = "123"; valeur string via ""
+   var b = "45"; valeur string via ""
+   var c = a+b; // c contient "12345" ,le "+" additionne deux string donc on a pas la somme
+
+   var a = 123; valeur int sans les ""
+   var b = 45; valeur int sans les ""
+   var c = a+b; // c contient 168
+
+   var a = "123"; valeur string
+   var b = "45";  valeur string
+   var c = parseInt(a)+parseInt(b); // c contient 168 
+
+   
+ 4-prompt("entrez du texte");=utilisateur doit ecrire du texte 
+     parseInt(prompt("Entrez un nombre")); force un int a l'utilisateur
+
+ 5- affiche le type d'une variable
+    console.log(typeof 42); // Affiche "number" 
+    console.log(typeof 'blubber'); // Affiche "string" 
+    console.log(typeof true); // Affiche "boolean"
+
+ 6-L'appel de la méthode se fait selon la notation :
+    La méthode write():
+     nom_de_l'objet.nom_de_la_méthode()
+     document.write("Votre âge est " + age);
+     document.write("<b>Votre âge est </b>" + age); 
+     document.write("<b>" + " Votre âge est " + "</b>" + age);
+
+ 7-La méthode alert() sera aussi très utile pour vous aider à débugger les scripts.
+    La méthode alert():
+     MyVar = "Bonjour"; window.alert(myVar); 
+     window.alert("chaîne de caractères"); 
+     window.alert(myVar + "chaîne de caractères");
+
+ 8-boite de dialogue:
+    La méthode prompt()
+     var reponse1 = window.prompt("Saisissez votre nom"); 
+     var reponse2 = window.prompt("Saisissez votre couleur préférée");
+
+ 9-Cette méthode affiche une boîte de dialogue avec 2 boutons OK et Annuler.
+    La méthode confirm():
+     if (window.confirm("Voulez-vous continuer ?") == true) { … }
+
+ 10-methode log
+   console.log("texte affiché dans la console");
+
+
+ 11-Si vous souhaitez utiliser des guillemets dans vos chaînes de caractères, 
+   tapez \" ou \'
