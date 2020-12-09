@@ -25,7 +25,7 @@
         <div class="centre size" for="motDePasse"><?php echo texte("Mot de passe");?> :</div>
         <div>
             <div class="espace"></div>
-            <input class="libelle" type="text" name="motDePasseUser" required/>
+            <input class="libelle" type="Password" name="motDePasseUser" required/>
             <div class="espace"></div>
         </div>  
     </div>   
@@ -34,7 +34,7 @@
         <div class="centre size" for="confirmationMotDePasse"><?php echo texte("Confirmer mot de passe");?> :</div>
         <div>
             <div class="espace"></div>
-            <input class="libelle" type="text" name="confirmationMotDePasse" required/>
+            <input class="libelle" type="Password" name="confirmationMotDePasse" required/>
             <div class="espace"></div>
         </div>
     </div>

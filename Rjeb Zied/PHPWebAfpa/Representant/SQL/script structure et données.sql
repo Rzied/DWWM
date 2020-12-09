@@ -99,6 +99,7 @@ ALTER TABLE `ventes` ADD FOREIGN KEY (`IdRepres`) REFERENCES `representants`(`Id
 
 
 
+INSERT INTO `users`(`idUser`, `nomUser`, `prenomUser`, `ageUser`, `pseudoUser`, `motDePasseUser`, `idRole`) VALUES (1,"RJEB","Zied",29,Zied,"0000",1)
 
 INSERT INTO REPRESENTANTS (IdRepres, NomRepres, VilleRepres) VALUES (1, 'Stephane', 'Lyon');
 INSERT INTO REPRESENTANTS (IdRepres, NomRepres, VilleRepres) VALUES (2, 'Benjamin', 'Paris');
