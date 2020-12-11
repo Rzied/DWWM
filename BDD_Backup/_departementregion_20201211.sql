@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.31, for Win64 (x86_64)
 --
--- Host: localhost    Database: userconnect
+-- Host: localhost    Database: departementregion
 -- ------------------------------------------------------
 -- Server version	5.7.31
 
@@ -16,40 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `userconnect`
+-- Current Database: `departementregion`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `userconnect` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `departementregion` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-USE `userconnect`;
+USE `departementregion`;
 
 --
--- Table structure for table `utilisateurs`
+-- Table structure for table `region`
 --
 
-DROP TABLE IF EXISTS `utilisateurs`;
+DROP TABLE IF EXISTS `region`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `utilisateurs` (
-  `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(50) NOT NULL,
-  `prenom` varchar(50) NOT NULL,
-  `motDePasse` varchar(50) NOT NULL,
-  `adresseMail` varchar(50) NOT NULL,
-  `role` int(11) NOT NULL COMMENT '1 Admin 2 User',
-  `pseudo` varchar(50) NOT NULL,
-  PRIMARY KEY (`idUtilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+CREATE TABLE `region` (
+  `idRegion` int(11) NOT NULL AUTO_INCREMENT,
+  `nomRegion` varchar(50) NOT NULL,
+  `nbDepartement` int(11) NOT NULL,
+  PRIMARY KEY (`idRegion`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `utilisateurs`
+-- Dumping data for table `region`
 --
 
-LOCK TABLES `utilisateurs` WRITE;
-/*!40000 ALTER TABLE `utilisateurs` DISABLE KEYS */;
-INSERT INTO `utilisateurs` VALUES (2,'sd','sd','6226f7cbe59e99a90b5cef6f94f966fd','sd',1,'sd'),(5,'qs','qs','304854e2e79de0f96dc5477fef38a18f','qs',1,'qs'),(6,'tr','rt','822050d9ae3c47f54bee71b85fce1487','rt',1,'rt');
-/*!40000 ALTER TABLE `utilisateurs` ENABLE KEYS */;
+LOCK TABLES `region` WRITE;
+/*!40000 ALTER TABLE `region` DISABLE KEYS */;
+INSERT INTO `region` VALUES (1,'Auvergne-Rhône-Alpes',12);
+/*!40000 ALTER TABLE `region` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -61,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-10 17:21:54
+-- Dump completed on 2020-12-11 12:10:52
