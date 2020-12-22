@@ -1,5 +1,5 @@
-var carre = document.getElementById("obj");
-var distance = 5;
+// var carre = document.getElementById("obj");
+// var distance = 5;
 
 
 function deplace(dx, dy) {
@@ -32,7 +32,7 @@ function depl_ok(tob, lob, wob, hob, t, l, w, h) {
     return true;
 }
 
-var carre = document.getElementById("carre");
+
 
 window.addEventListener("keydown", function (event) {
 
@@ -50,4 +50,4 @@ window.addEventListener("keydown", function (event) {
             deplace(5, 0);
     }
 
-}, );
+});
