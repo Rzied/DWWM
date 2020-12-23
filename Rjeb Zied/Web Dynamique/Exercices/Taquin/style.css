@@ -1,0 +1,32 @@
+body,
+div {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.colonne {
+    flex-direction: column;
+    flex: 1;
+}
+
+.ligne {
+    /* border: solid 2px rgb(0, 0, 0); */
+    flex: 1;
+}
+
+button {
+    width: 25vh;
+    height: 25vh;
+}
+
+.jeu {
+    /* border: solid 2px red; */
+}
+.plein{
+    font-size: 10vh;
+}
+#vide{
+    background-color: white;
+    border: none;
+}
