@@ -1,9 +1,26 @@
 var nb = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8]
-    .map(p => [p, Math.random()])
-    .sort((a, b) => a[1] - b[1])
-    .map(p => p[0])
+// console.log(nb);
+//     nb=nb.map(p => [p, Math.random()]) 
+//     console.log(nb);
+//     nb=nb.sort((a, b) => a[1] - b[1])
+//     console.log(nb);
+//     nb=nb.map(p => p[0])
+//     console.log(nb);
+var nb2 = new Array;
+// console.log(nb2);
+    //la boucle remplace le .map en haut
+for (let i = 0; i < nb.length; i++) {
+    nb2[i] = [nb[i], Math.floor(Math.random() * 100)]
+}
+// console.log(nb2);
+nb2.sort((a,b) =>a[1]-b[1]);
+// console.log(nb2);
 
-console.log(nb);
+for (let i = 0; i < nb.length; i++) {
+    nb[i] = nb2[i][0];
+}
+// console.log(nb);
+// console.log(nb);
 // var pic=document.getElementById("test");
 // pic.addEventListener("click", function(e){
 //     pic.src="./Images/1.jpg";  
@@ -14,15 +31,16 @@ var score = 0;
 var step = 1;
 var p1, p2;
 var timer = null;
-
-
+var ol=document.getElementById("overlay");
+var ale=document.getElementById("alertPanel");
+console.log(ol);
+console.log(ale);
 for (let i = 0; i < pics.length; i++) {
     pics[i].src2 = "Images/" + nb[i] + ".jpg";
     // pics[i].addEventListener("click", function(e){
     //     e.target.src=e.target.src2;
     // })
 }
-
 
 
 document.addEventListener("click", function (e) {
@@ -53,9 +71,9 @@ document.addEventListener("click", function (e) {
 
 function comparer() {
     if (p1.src2 == p2.src2) {
-        alert("Bien !")
-        p1.replaceWith(document.createElement('div'));
-        p2.replaceWith(document.createElement('div'));
+        // alert("Bien !")
+        p1.replaceWith(document.createElement('span'));
+        p2.replaceWith(document.createElement('span'));
         score += 50;
     } else {
         p2.src = p1.src = "Images/plage.jpg";
@@ -64,6 +82,11 @@ function comparer() {
     step = 1;
     eltScore.textContent = score;
     if (document.getElementsByTagName("IMG").length == 0) {
-        eltScore.textContent += " Gagné !"
+        // eltScore.textContent += " Gagné !"
+        // alert("Félicitation !!")
+        ol.style.display="unset";
+        ale.style.display="unset";
     }
 }
+var refresh = document.getElementById('refresh');
+refresh.addEventListener('click', document.location.reload(),false());

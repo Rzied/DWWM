@@ -10,9 +10,18 @@
 
 <body>
     <div class="page">
+
+        <div id="overlay"></div>
+        <div id="alertPanel" class="alert">
+            wwwoooooowww
+            <div class="enfin">
+            Enfin t'as gagné !!</div>
+        </div>
         <div class="espaceHor"></div>
         <div class="ligne">
-            <div class="espace">Score :<div id="score">0</div></div>
+            <div class="espace colonne">
+                <div class="titre">Memory Game</div> Score :<div id="score">0</div>
+            </div>
             <div class="espace"></div>
             <div class="carte"><img src="Images/plage.jpg" id="test" alt=""></div>
             <div class="espace"></div>
@@ -54,7 +63,9 @@
         </div>
         <div class="espaceHor"></div>
         <div class="ligne">
-            <div class="espace"></div>
+            <div class="espace">
+                <div class="joueur"></div>
+            </div>
             <div class="espace"></div>
             <div class="carte"><img src="Images/plage.jpg" alt=""></div>
             <div class="espace"></div>
@@ -67,6 +78,7 @@
             <div class="espace"></div>
         </div>
         <div class="espaceHor"></div>
+        <input type="button" value="Rafraichir" id="refresh" />
     </div>
     <script src="script.js"></script>
 </body>
