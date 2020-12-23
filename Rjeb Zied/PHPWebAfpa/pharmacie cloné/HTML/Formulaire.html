@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonstration Pharmacie</title>
+    <link href="../CSS/Style.css" rel="stylesheet">
+</head>
+
+<body class="colonne">
+    <header>
+        <div class="logo">
+            <img src="../IMG/logoPharmacie.jpg" alt="logo Pharmacie">
+        </div>
+        <div class="titre">Bienvenue sur le site de la Pharmacie</div>
+        <div class="espace"></div>
+    </header>
+
+    <form method="POST" action="index.php>?page=ActionProduits&typeAction=ajouter">
+        <div class="contenu colonne">
+            <div class="colonne marginLight">
+                <div class="titreDescriptif centre">
+                    Nom Produit
+                </div>
+                <input class="libelle" type="text" name="nomProduit" placeholder="Nom du Produit"/>
+            </div>
+            <div class="colonne marginLight">
+                <div class="titreDescriptif centre">
+                    Description Produit
+                </div>
+                <input class="libelle" type="text" name="descriptionProduit" placeholder="Description du Produit"/>
+            </div>
+            <div class="colonne marginLight">
+                <div class="titreDescriptif centre">
+                    Restriction Produit
+                </div>
+                <input class="libelle" type="text" name="restrictionProduit" placeholder="Restriction du Produit"/>
+            </div>
+            <div class="colonne marginLight">
+                <div class="titreDescriptif centre">
+                    Date de Peremption Produit
+                </div>
+                <input class="libelle" type="text" name="datedePeremptionProduit" placeholder="Date de Peremption du Produit"/>
+            </div>
+            <div class="colonne marginLight">
+                <div class="titreDescriptif centre">
+                    Prix Produit
+                </div>
+                <input class="libelle" type="text" name="prixProduit" placeholder="prix du Produit"/>
+            </div>
+            <div class="colonne marginLight">
+                <div class="titreDescriptif centre">
+                    Quantite Produit
+                </div>
+                <input class="libelle" type="text" name="QuantiteProduit" placeholder="Quantite du Produit"/>
+            </div>
+            <div class="return marginLight"><a class="centre size" href="index.php">Retour</a></div>
+            <input type="submit" class="ajouter marginLight centre" name="submit" value="Ajouter"/>
+        </div>
+    </form>
+
+    <footer>
+        <div class="flex">
+            <div class="centre">Contact</div>
+        </div>
+        <div class="colonne flex">
+            <div class="centre">Adresse Postal</div>
+            <div class="centre">Adresse Mail</div>
+            <div class="centre">N° Telephone</div>
+            <div class="centre">N° SIRET</div>
+        </div>
+        <div class="colonne flex">
+            <div class="centre">Reseaux</div>
+        </div>
+        <div class="logo">
+            <img src="../IMG/logoPharmacie.jpg" alt="logo Pharmacie">
+        </div>
+    </footer>
+</body>
+
+</html>
+

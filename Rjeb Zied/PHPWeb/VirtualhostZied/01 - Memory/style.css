@@ -1,0 +1,53 @@
+div,
+body {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    background-color: black;
+}
+
+.page {
+    width: 100%;
+    flex: none;
+    flex-direction: column;
+    display: block;
+}
+
+.case {
+    flex-direction: column;
+}
+
+.demi {
+    flex: 0.5;
+}
+
+.verso {
+    display: none;
+}
+
+.case:hover .verso {
+    display: flex;
+}
+
+.case:hover .recto {
+    display: none;
+}
+
+.espaceHor {
+    /* flex: 6; */
+    height: 1.5vh;
+    /* border: springgreen solid 2px; */
+}
+.ligne{
+    flex: 1;
+    /* border: black 1px solid; */
+}
+.carte{
+    flex: 1;
+}
+.espace{
+    flex: 1;
+    /* border: red 1px solid; */
+    /* width: 100px; */
+    color: white;
+}

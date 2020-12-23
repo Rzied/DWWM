@@ -1,0 +1,185 @@
+.carre {
+    /* background-color: orangered; */
+    background-image: url(cadeau3.png);
+    background-position: center;
+    background-size: cover;
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+body{
+    background-color: black;
+}
+.obstacle {
+    background-color:rgb(109, 168, 236);
+    position: absolute;
+}
+
+.un {
+    top: 45px;
+    left: 250px;
+    height: 199px;
+    width: 30px;
+}
+
+.deux {
+    top: 45px;
+    left: 0px;
+    height: 30px;
+    width: 250px;
+}
+
+#obstacle1 {
+    top: 320px;
+    left: 0px;
+    height: 30px;
+    width: 120px;
+}
+
+#obstacle2 {
+    top: 50px;
+    left: 1230px;
+    height: 420px;
+    width: 30px;
+}
+
+#obstacle3 {
+    top: 300px;
+    left: 190px;
+    height: 30px;
+    width: 750px;
+}
+
+#obstacle4 {
+    top: 135px;
+    left: 170px;
+    height: 195px;
+    width: 30px;
+}
+
+#obstacle5 {
+    top: 200px;
+    left: 50px;
+    height: 30px;
+    width: 130px;
+}
+
+#obstacle6 {
+    top: 452px;
+    left: 0px;
+    height: 30px;
+    width: 1260px;
+}
+#obstacle7 {
+    top: 380px;
+    left:190px;
+    height: 90px;
+    width: 30px;
+}
+#obstacle8 {
+    top: 55px;
+    left: 360px;
+    height: 30px;
+    width: 600px;
+}
+#obstacle9 {
+    top: 0px;
+    left: 1030px;
+    height: 400px;
+    width: 30px;
+}
+#obstacle10 {
+    top: 200px;
+    left: 340px;
+    height: 30px;
+    width: 710px;
+}
+#obstacle11 {
+    top: 55px;
+    left:490px;
+    height: 90px;
+    width: 30px;
+}
+#obstacle12 {
+    top: 55px;
+    left:790px;
+    height: 90px;
+    width: 30px;
+}
+#obstacle13 {
+    top: 140px;
+    left:630px;
+    height: 60px;
+    width: 30px;
+}
+#obstacle14 {
+    top: 320px;
+    left:630px;
+    height: 80px;
+    width: 30px;
+}
+#obstacle15 {
+    top: 320px;
+    left:330px;
+    height: 80px;
+    width: 30px;
+}
+#obstacle16 {
+    top: 385px;
+    left:830px;
+    height: 80px;
+    width: 30px;
+}
+#obstacle17 {
+    top: 385px;
+    left:480px;
+    height: 80px;
+    width: 30px;
+}
+#obstacle18 {
+    top: 160px;
+    left: 1110px;
+    height: 30px;
+    width: 130px;
+}
+#obstacle19 {
+    top: 300px;
+    left: 1050px;
+    height: 30px;
+    width: 130px;
+}
+#obstacle20 {
+    top: 270px;
+    left:630px;
+    height: 40px;
+    width: 30px;
+}
+#obstacle21 {
+    position: absolute;
+    width: 5%;
+    top: 0px;
+    left:1140px;
+    background-color: black;
+}
+img{
+    position: absolute;
+    width: 5%;
+    top: 0px;
+    left:1140px;
+}
+#nbColl{
+    position: absolute;
+    top: 500px;
+    left:50px;
+    color: white;
+}
+#Commencer{
+    position: absolute;
+    top: 500px;
+    left:600px;
+    width: 100px;
+    height: 30px;
+    color: black;
+}
