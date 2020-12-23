@@ -33,6 +33,7 @@ var p1, p2;
 var timer = null;
 var ol=document.getElementById("overlay");
 var ale=document.getElementById("alertPanel");
+// var Ref=document.getElementById("refresh");
 console.log(ol);
 console.log(ale);
 for (let i = 0; i < pics.length; i++) {
@@ -86,7 +87,8 @@ function comparer() {
         // alert("Félicitation !!")
         ol.style.display="unset";
         ale.style.display="unset";
+        // Ref.style.display="unset";
     }
 }
-var refresh = document.getElementById('refresh');
-refresh.addEventListener('click', document.location.reload(),false());
+// var refresh = document.getElementById('refresh');
+// refresh.addEventListener('click', window.location.reload(),false);
