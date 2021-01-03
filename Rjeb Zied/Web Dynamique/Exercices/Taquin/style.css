@@ -30,3 +30,7 @@ button {
     background-color: white;
     border: none;
 }
+.Titre{
+    font-size: 2em;
+    font-weight: bolder
+}

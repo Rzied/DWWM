@@ -1,0 +1,67 @@
+body{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    text-align: center;
+align-items: center;
+}
+.val{
+    font-size: 2.5em;
+}
+button{
+    margin: 5px;
+    background-color: brown;
+    color: white;
+    font-size: 1.5em;
+    width: 150px;
+    border-radius: 30px;
+}
+h1{
+    /* border: black solid 3px; */
+    font-size: 4em;
+}
+.themeBox{
+    /* border: red solid 1px; */
+    position: fixed;
+    left: 0;
+}
+.darkLight{
+    /* border: red solid 1px; */
+    position: fixed;
+    right: 0;
+}
+.theme{
+    margin: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+#dark{
+    background-color: black;
+}
+#ligth{
+    background-color: white;
+}
+#black{
+    background-color: black;
+}
+#orange{
+    background-color: orangered;
+}
+#salmon{
+    background-color: salmon;
+}
+.blackTheme{
+    background-color: black;
+    color: white;
+}
+.ligthTheme{
+    background-color: white;
+}
+.orangeTheme{
+background-color: orangered;
+}
+.salmonTheme{
+    background-color: salmon;
+}
