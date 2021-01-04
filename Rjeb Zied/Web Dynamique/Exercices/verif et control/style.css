@@ -1,0 +1,46 @@
+body, div {
+    display: flex;
+    flex: 1;
+}
+
+.ligne {
+    display: flex;
+    flex: 2;
+    margin: 10px;
+    /* border: black solid 2px; */
+}
+
+.espace {
+    flex: 1;
+}
+
+button {
+    border-radius: 10px;
+}
+
+.btn {
+    justify-content: center;
+    align-items: center;
+}
+
+input[required] +div::before {
+    display: flex;
+    content: "*";
+    color: red;
+    margin: 3px;
+    align-items: center;
+}
+fieldset{
+    flex: 0.3;
+    display: flex;
+}
+.colonne{
+    flex: 1;
+    flex-direction: column;
+}
+label{
+    flex: 3;
+}
+input{
+    flex: 2;
+}

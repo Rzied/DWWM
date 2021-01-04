@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Remplire vos coordonnées</legend>
+        <form class="colonne" method="POST" action="">
+        <div class="ligne">
+            <label  for="nom">Nom:</label>
+            <div class="espace"></div>
+            <input class="nom" name="nom" type="text" required>
+            <div></div>
+        </div>
+        <div class="ligne">
+            <label for="prenom" >Prenom:</label>
+            <div class="espace"></div>
+            <input class="prenom" name="prenom" type="text">
+            <div></div>
+        </div>
+        <div class="ligne">
+            <label for="ddn">Date de Naissance:</label>
+            <div class="espace"></div>
+            <input id="ddn" name="ddn" type="date" required>
+            <div></div>
+        </div>
+        <div class="ligne">
+            <label  for="codePostal">Code Postal:</label>
+            <div class="espace"></div>
+            <input id="codePostal" name="codePostal" type="text" title="5 chffre" required>
+            <div></div>
+        </div>
+        <div class="btn"> 
+            <button type="submit">Envoyer</button>
+        </div>
+    </form>
+
+    </fieldset>
+    
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
