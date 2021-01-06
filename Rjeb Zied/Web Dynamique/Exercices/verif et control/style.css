@@ -2,20 +2,28 @@ body, div {
     display: flex;
     flex: 1;
 }
-
+img{
+    width: 100%;
+}
 .ligne {
     display: flex;
     flex: 2;
     margin: 10px;
-    /* border: black solid 2px; */
+    border: black solid 2px;
 }
 
 .espace {
     flex: 1;
 }
+.logoDiv{
+    /* border: springgreen solid 2px; */
+    flex: 0.2;
+}
 
 button {
     border-radius: 10px;
+    /* color: tomato;
+    background-color: black; */
 }
 
 .btn {
@@ -31,7 +39,7 @@ input[required] +div::before {
     align-items: center;
 }
 fieldset{
-    flex: 0.3;
+    flex: 1;
     display: flex;
 }
 .colonne{
@@ -43,4 +51,10 @@ label{
 }
 input{
     flex: 2;
+}
+.croix{
+    display: flex;
+}
+.valide{
+    display: flex;
 }
