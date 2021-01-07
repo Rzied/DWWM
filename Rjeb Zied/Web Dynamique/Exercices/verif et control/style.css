@@ -9,15 +9,16 @@ img{
     display: flex;
     flex: 2;
     margin: 10px;
-    border: black solid 2px;
+    /* border: black solid 2px; */
 }
 
 .espace {
     flex: 1;
 }
 .logoDiv{
-    /* border: springgreen solid 2px; */
+    border: springgreen solid 2px;
     flex: 0.2;
+    position: relative;
 }
 
 button {
@@ -39,22 +40,35 @@ input[required] +div::before {
     align-items: center;
 }
 fieldset{
-    flex: 1;
+    flex: 0.5;
     display: flex;
 }
 .colonne{
-    flex: 1;
+    flex: 0.9;
     flex-direction: column;
 }
 label{
-    flex: 3;
+    flex: 1;
 }
 input{
-    flex: 2;
+    flex: 1.5;
 }
 .croix{
     display: flex;
 }
 .valide{
     display: flex;
+}
+.msg{
+    /* background-color: cadetblue; */
+    display: block;
+    position: absolute;
+    right: 50.5vw;
+    align-self: center;
+}
+.croix{
+    display: none;
+}
+.valide{
+    display: none;
 }
