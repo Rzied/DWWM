@@ -1,6 +1,7 @@
 // Utilisation de l'Ajax pour appeler l'API et récuperer les enregistrements
 var contenu = document.getElementById("contenu");
 var enregs; // contient la reponse de l'API
+var temp=document.getElementById("temp");
 // on définit une requete
 const req = new XMLHttpRequest();
 //on vérifie les changements d'états de la requête
@@ -13,7 +14,8 @@ req.onreadystatechange = function (event) {
             console.log(this.responseText);
             console.log(reponse);
             // enregs = reponse.records;
-            enregs=reponse.weather.main
+            enregs=reponse.main.temp
+            console.log(enregs);
             // for (let i = 0; i < enregs.length; i++) {
             //     // on crée la ligne et les div internes
             //     ligne = document.createElement("div");
@@ -33,7 +35,8 @@ req.onreadystatechange = function (event) {
             //     espace.setAttribute("class","espaceHorizon");
             //     contenu.appendChild(espace);
             //     //on met à jour le contenu
-            //     ville.innerHTML = enregs[i].fields.ville;
+                ville.innerHTML = "La ville est : "+ reponse.name;
+                temp.innerHTML = "Le temps actuel est : " +reponse.main.temp;
             //     libelle.innerHTML = enregs[i].fields.libelle;
             //     etat.innerHTML = enregs[i].fields.etat;
 
@@ -69,5 +72,5 @@ req.onreadystatechange = function (event) {
 // }
 
 //on envoi la requête
-req.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=dunkerque,fr&appid=4f00f8b80c9b221ffd12e64353e31667', true);
+req.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=dunkerque,fr&appid=4f00f8b80c9b221ffd12e64353e31667&units=metric&lang=fr', true);
 req.send(null);

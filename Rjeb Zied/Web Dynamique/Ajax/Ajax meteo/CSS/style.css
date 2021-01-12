@@ -29,6 +29,9 @@ img {
 	/* background-color: wheat; */
 	justify-content: center;
 }
+.colonne{
+	flex-direction: column;
+}
 .ligne{
 	display: flex;
 	justify-content: space-between;

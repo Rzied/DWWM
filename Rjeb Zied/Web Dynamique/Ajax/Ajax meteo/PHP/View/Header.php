@@ -4,11 +4,11 @@
 		<div id="entete">
 			<div id="titre">
 				<div id="logo">
-			 	<img src="Images/logo.png" />
+			 	<img src="Images/logo.jpg" />
 				</div>
 
 				<div id="titre_page">
-                  Méteo
+                  Météo
                 </div>
             </div>
 		</div>
