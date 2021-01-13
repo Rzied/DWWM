@@ -416,7 +416,7 @@ insert into villes (idVille,nomVille,codePostal) Values (NULL,"GAVIGNANO","20218
 insert into villes (idVille,nomVille,codePostal) Values (NULL,"GHISONI","20227");
 insert into villes (idVille,nomVille,codePostal) Values (NULL,"GIOCATOJO","20237");
 insert into villes (idVille,nomVille,codePostal) Values (NULL,"ISOLACCIO DI FIUMORBO","20243");
-insert into villess (idVille,nomVille,codePostal) Values (NULL,"LAMA","20218");
+insert into villes (idVille,nomVille,codePostal) Values (NULL,"LAMA","20218");
 insert into villes (idVille,nomVille,codePostal) Values (NULL,"LINGUIZZETTA","20230");
 insert into villes (idVille,nomVille,codePostal) Values (NULL,"LUCCIANA","20290");
 insert into villes (idVille,nomVille,codePostal) Values (NULL,"LUCCIANA","20290");

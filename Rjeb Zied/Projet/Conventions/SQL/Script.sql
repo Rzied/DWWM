@@ -44,7 +44,9 @@ CREATE TABLE Utilisateurs(
         prenomUtilisateur Varchar (50) NOT NULL ,
         emailUtilisateur  Varchar (50) NOT NULL ,
         mdpUtilisateur    Varchar (50) NOT NULL ,
-        idRole            Int NOT NULL
+		datePeremption         Varchar (15) NULL ,
+        idRole            Int NOT NULL,
+		UNIQUE KEY `email` (`emailUtilisateur`)
 )ENGINE=InnoDB, CHARSET = UTF8;
 
 #------------------------------------------------------------
@@ -138,6 +140,7 @@ CREATE TABLE Tuteurs(
 
 CREATE TABLE Stages(
         idStage              Int  Auto_increment  NOT NULL PRIMARY KEY,
+		etape				 Int NOT NULL,
         dateVisite           Date NOT NULL ,
         nomVisiteur          Varchar (50) NOT NULL ,    
         lieuRealisation      Varchar (30) NOT NULL ,
