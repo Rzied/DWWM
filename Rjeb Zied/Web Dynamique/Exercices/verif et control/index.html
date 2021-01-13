@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Remplire vos coordonnées</legend>
+        <form class="colonne">
+            <div class="ligne">
+                <label for="nom">Nom:</label>
+                <div class="espace"></div>
+                <input id="nom" class="checkInput" name="nom" type="text" pattern="[a-zA-Z- ]+" required>
+                
+                <div class="logoDiv logoNom">
+                    <img src="help.png" alt="" title="Entrez votre nom : pas de chiffres !">
+                    <img class="croix" src="croix.jpg" alt="">
+                    <img class="valide" src="valide.png" alt=""></div><div></div>
+                <div class="msg"></div>
+            </div>
+            <div class="ligne">
+                <label for="prenom">Prenom:</label>
+                <div class="espace"></div>
+                <input class="prenom" name="prenom" type="text" pattern="[a-zA-Z- ]+">
+                
+                <div class="logoDiv logo ">
+                    <img src="help.png" alt="" title="Entrez votre Prenom : pas de chiffres !">
+                    <img class="croix" src="croix.jpg" alt="">
+                    <img class="valide" src="valide.png" alt=""></div>
+                <div></div>
+                <div class="msg"></div>
+            </div>
+            <div class="ligne">
+                <label for="ddn">Date de Naissance:</label>
+                <div class="espace"></div>
+                <input id="ddn" class="checkInput" name="ddn" type="date" required>
+                
+                <div class="logoDiv logo">
+                    <img src="help.png" alt="" title="Entrez une date valide !">
+                    <img class="croix" src="croix.jpg" alt="">
+                    <img class="valide" src="valide.png" alt=""></div>
+                <div></div>
+                <div class="msg"></div>
+            </div>
+            <div class="ligne">
+                <label for="codePostal">Code Postal:</label>
+                <div class="espace"></div>
+                <input id="codePostal" class="checkInput" name="codePostal" type="text" title="5 chffre"
+                    pattern="[\d]{5}" required>
+                
+                <div class="logoDiv logo">
+                    <img src="help.png" alt="" title="Code postal: 5 chiffres et pas de lettres !">
+                    <img class="croix" src="croix.jpg" alt="">
+                    <img class="valide" src="valide.png" alt="">
+                </div>
+                <div></div>
+                <div class="msg"></div>
+            </div>
+
+            <div class="msg" id="msg"></div>
+            <div class="btn">
+                <button id="btn" type="submit" >Envoyer</button>
+            </div>
+        </form>
+    </fieldset>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

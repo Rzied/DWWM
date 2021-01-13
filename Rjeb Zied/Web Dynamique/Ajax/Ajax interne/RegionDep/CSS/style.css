@@ -1,0 +1,39 @@
+/****  GENERAL ****/
+html, body {
+	margin : 0;
+	padding : 0;
+}
+
+div, header, footer, nav, article {
+	display : flex;
+	flex : 1;
+}
+
+img, video {
+	width : 100%;
+}
+h1{
+	margin-top: 15vh;
+	text-align: center;
+	color: orangered;
+}
+.centrer{
+	justify-content: center;
+}
+
+.colonne{
+	flex-direction: column;
+	
+}
+.lDep{
+	justify-content: center;
+}
+.unDep{
+	justify-content: center;
+	margin: 10px;
+}
+.contenue{
+	margin:5vh 60vh ;
+	justify-content: center;
+	text-align: center;
+}

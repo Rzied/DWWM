@@ -1,0 +1,42 @@
+{
+    "coord": {
+        "lon": 2.5,
+        "lat": 50.8333
+    },
+    "weather": [{
+        "id": 804,
+        "main": "Clouds",
+        "description": "couvert",
+        "icon": "04d"
+    }],
+    "base": "stations",
+    "main": {
+        "temp": 5.15,
+        "feels_like": 2.06,
+        "temp_min": 4.44,
+        "temp_max": 6.11,
+        "pressure": 1019,
+        "humidity": 96
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 2.68,
+        "deg": 203,
+        "gust": 4.02
+    },
+    "clouds": {
+        "all": 92
+    },
+    "dt": 1610363164,
+    "sys": {
+        "type": 3,
+        "id": 2003306,
+        "country": "FR",
+        "sunrise": 1610351324,
+        "sunset": 1610381205
+    },
+    "timezone": 3600,
+    "id": 3020685,
+    "name": "Dunkerque",
+    "cod": 200
+}
