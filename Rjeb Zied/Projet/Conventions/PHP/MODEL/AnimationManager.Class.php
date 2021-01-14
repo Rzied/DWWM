@@ -20,11 +20,23 @@ class AnimationManager
 		$q->bindValue(":idFormation", $obj->getIdFormation());
 		$q->execute();
 	}
-	public static function delete(Animation $obj)
+
+
+	// public static function delete(Animation $obj)
+	// {
+ 	// 	$db=DbConnect::getDb();
+	// 	$db->exec("DELETE FROM Animation WHERE idAnimation=" .$obj->getIdAnimation());
+	// }
+
+	public static function delete($idUtilisateur,$idFormation)
 	{
  		$db=DbConnect::getDb();
-		$db->exec("DELETE FROM Animation WHERE idAnimation=" .$obj->getIdAnimation());
+		$db->exec("DELETE FROM Animation WHERE idUtilisateur=" .$obj->getIdUtilisateur() and "idFormation=".$obj->getIdFormation());
 	}
+
+
+
+
 	public static function findById($id, $api)
     {
         $db = DbConnect::getDb();
