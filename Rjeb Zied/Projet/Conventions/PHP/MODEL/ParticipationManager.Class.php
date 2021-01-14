@@ -58,6 +58,7 @@ class ParticipationManager
 		}
 		return $liste;
 	}
+	
 	public static function getByIdStagiaire($idParticipation)
     {
         $db = DbConnect::getDb();

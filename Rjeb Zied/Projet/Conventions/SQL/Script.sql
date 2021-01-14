@@ -8,16 +8,20 @@ USE `conventions`;
 
 
 DROP TABLE IF EXISTS `animation`;
-DROP TABLE IF EXISTS `comportementsprofessionnels`;
+DROP TABLE IF EXISTS `LibelleComportementsProfessionnels`;
+DROP TABLE IF EXISTS `ValeurComportementsProfessionnels`;
 DROP TABLE IF EXISTS `entreprises`;
+DROP TABLE IF EXISTS `ValeurAcquis`;
 DROP TABLE IF EXISTS `evaluations`;
 DROP TABLE IF EXISTS `formations`;
-DROP TABLE IF EXISTS `horaires`;
+DROP TABLE IF EXISTS `LibelleHoraires`;
+DROP TABLE IF EXISTS `ValeurHoraires`;
 DROP TABLE IF EXISTS `participation`;
 DROP TABLE IF EXISTS `sessionformation`;
 DROP TABLE IF EXISTS `stages`;
 DROP TABLE IF EXISTS `stagiaires`;
-DROP TABLE IF EXISTS `travauxdangereux`;
+DROP TABLE IF EXISTS `LibelleTravauxDangereux`;
+DROP TABLE IF EXISTS `ValeurTravauxDangereux`;
 DROP TABLE IF EXISTS `tuteurs`;
 DROP TABLE IF EXISTS `villes`;
 DROP TABLE IF EXISTS `Utilisateurs`;
@@ -55,7 +59,7 @@ CREATE TABLE Utilisateurs(
 
 CREATE TABLE Roles(
         idRole      Int  Auto_increment  NOT NULL PRIMARY KEY ,
-        libelleRole Varchar (10) NOT NULL
+        libelleRole Varchar (25) NOT NULL
 )ENGINE=InnoDB, CHARSET = UTF8;
 
 
@@ -65,9 +69,9 @@ CREATE TABLE Roles(
 
 CREATE TABLE Stagiaires(
         idStagiaire            Int  Auto_increment  NOT NULL PRIMARY KEY,
-        genreStagiaire         Varchar (30) NOT NULL ,
-        nomStagiaire           Varchar (30) NOT NULL ,
-        prenomStagiaire        Varchar (3) NOT NULL ,
+        genreStagiaire         Varchar (1) NOT NULL ,
+        nomStagiaire           Varchar (50) NOT NULL ,
+        prenomStagiaire        Varchar (50) NOT NULL ,
         numSecuStagiaire       Varchar (15) NOT NULL ,
         numBenefStagiaire      Varchar (15) NOT NULL ,
         dateNaissanceStagiaire Date NOT NULL
@@ -80,7 +84,7 @@ CREATE TABLE Stagiaires(
 
 CREATE TABLE Formations(
         idFormation      Int  Auto_increment  NOT NULL PRIMARY KEY,
-        libelleFormation Varchar (50) NOT NULL
+        libelleFormation Varchar (200) NOT NULL
 )ENGINE=InnoDB, CHARSET = UTF8;
 
 
@@ -103,19 +107,18 @@ CREATE TABLE SessionFormation(
 CREATE TABLE Entreprises(
         idEntreprise       Int  Auto_increment  NOT NULL PRIMARY KEY,
         raisonSociale      Varchar (50) NOT NULL ,
-        statutJuridiqueEnt Varchar (10) NOT NULL ,
+        statutJuridiqueEnt Varchar (50) NOT NULL ,
         adresseEnt         Varchar (50) NOT NULL ,
         numSiretEnt        Varchar (14) NOT NULL ,
-        indexSiret         Int (50) NOT NULL,
         telEnt             Varchar (10) NOT NULL ,
-        assureurEnt        Varchar (20) NOT NULL ,
-        numSocietaire      Varchar (10) NOT NULL ,
-        nomRepresentant    Varchar (30) NOT NULL ,
-        prenomRepresentant Varchar (30) NOT NULL ,
+        assureurEnt        Varchar (50) NOT NULL ,
+        numSocietaire      Varchar (20) NOT NULL ,
+        nomRepresentant    Varchar (50) NOT NULL ,
+        prenomRepresentant Varchar (50) NOT NULL ,
         fctRepresentant    Varchar (50) NOT NULL ,
         telRepresentant    Varchar (10) NOT NULL ,
-        mailRepresentant   Varchar (30) NOT NULL,
-        idVille            Int (5) NOT NULL
+        mailRepresentant   Varchar (100) NOT NULL,
+        idVille            Int  NOT NULL
 
 )ENGINE=InnoDB, CHARSET = UTF8;
 
@@ -126,11 +129,11 @@ CREATE TABLE Entreprises(
 
 CREATE TABLE Tuteurs(
         idTuteur       Int  Auto_increment  NOT NULL PRIMARY KEY,
-        nomTuteur      Varchar (30) NOT NULL ,
-        prenomTuteur   Varchar (30) NOT NULL ,
-        fonctionTuteur Varchar (50) NOT NULL ,
+        nomTuteur      Varchar (50) NOT NULL ,
+        prenomTuteur   Varchar (50) NOT NULL ,
+        fonctionTuteur Varchar (100) NOT NULL ,
         telTuteur      Varchar (10) NOT NULL ,
-        mailTuteur     Varchar (30) NOT NULL ,
+        mailTuteur     Varchar (100) NOT NULL ,
         idEntreprise   Int NOT NULL
 )ENGINE=InnoDB, CHARSET = UTF8;
 
@@ -142,29 +145,19 @@ CREATE TABLE Stages(
         idStage              Int  Auto_increment  NOT NULL PRIMARY KEY,
 		etape				 Int NOT NULL,
         dateVisite           Date NOT NULL ,
-        nomVisiteur          Varchar (50) NOT NULL ,    
-        lieuRealisation      Varchar (30) NOT NULL ,
+        nomVisiteur          Varchar (200) NOT NULL ,    
+        lieuRealisation      Varchar (200) NOT NULL ,
         deplacement          Bool NOT NULL ,
-        frequenceDeplacement Varchar (20) NOT NULL ,
-        modeDeplacement      Varchar (20) NOT NULL ,
+        frequenceDeplacement Varchar (200) NOT NULL ,
+        modeDeplacement      Varchar (200) NOT NULL ,
         attFormReglement     Bool NOT NULL ,
-        libelleAttFormReg    Varchar (30) NOT NULL ,
+        libelleAttFormReg    Varchar (200) NOT NULL ,
         visiteMedical        Bool NOT NULL ,
         travauxDang          Bool NOT NULL ,
         dateDeclarationDerog Date NOT NULL ,
         sujetStage           Text NOT NULL ,
         travauxRealises      Text NOT NULL ,
-        satisfactionEnt      Int NOT NULL ,
-        remarqueEnt          Text NOT NULL ,
-        perspectiveEmb       Int NOT NULL ,
-        repTravauxDang1      Int NOT NULL ,
-        repTravauxDang2      Int NOT NULL ,
-        repTravauxDang3      Int NOT NULL ,
-        repTravauxDang4      Int NOT NULL ,
-        repTravauxDang5      Int NOT NULL ,
         objectifPAE          Text NOT NULL ,
-        repTravauxDang6      Int NOT NULL ,
-        autreRepTravauxDang  Varchar (50) NOT NULL ,
         dateDebut            Date NOT NULL ,
         dateFin              Date NOT NULL ,
         idTuteur  Int   NOT NULL ,
@@ -195,40 +188,6 @@ CREATE TABLE Participation
     idStagiaire INT NOT NULL
 )ENGINE=InnoDB, CHARSET = UTF8;  
 
-#------------------------------------------------------------
-# Table: horaires
-#------------------------------------------------------------
-
-CREATE TABLE horaires
-(
-        idStage              Int  Auto_increment  NOT NULL PRIMARY KEY,
-        dateDebutStage       Date NOT NULL ,
-        dateFinStage         Date NOT NULL ,
-        horaireDebutJour1    Time NOT NULL ,
-        horaireDebutJour2    Time NOT NULL ,
-        horaireDebutJour3    Time NOT NULL ,
-        horaireDebutJour4    Time NOT NULL ,
-        horaireDebutJour5    Time NOT NULL ,
-        horaireDebutJour6    Time NOT NULL ,
-        horaireFinJour1      Time NOT NULL ,
-        horaireFinJour2      Time NOT NULL ,
-        horaireFinJour3      Time NOT NULL ,
-        horaireFinJour4      Time NOT NULL ,
-        horaireFinJour5      Time NOT NULL ,
-        horaireFinJour6      Time NOT NULL ,
-        horaireDebutDej1     Time NOT NULL ,
-        horaireDebutDej2     Time NOT NULL ,
-        horaireDebutDej3     Time NOT NULL ,
-        horaireDebutDej4     Time NOT NULL ,
-        horaireDebutDej5     Time NOT NULL ,
-        horaireDebutDej6     Time NOT NULL ,
-        horaireFinDej1       Time NOT NULL ,
-        horaireFinDej2       Time NOT NULL ,
-        horaireFinDej3       Time NOT NULL ,
-        horaireFinDej4       Time NOT NULL ,
-        horaireFinDej5       Time NOT NULL ,
-        horaireFinDej6       Time NOT NULL 
-)ENGINE=InnoDB, CHARSET = UTF8;
 
 #------------------------------------------------------------
 # Table: evaluations
@@ -240,41 +199,69 @@ CREATE TABLE evaluations
         dateEvaluation       Date NOT NULL ,
         objectifAcquisition  Int NOT NULL ,
         comportementMt       Int NOT NULL ,
-        evalComportement     Char (1) NOT NULL ,
-        libelleAcquis1       Varchar (50) NOT NULL ,
-        libelleAcquis2       Varchar (50) NOT NULL ,
-        libelleAcquis3       Varchar (50) NOT NULL ,
-        libelleAcquis4       Varchar (50) NOT NULL ,
-        libelleAcquis5       Varchar (50) NOT NULL ,
-        libelleAcquis6       Varchar (50) NOT NULL ,
-        libelleAcquis7       Varchar (50) NOT NULL ,
-        libelleAcquis8       Varchar (50) NOT NULL ,
-        libelleAcquis9       Varchar (50) NOT NULL ,
-        libelleAcquis10      Varchar (50) NOT NULL ,
-        acquis1              Int NOT NULL ,
-        acquis2              Int NOT NULL ,
-        acquis3              Int NOT NULL ,
-        acquis4              Int NOT NULL ,
-        acquis5              Int NOT NULL ,
-        acquis6              Int NOT NULL ,
-        acquis7              Int NOT NULL ,
-        acquis8              Int NOT NULL ,
-        acquis9              Int NOT NULL ,
-        acquis10             Int NOT NULL 
+		satisfactionEnt      Int NOT NULL ,
+        remarqueEnt          Char(250) NOT NULL ,
+        perspectiveEmb       Int NOT NULL 
+
 )ENGINE=InnoDB, CHARSET = UTF8;
 
-CREATE TABLE TravauxDangereux
+CREATE TABLE LibelleTravauxDangereux
 (
-    idStage   Int   NOT NULL PRIMARY KEY,
+    idLibelleTravauxDangereux   Int Auto_increment  NOT NULL PRIMARY KEY,
     ordreTravaux INT NOT NULL , 
-    libelleTravaux VARCHAR(40) NOT NULL  
+    libelleTravaux VARCHAR(100) NOT NULL  
 )ENGINE=InnoDB, CHARSET = UTF8;
 
-CREATE TABLE ComportementsProfessionnels
+CREATE TABLE ValeurTravauxDangereux
 (
-    idStage   Int  Auto_increment  NOT NULL PRIMARY KEY,
+    idTravauxDangereux  Int Auto_increment NOT NULL PRIMARY KEY,
+    idStage   Int   NOT NULL,
+    idLibelleTravauxDangereux INT NOT NULL , 
+    valeurTravaux  Int
+)ENGINE=InnoDB, CHARSET = UTF8;
+
+#------------------------------------------------------------
+# Table: horaires
+#------------------------------------------------------------
+
+CREATE TABLE LibelleHoraires
+(
+    idLibelleHoraire   Int Auto_increment  NOT NULL PRIMARY KEY,
+    ordreHoraire INT NOT NULL , 
+    libelleHoraire VARCHAR(40) NOT NULL  
+)ENGINE=InnoDB, CHARSET = UTF8;
+
+CREATE TABLE ValeurHoraires
+(
+    idValeurHoraires   Int Auto_increment NOT NULL PRIMARY KEY,
+    idStage   Int   NOT NULL,
+    idLibelleHoraire INT NOT NULL , 
+    valeurHoraire  Time
+)ENGINE=InnoDB, CHARSET = UTF8;
+
+CREATE TABLE LibelleComportementsProfessionnels
+(
+    idLibelleComportementProfessionnel   Int  Auto_increment  NOT NULL PRIMARY KEY,
     ordreComportement INT NOT NULL , 
-    libelleComportement VARCHAR(40) NOT NULL  
+    libelleComportement VARCHAR(100) NOT NULL  
+)ENGINE=InnoDB, CHARSET = UTF8;
+
+CREATE TABLE ValeurComportementsProfessionnels
+(
+    idComportementProfessionnel Int Auto_increment NOT NULL PRIMARY KEY,
+    idStage   Int NOT NULL,
+    idLibelleComportementProfessionnel INT NOT NULL , 
+    valeurComportement INT  
+)ENGINE=InnoDB, CHARSET = UTF8;
+
+
+CREATE TABLE ValeurAcquis
+(
+    idValeurAcquis   Int  Auto_increment NOT NULL PRIMARY KEY,
+    idStage   Int  NOT NULL,
+	ordreAcquis INT NOT NULL,
+    libelleAcquis VARCHAR(200) NOT NULL , 
+    valeurAcquis INT  
 )ENGINE=InnoDB, CHARSET = UTF8;
 
 ALTER TABLE SessionFormation
@@ -327,3 +314,37 @@ ADD CONSTRAINT FK_Entreprises_Villes
 FOREIGN KEY (idVille)
 REFERENCES Villes(idVille);
 
+ALTER TABLE ValeurTravauxDangereux
+ADD CONSTRAINT FK_ValeurTravauxDangereux_Stages
+FOREIGN KEY (idStage)
+REFERENCES Stages(idStage);
+
+ALTER TABLE ValeurTravauxDangereux
+ADD CONSTRAINT FK_ValeurTravauxDangereux_LibelleTravauxDangereux
+FOREIGN KEY (idLibelleTravauxDangereux)
+REFERENCES LibelleTravauxDangereux(idLibelleTravauxDangereux);
+
+ALTER TABLE ValeurHoraires
+ADD CONSTRAINT FK_ValeurHoraires_Stages
+FOREIGN KEY (idStage)
+REFERENCES Stages(idStage);
+
+ALTER TABLE ValeurHoraires
+ADD CONSTRAINT FK_ValeurHoraires_LibelleHoraires
+FOREIGN KEY (idLibelleHoraire)
+REFERENCES LibelleHoraires(idLibelleHoraire);
+
+ALTER TABLE ValeurComportementsProfessionnels
+ADD CONSTRAINT FK_ValeurComportementsProfessionnels_Stages
+FOREIGN KEY (idStage)
+REFERENCES Stages(idStage);
+
+ALTER TABLE ValeurComportementsProfessionnels
+ADD CONSTRAINT FK_ValeurCompProf_LibelleCompPro
+FOREIGN KEY (idLibelleComportementProfessionnel)
+REFERENCES LibelleComportementsProfessionnels(idLibelleComportementProfessionnel);
+
+ALTER TABLE ValeurAcquis
+ADD CONSTRAINT FK_ValeurAcquis_Stages
+FOREIGN KEY (idStage)
+REFERENCES Stages(idStage);
