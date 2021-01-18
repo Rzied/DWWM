@@ -1,4 +1,5 @@
 <?php
+var_dump($_POST);
 $uti = UtilisateursManager::getByEmailUtilisateur($_POST['eMail']);
 var_dump($uti);
 if ($uti != false && ($uti->getDatePeremption() == null || $uti->getDatePeremption() > new DateTime("NOW")))
@@ -8,7 +9,7 @@ if ($uti != false && ($uti->getDatePeremption() == null || $uti->getDatePerempti
     {
         echo 'connection reussie';
         $_SESSION['utilisateur'] = $uti;
-        header("refresh:3;url=index.php?page=Accueil");
+        // header("refresh:3;url=index.php?page=Accueil");
     }
     else
     {
@@ -19,5 +20,5 @@ if ($uti != false && ($uti->getDatePeremption() == null || $uti->getDatePerempti
 else
 {
     echo 'l\'utilisateur n\'existe pas ';
-   header("refresh:3;url=index.php?page=FormConnexion");
+//    header("refresh:3;url=index.php?page=FormConnexion");
 }
