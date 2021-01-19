@@ -1,16 +1,11 @@
 /********* Global **********/
+
 body {
     min-height: 100%;
     background: var(--FondPage);
 }
 
-div,
-header,
-footer,
-body,
-nav,
-section,
-form {
+div, header, footer, body, nav, section, form {
     display: flex;
     flex: 1;
     justify-content: center;
@@ -20,8 +15,7 @@ img {
     width: 100%;
 }
 
-.colonne,
-form {
+.colonne, form {
     flex-direction: column;
 }
 
@@ -43,28 +37,32 @@ form {
     text-shadow: 0.1em 0.1em 0.1em 0.1em var(--CouleurTexte);
 }
 
-.grande,
-section {
+.grande, section {
     flex: 5;
 }
 
 .demi {
     flex: 0.5;
 }
-.mini{
-    flex:0.2;
+
+.mini {
+    flex: 0.2;
 }
+
 .double {
     flex: 2;
 }
-.triple{
+
+.triple {
     flex: 3;
 }
+
 .info {
     margin: 0.3em;
 }
 
 /******* Form ********/
+
 label {
     color: var(--CouleurTexte);
     text-align: center;
@@ -80,6 +78,7 @@ a {
 }
 
 /******* Boutons ********/
+
 .bouton {
     background-color: Transparent;
     background-repeat: no-repeat;
@@ -96,12 +95,18 @@ a {
 }
 
 /********* input & Select *********/
-input,
-select ,.case {
+
+input, select, .case {
     border: 1px solid var(--BordureBouton);
     background-color: Transparent;
     padding: 0.5em 1em;
     color: var(--CouleurTexte);
+}
+
+.titreColonne {
+    border: 2px solid var(--CouleurTexte);
+    color: var(--BordureBouton);
+    font-size: 1.2em;
 }
 
 input:focus {
@@ -120,8 +125,8 @@ select option::selection {
 }
 
 /******** Header ********/
-header,
-footer {
+
+header, footer {
     box-shadow: -0.1em 0.1em 0.2em 0.2em var(--CouleurOmbre);
 }
 
@@ -129,8 +134,7 @@ header {
     margin-bottom: 1em;
 }
 
-.logo,
-.connection {
+.logo, .connection {
     flex: 0.5;
 }
 
@@ -140,12 +144,61 @@ header {
 }
 
 /******** Footer ******/
+
 footer {
     margin-top: 1em;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     width: 99%;
     bottom: 0.2em;
     color: var(--CouleurTexte);
+    background-color: var(--FondPage);
+}
+
+.container {
+    padding-bottom: 3.5em;
+}
+
+.aideMdp {
+    flex-direction: column;
+    z-index: 2;
+    font-size: 0.8em;
+    display: none;
+    white-space: nowrap;
+    border-radius: 2vh;
+    background-color: white;
+    padding: 1vh;
+}
+
+.vert {
+    color: #3db651;
+}
+.faux{
+
+    border: red solid 3px;
+}
+.vrai{
+
+    border: solid var(--BordureBouton)  3px;
+}
+.rouge {
+    color: red;
+}
+.absol{
+    position: absolute;
+    top: 5em;
+    left: 5em;
+}
+.relat{
+    position: relative;
+}
+
+.oeil {
+    position: absolute;
+    left: 32vw;
+    top: 4vh;
+}
+button:disabled{
+    border: solid var(--CouleurOmbre) 2px;
 }
