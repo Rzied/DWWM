@@ -1,8 +1,8 @@
+
 <section>
 
     <!-- <input type="text" value="$_SESSION['utilisateur']->getPrenomStagiaire()"> -->
     <form action="" method="POST">
-
         <div class=" ">
             <div class="info colonne ">
                 <label for="prenomUtilisateur">Prenom :</label>
@@ -96,8 +96,10 @@ foreach ($role as $unRole) {
             </div>
         </div>
         <div>
-            <div class="info colonne center">
+            <div class="info  center">
                 <button id="submit" class="bouton" type="submit" disabled><i class="fas fa-paper-plane"></i> Envoyer</button>
+                <div class="mini"></div>
+                <a href="Index.php?page=ListeUtilisateurs"><div class="bouton"><i class="far fa-arrow-alt-circle-left"></i> Retour</div></a>
             </div>
         </div>
         <div>

@@ -47,6 +47,8 @@ mdp.addEventListener("input", function (event) {
             lesImages[i].classList = "far fa-times-circle rouge";
             tabErreur[3]=-1;
         }
+    afficheMsgErreur()
+    boutonSubmit();
     }
 })
 mdp.addEventListener("blur", function (event) {
@@ -62,6 +64,8 @@ confirmation.addEventListener("input", function (event) {
         confirmation.classList = ("faux");
         tabErreur[4]=-1;
     }
+    afficheMsgErreur()
+    boutonSubmit();
 })
 //empecher le copier dans la zone mdp et confirm
 mdp.addEventListener("contextmenu", annule);
@@ -97,6 +101,7 @@ function verifPrenom() {
         tabErreur[0]=-1;
     }
     afficheMsgErreur()
+    boutonSubmit();
 }
 
 function verifNom() {
@@ -110,6 +115,7 @@ function verifNom() {
         tabErreur[1]=-1;
     }
     afficheMsgErreur()
+    boutonSubmit();
 }
 
 function verifDdP() {
@@ -123,31 +129,28 @@ function verifDdP() {
 
     if (date < dateSysteme) {
         datePeremtion.classList = ("faux");
-        tabErreur[5]=1;
+        tabErreur[5]=-1;
     } else {
         datePeremtion.classList = ("vrai");
-        tabErreur[5]=-1;
+        tabErreur[5]=1;
     }
     afficheMsgErreur()
-
+    boutonSubmit();
 }
 
 function verifRole() {
     let content = role.value;
     console.log(content);
     if (content=="defaut") {
-        tabErreur[6]=1;
-        // submit.disabled = true;
-    }else {
         tabErreur[6]=-1;
-        // submit.disabled = false;
+    }else {
+        tabErreur[6]=1;
     }
     afficheMsgErreur()
-
+    boutonSubmit();
 }
 
 function verifEmail() {
-    // console.log(checkInput[6].value);
     if (listInput[2].checkValidity()) {
         email.classList = ("vrai");
         tabErreur[2]=1;
@@ -155,8 +158,8 @@ function verifEmail() {
         email.classList = ("faux");
         tabErreur[2]=-1;
     }
-    afficheMsgErreur()
-
+    afficheMsgErreur();
+    boutonSubmit();
 }
 
 function annule(event) {
@@ -178,32 +181,15 @@ function afficheMsgErreur(){
        if (tabErreur[i]==-1) {
         spanInfo.innerHTML += tabMsgErreur[i]+ "<br>";
        }
-    //    else if () {
-           
-    //    }
-        
     }
 }
-
-/**
- * Activation du bouton de formulaire
- * Vérification de tous les champs
- */
-function checkAllValidity() {
-    var pasErreur = true;
-    i = 0;
-    // on vérifie les inputs un à un
-    while (pasErreur && i < listInput.length) {
-        pasErreur = validateInput(listInput[i])
-        i++;
+function boutonSubmit(){
+    
+    submit.disabled=false;
+    for (let i = 0; i < tabErreur.length; i++) {
+        if (tabErreur[i]!=1) {
+            submit.disabled=true;
+        }
     }
-    if (pasErreur) {
-        submit.disabled = false;
-        submit.style.color = "white";
-        submit.style.borderBottom = "4px solid white";
-    } else {
-        submit.disabled = true;
-        submit.style.color = "#666666";
-        submit.style.borderBottom = "4px solid #666666";
-    }
+    console.log(tabErreur);
 }

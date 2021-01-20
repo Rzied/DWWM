@@ -20,8 +20,8 @@ echo '<section class="colonne">
     <div class="espaceHor"></div>
   
 
-    <div classe="triple>
-        <a href=""><button class="bouton"><i class="fas fa-plus-circle"></i> Ajouter</button></a>
+    <div classe="triple">
+        <a href="Index.php?page=FormUtilisateur&mode=ajouter"><button class="bouton"><i class="fas fa-plus-circle"></i> Ajouter</button></a>
     </div>
     <div class="espaceHor"></div>';
     foreach ($users as $unUser) 
