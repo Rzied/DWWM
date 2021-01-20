@@ -1,32 +1,43 @@
 <?php
 
-class AnimationManager
+class AnimationManager 
 {
-    public static function add(Animation $obj)
-    {
-        $db = DbConnect::getDb();
-        $q = $db->prepare("INSERT INTO Animation (idUtilisateur,idFormation) VALUES (:idUtilisateur,:idFormation)");
-        $q->bindValue(":idUtilisateur", $obj->getIdUtilisateur());
-        $q->bindValue(":idFormation", $obj->getIdFormation());
-        $q->execute();
-    }
+	public static function add(Animation $obj)
+	{
+ 		$db=DbConnect::getDb();
+		$q=$db->prepare("INSERT INTO Animation (idUtilisateur,idFormation) VALUES (:idUtilisateur,:idFormation)");
+		$q->bindValue(":idUtilisateur", $obj->getIdUtilisateur());
+		$q->bindValue(":idFormation", $obj->getIdFormation());
+		$q->execute();
+	}
 
-    public static function update(Animation $obj)
-    {
-        $db = DbConnect::getDb();
-        $q = $db->prepare("UPDATE Animation SET idAnimation=:idAnimation,idUtilisateur=:idUtilisateur,idFormation=:idFormation WHERE idAnimation=:idAnimation");
-        $q->bindValue(":idAnimation", $obj->getIdAnimation());
-        $q->bindValue(":idUtilisateur", $obj->getIdUtilisateur());
-        $q->bindValue(":idFormation", $obj->getIdFormation());
-        $q->execute();
-    }
-    public static function delete(Animation $obj)
-    {
-        $db = DbConnect::getDb();
-        $db->exec("DELETE FROM Animation WHERE idUtilisateur=" . $obj->getIdUtilisateur() and "idFormation=".$obj->getIdFormation());
-    }
+	public static function update(Animation $obj)
+	{
+ 		$db=DbConnect::getDb();
+		$q=$db->prepare("UPDATE Animation SET idAnimation=:idAnimation,idUtilisateur=:idUtilisateur,idFormation=:idFormation WHERE idAnimation=:idAnimation");
+		$q->bindValue(":idAnimation", $obj->getIdAnimation());
+		$q->bindValue(":idUtilisateur", $obj->getIdUtilisateur());
+		$q->bindValue(":idFormation", $obj->getIdFormation());
+		$q->execute();
+	}
 
-    public static function findById($id, $api)
+
+	// public static function delete(Animation $obj)
+	// {
+ 	// 	$db=DbConnect::getDb();
+	// 	$db->exec("DELETE FROM Animation WHERE idAnimation=" .$obj->getIdAnimation());
+	// }
+
+	public static function delete($idUtilisateur,$idFormation)
+	{
+ 		$db=DbConnect::getDb();
+		$db->exec("DELETE FROM Animation WHERE idUtilisateur=" .$idUtilisateur and "idFormation=".$idFormation);
+	}
+
+
+
+
+	public static function findById($id, $api)
     {
         $db = DbConnect::getDb();
         $id = (int) $id;
@@ -41,9 +52,8 @@ class AnimationManager
         } else {
             return false;
         }
-    }
-
-    public static function getList($api)
+	}
+	public static function getList($api)
     {
         $db = DbConnect::getDb();
         $liste = [];
@@ -86,5 +96,4 @@ class AnimationManager
         }return $liste;
 
 	}
-	
 }

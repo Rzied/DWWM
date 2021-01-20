@@ -58,6 +58,7 @@ class SessionformationManager
 		}
 		return $liste;
 	}
+	
     public static function getByFormation($idFormation)
     {
         $db = DbConnect::getDb();
