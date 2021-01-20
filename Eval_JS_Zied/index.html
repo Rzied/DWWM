@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="Fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="colonne">
+        <div class="titre">
+            Calcul du Taux d'intérêt
+        </div>
+        <form class="colonne">
+            <div class="contenu colonne">
+                <div class="ligne">
+                    <label for="capital">Capital Emprunté</label>
+                    <input class="checkValidity" type="text" name="capital" id="capital" title="" pattern="^\d+$"
+                        required>
+                    <div class="indice">€</div>
+                    <div class="msg"></div>
+                </div>
+                <div class="ligne">
+                    <label for="Taux">Taux Nominal Annuel</label>
+                    <input class="checkValidity" type="text" name="Taux" id="taux" title=""
+                        pattern="^[1-9][0-9]?$|^100$" required>
+                    <div class="indice">%</div>
+                    <div class="msg"></div>
+                </div>
+                <div class="ligne">
+                    <label for="Durée">Durée d'emprunt</label>
+                    <input class="checkValidity" type="text" name="Durée" id="nbMois" title="" pattern="^\d+$" required>
+                    <div class="indice">Ans</div>
+                    <div class="msg"></div>
+                </div>
+            </div>
+            <div class="margin"></div>
+
+            <div class="contenu colonne">
+                <div class="ligne">
+                    <label for="mensualite">Mensualité</label>
+                    <input class="" type="text" name="mensualite" id="mensualite">
+                    <div class="indice">€</div>
+                    <div class="msg"></div>
+                </div>
+                <div class="ligne">
+                    <label for="Cout">Cout Total</label>
+                    <input class="" type="text" name="Cout" id="cout" title="">
+                    <div class="indice">€</div>
+                    <div class="msg"></div>
+                </div>
+            </div>
+            <div class="espace"></div>
+            <div class="bouton">
+                <button id="submit" disabled>Calculer</button>
+                <div class="mini"></div>
+                <button id="reset">Nouveau Calcul</button>
+            </div>
+        </form>
+
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #F5DEB3;
+    align-items: center;
+    font-size: 1.3em;
+}
+
+html,
+body,
+form,
+div,
+label,
+input {
+    display: flex;
+    flex: 1;
+    /* justify-content: center; */
+}
+
+.colonne {
+    flex-direction: column;
+
+}
+
+.contenu {
+    border: gray solid 2px;
+    padding: 1em;
+}
+
+.ligne {
+    padding: 0.5em;
+}
+
+.titre {
+    font-size: 2em;
+    padding: 1.5em;
+    justify-content: center;
+}
+
+section {
+    padding-top: 3em;
+    width: 70%;
+}
+
+.espace {
+    flex: 1;
+    height: 10em;
+    width: 100%;
+}
+
+.margin {
+    margin: 2em;
+}
+
+.mini {
+    flex: 0.2;
+}
+
+.bouton {
+    justify-content: center;
+    padding: 1.5em;
+}
+
+.indice {
+    padding: 0 0.3em;
+}
+
+.msg {
+    color: red;
+}
