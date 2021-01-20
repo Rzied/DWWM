@@ -26,6 +26,8 @@ echo '<section class="colonne">
     <div class="espaceHor"></div>';
     foreach ($users as $unUser) 
     {
+        // var_dump($unUser);
+        // var_dump($unUser->getIdUtilisateur());
         $role= RolesManager::findById($unUser->getIdRole());
         
             echo '<div class="info ">
@@ -37,13 +39,13 @@ echo '<section class="colonne">
 
                 <div class="triple">
                     <div class="mini"></div>
-                    <a href=""><button class="bouton"><i class="fas fa-info-circle"></i> Détail</button></a>
+                    <a href="index.php?page=FormUtilisateur&mode=details&id='.$unUser->getIdUtilisateur().'"><button class="bouton"><i class="fas fa-info-circle"></i> Détail</button></a>
                     <div class="mini"></div>
                     <div class="mini"></div>
-                    <a href=""><button class="bouton"><i class="fas fa-edit"></i> Modifier</button></a>
+                    <a href="index.php?page=FormUtilisateur&mode=modifier&id='.$unUser->getIdUtilisateur().'"><button class="bouton"><i class="fas fa-edit"></i> Modifier</button></a>
                     <div class="mini"></div>
                     <div class="mini"></div>
-                    <a href=""><button class="bouton"><i class="fas fa-trash-alt"></i> Supprimer</button></a>
+                    <a href="index.php?page=FormUtilisateur&mode=supprimer&id='.$unUser->getIdUtilisateur().'"><button class="bouton"><i class="fas fa-trash-alt"></i> Supprimer</button></a>
                     <div class="mini"></div>
                 </div>';
 

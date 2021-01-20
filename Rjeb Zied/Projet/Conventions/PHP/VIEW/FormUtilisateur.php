@@ -1,31 +1,71 @@
 
 <section>
+    
+<?php
+
+$mode=$_GET['mode'];
+
+switch($mode)
+{
+    case "ajouter":
+    {
+        echo'<form action="Index.php?page=ActionUtilisateur&mode=ajouter" method="POST">';
+        break;
+    }
+    case "modifier":
+    {
+        echo'<form action="Index.php?page=ActionUtilisateur&mode=modifier" method="POST"';
+        echo '<form method="POST" action="Index.php?page=ActionUtilisateur&mode=modifier" method="POST">';
+            $idRecherche = $_GET['id'];
+            $id = UtilisateursManager::findById($idRecherche);
+        break;
+    }
+    case "details":
+    {    
+        echo '<form method="POST" >';
+            $idRecherche = $_GET['id'];
+            $id = UtilisateursManager::findById($idRecherche);
+        break;
+    }
+    case "supprimer":
+    {
+        echo'<form action="Index.php?page=ActionUtilisateur&mode=supprimer" method="POST"';
+        break;
+    }
+}
+
+if(isset($_GET["id"]))
+{
+    $choix=UtilisateursManager::findById($_GET["id"]);
+}
+?>
 
     <!-- <input type="text" value="$_SESSION['utilisateur']->getPrenomStagiaire()"> -->
-    <form action="" method="POST">
+  <form action="" method="POST">
+  <?php if($mode != "ajouter") echo  '<input name= "idUtilisateur" value="'.$choix->getIdUtilisateur().'" type= "hidden">';?>
         <div class=" ">
             <div class="info colonne ">
                 <label for="prenomUtilisateur">Prenom :</label>
-                <input type="text" id="prenom" name="prenomUtilisateur" value="" required pattern="[a-zA-Z- ]{3,}">
+                <input type="text" id="prenom" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>name="prenomUtilisateur" value="<?php if ($mode != "ajouter") echo $choix->getPrenomUtilisateur() ;?>" required pattern="[a-zA-Z- ]{3,}">
             </div>
             <div class="info colonne ">
                 <label for="nomUtilisateur">Nom :</label>
-                <input type="text" id="nom" name="nomUtilisateur" value="" required pattern="[a-zA-Z- ]{3,}">
+                <input type="text" id="nom" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>name="nomUtilisateur" value="<?php if ($mode != "ajouter") echo $choix->getNomUtilisateur() ;?>" required pattern="[a-zA-Z- ]{3,}">
             </div>
         </div>
         <div>
 
             <div class="info colonne  grande">
                 <label for="emailUtilisateur">Adresse E-mail :</label>
-                <input type="text" id="email" name="emailUtilisateur" required
-                    pattern="^[a-z]+[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$" value="">
+                <input type="text" id="email" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>name="emailUtilisateur" required
+                    pattern="^[a-z]+[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$" value="<?php if ($mode != "ajouter") echo $choix->getEmailUtilisateur() ;?>">
             </div>
         </div>
 
         <div>
             <div class="info colonne center relat">
                 <label for="mdpUtilisateur">Mot de passe :</label>
-                <input type="password" id="mdp" name="mdpUtilisateur" value="" required
+                <input type="password" id="mdp" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>name="mdpUtilisateur" value="<?php if ($mode != "ajouter") echo $choix->getMdpUtilisateur() ;?>" required
                     pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[!@#\$%\^&\*+])[a-zA-Z\d!@#\$%\^&\*+]{8,}$">
                 <div class="mini">
                     <div class="oeil">
@@ -65,21 +105,40 @@
 
             <div class="info colonne center">
                 <label for="confirmation">Confirmation de mot de passe :</label>
-                <input type="password" id="confirmation" name="confirmation" title="remettre le même mot de passe"
+                <input type="password" id="confirmation" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>name="confirmation" value="<?php if ($mode != "ajouter") echo $choix->getMdpUtilisateur() ;?>" title="remettre le même mot de passe"
                     required>
             </div>
         </div>
 
-
+<?php 
+    // var_dump($choix->getDatePeremption());
+    $d1=$choix->getDatePeremption();
+    $date = DateTime::createFromFormat('j-M-Y', $d1);
+    var_dump($date);
+    // $date=new DateTime($d1);
+    // echo $d1;
+    // echo $date;
+?>
 
         <div>
             <div class="info colonne center">
                 <label for="datePeremption">Date de peremption :</label>
-                <input type="date" id="datePeremtion" name="datePeremption" value="" required>
+                <input type="date" id="datePeremtion" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>name="datePeremption"  value="<?php if ($mode != "ajouter") echo $choix->getDatePeremption()->format('Y-m-d');?>" required>
             </div>
             <div class="info colonne center">
                 <label for="idRole">Role :</label>
                 <select name="idRole" id="role">
+                <?php if ($mode != "ajouter") 
+                foreach ( $listeRoles as $unRole )
+                {
+                    $sel = "";
+                    if ($unRole->getIdRole()==$id->getIdRole()){
+                        $sel="selected";
+                    }
+                    echo '<option value="'.$unRole->getIdRole().'"'.$sel; if($mode=="details" || $mode=="supprimer") echo'disabled'; echo '>'.$unRole->getNomRole().'</option>';
+                }
+                
+                ?>
                     <option value="defaut" selected>-------------------------------Choisissez un
                         Role-------------------------------</option>
                     <?php
@@ -97,9 +156,40 @@ foreach ($role as $unRole) {
         </div>
         <div>
             <div class="info  center">
-                <button id="submit" class="bouton" type="submit" disabled><i class="fas fa-paper-plane"></i> Envoyer</button>
-                <div class="mini"></div>
-                <a href="Index.php?page=ListeUtilisateurs"><div class="bouton"><i class="far fa-arrow-alt-circle-left"></i> Retour</div></a>
+            
+                <?php
+
+                    switch($mode)
+                    {
+                        case "ajouter":
+                        {
+                            echo'<button id="submit" class="bouton" type="submit" disabled><i class="fas fa-paper-plane"></i> Envoyer</button>';
+                            break;
+                        }
+                        case "modifier":
+                        {
+                            echo'<button class="bouton"><i class="fas fa-edit"></i> Modifier</button>';
+                            break;
+                        }
+                        case "details":
+                        {
+                            echo'<button class="bouton"><i class="fas fa-info-circle"></i> Afficher</button>';
+                            break;
+                        }
+                        case "supprimer":
+                        {
+                            echo'<button class="bouton"><i class="fas fa-trash-alt"></i> Supprimer</button>';
+                            break;
+                        }
+                    }
+                    echo'<div class="mini"></div>';
+                    echo'<a href="Index.php?page=ListeUtilisateurs"><div class="bouton"><i class="far fa-arrow-alt-circle-left"></i> Retour</div></a>';
+                ?>
+
+
+                <!-- <button id="submit" class="bouton" type="submit" disabled><i class="fas fa-paper-plane"></i> Envoyer</button> -->
+                <!-- <div class="mini"></div>
+                <a href="Index.php?page=ListeUtilisateurs"><div class="bouton"><i class="far fa-arrow-alt-circle-left"></i> Retour</div></a> -->
             </div>
         </div>
         <div>
