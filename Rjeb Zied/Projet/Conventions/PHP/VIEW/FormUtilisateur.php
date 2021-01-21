@@ -14,7 +14,7 @@ switch($mode)
     }
     case "modifier":
     {
-        echo'<form action="Index.php?page=ActionUtilisateur&mode=modifier" method="POST"';
+        // echo'<form action="Index.php?page=ActionUtilisateur&mode=modifier" method="POST"';
         echo '<form method="POST" action="Index.php?page=ActionUtilisateur&mode=modifier" method="POST">';
             $idRecherche = $_GET['id'];
             $id = UtilisateursManager::findById($idRecherche);
@@ -37,12 +37,14 @@ switch($mode)
 if(isset($_GET["id"]))
 {
     $choix=UtilisateursManager::findById($_GET["id"]);
+    $role = RolesManager::getList();
 }
 ?>
 
-    <!-- <input type="text" value="$_SESSION['utilisateur']->getPrenomStagiaire()"> -->
   <form action="" method="POST">
-  <?php if($mode != "ajouter") echo  '<input name= "idUtilisateur" value="'.$choix->getIdUtilisateur().'" type= "hidden">';?>
+  <?php if($mode != "ajouter") echo  '<input name= "idUtilisateur" value="'.$choix->getIdUtilisateur().'" type= "hidden">';
+    if($mode=="ajouter") echo '<input value="" type= "hidden">';
+  ?>
         <div class=" ">
             <div class="info colonne ">
                 <label for="prenomUtilisateur">Prenom :</label>
@@ -63,7 +65,7 @@ if(isset($_GET["id"]))
         </div>
 
         <div>
-            <div class="info colonne center relat">
+            <div class="info colonne center relatif">
                 <label for="mdpUtilisateur">Mot de passe :</label>
                 <input type="password" id="mdp" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>name="mdpUtilisateur" value="<?php if ($mode != "ajouter") echo $choix->getMdpUtilisateur() ;?>" required
                     pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[!@#\$%\^&\*+])[a-zA-Z\d!@#\$%\^&\*+]{8,}$">
@@ -72,7 +74,7 @@ if(isset($_GET["id"]))
                         <i class="fas fa-eye"></i>
                     </div>
                 </div>
-                <div class="aideMdp absol">
+                <div class="aideMdp absolu">
                     <div>Liste des critères à respecter !! </div>
                     <div>
                         <div class="mini"><i class="far fa-times-circle rouge"></i>
@@ -111,45 +113,44 @@ if(isset($_GET["id"]))
         </div>
 
 <?php 
-    // var_dump($choix->getDatePeremption());
-    $d1=$choix->getDatePeremption();
-    $date = DateTime::createFromFormat('j-M-Y', $d1);
-    var_dump($date);
-    // $date=new DateTime($d1);
-    // echo $d1;
-    // echo $date;
+    // $d1= $choix->getDatePeremption();
+    // $date = DateTime::createFromFormat('d/m/Y', $d1);
+    // var_dump($date);
+    // echo $date->format('Y-m-d')
+    
 ?>
 
         <div>
             <div class="info colonne center">
                 <label for="datePeremption">Date de peremption :</label>
-                <input type="date" id="datePeremtion" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>name="datePeremption"  value="<?php if ($mode != "ajouter") echo $choix->getDatePeremption()->format('Y-m-d');?>" required>
+                <input type="date" id="datePeremtion" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>name="datePeremption"  value="<?php if ($mode != "ajouter") echo $choix->getDatePeremption();?>" required>
             </div>
             <div class="info colonne center">
                 <label for="idRole">Role :</label>
                 <select name="idRole" id="role">
-                <?php if ($mode != "ajouter") 
-                foreach ( $listeRoles as $unRole )
+                <?php 
+                if ($mode != "ajouter") {
+                foreach ( $role as $unRole )
                 {
+                    
                     $sel = "";
-                    if ($unRole->getIdRole()==$id->getIdRole()){
+                    if ($unRole->getIdRole()==$choix->getIdRole()){
                         $sel="selected";
                     }
-                    echo '<option value="'.$unRole->getIdRole().'"'.$sel; if($mode=="details" || $mode=="supprimer") echo'disabled'; echo '>'.$unRole->getNomRole().'</option>';
+                    echo '<option value="'.$unRole->getIdRole().'" '.$sel; 
+                    if($mode=="details" || $mode=="supprimer") echo' disabled '; echo '>'.$unRole->getLibelleRole().'</option>';
                 }
+            }else{
                 
-                ?>
-                    <option value="defaut" selected>-------------------------------Choisissez un
-                        Role-------------------------------</option>
-                    <?php
-$role = RolesManager::getList();
-foreach ($role as $unRole) {
-    echo '
-                            <option value="' . $unRole->getIdRole() . '">' . $unRole->getLibelleRole() . '</option>';
-    // var_dump($unRole->getIdRole());
-    // var_dump($unRole->getLibelleRole());
-}
-?>
+                   echo' <option value="defaut" selected>-------------------------------Choisissez un
+                        Role-------------------------------</option>';
+                    
+                    $role = RolesManager::getList();
+                    foreach ($role as $unRole) {
+                        echo '<option value="' . $unRole->getIdRole() . '">' . $unRole->getLibelleRole() . '</option>';
+   
+            }}
+            ?>
                 </select>
 
             </div>
@@ -171,16 +172,13 @@ foreach ($role as $unRole) {
                             echo'<button class="bouton"><i class="fas fa-edit"></i> Modifier</button>';
                             break;
                         }
-                        case "details":
-                        {
-                            echo'<button class="bouton"><i class="fas fa-info-circle"></i> Afficher</button>';
-                            break;
-                        }
+                       
                         case "supprimer":
                         {
                             echo'<button class="bouton"><i class="fas fa-trash-alt"></i> Supprimer</button>';
                             break;
                         }
+                        
                     }
                     echo'<div class="mini"></div>';
                     echo'<a href="Index.php?page=ListeUtilisateurs"><div class="bouton"><i class="far fa-arrow-alt-circle-left"></i> Retour</div></a>';

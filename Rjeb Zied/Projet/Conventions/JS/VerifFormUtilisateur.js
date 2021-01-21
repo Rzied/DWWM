@@ -8,8 +8,8 @@ var confirmation = document.getElementById('confirmation');
 var datePeremtion = document.getElementById("datePeremtion");
 var role = document.getElementById("role");
 var submit=document.getElementById("submit");
-var tabErreur=[0,0,0,0,0,0,0];
-var tabMsgErreur=["Prenom Invalide ","Nom Invalide ","Adresse E-mail Invalide ","Mot de passe Invalide ","Confirmation Mot de passe Invalide ","Date de peremption Invalide ","Role Invalide "]
+var tabErreur=[1,0,0,0,0,0,0,0];
+var tabMsgErreur=["","Prenom Invalide ","Nom Invalide ","Adresse E-mail Invalide ","Mot de passe Invalide ","Confirmation Mot de passe Invalide ","Date de peremption Invalide ","Role Invalide "]
 
 
 
@@ -42,10 +42,10 @@ mdp.addEventListener("input", function (event) {
         if (RegExp(lesCheck[i]).test(mdp.value)) {
             //la condition est vérifiée, on met la coche verte correspondente
             lesImages[i].classList = "far fa-check-circle vert";
-            tabErreur[3]=1;
+            tabErreur[4]=1;
         } else {
             lesImages[i].classList = "far fa-times-circle rouge";
-            tabErreur[3]=-1;
+            tabErreur[4]=-1;
         }
     afficheMsgErreur()
     boutonSubmit();
@@ -59,10 +59,10 @@ mdp.addEventListener("blur", function (event) {
 confirmation.addEventListener("input", function (event) {
     if (confirmation.value == mdp.value) {
         confirmation.classList = ("vrai");
-        tabErreur[4]=1;
+        tabErreur[5]=1;
     } else {
-        confirmation.classList = ("faux");
-        tabErreur[4]=-1;
+        confirmation.classList = ("incorrect");
+        tabErreur[5]=-1;
     }
     afficheMsgErreur()
     boutonSubmit();
@@ -93,12 +93,12 @@ role.addEventListener("change", verifRole);
 function verifPrenom() {
     //mettre la premiere lettre en MAJUSCULES 
     prenom.value=(prenom.value.charAt(0).toUpperCase() + prenom.value.substring(1).toLowerCase())
-    if (listInput[0].checkValidity()) {
+    if (listInput[1].checkValidity()) {
         prenom.classList = ("vrai");
-        tabErreur[0]=1;
+        tabErreur[1]=1;
     } else {
-        prenom.classList = ("faux");
-        tabErreur[0]=-1;
+        prenom.classList = ("incorrect");
+        tabErreur[1]=-1;
     }
     afficheMsgErreur()
     boutonSubmit();
@@ -107,12 +107,12 @@ function verifPrenom() {
 function verifNom() {
     //mettre tout le nom en MAJUSCULES 
     nom.value=nom.value.toUpperCase();
-    if (listInput[1].checkValidity()) {
+    if (listInput[2].checkValidity()) {
         nom.classList = ("vrai");
-        tabErreur[1]=1;
+        tabErreur[2]=1;
     } else {
-        nom.classList = ("faux");
-        tabErreur[1]=-1;
+        nom.classList = ("incorrect");
+        tabErreur[2]=-1;
     }
     afficheMsgErreur()
     boutonSubmit();
@@ -128,11 +128,11 @@ function verifDdP() {
     let dateSysteme = new Date();
 
     if (date < dateSysteme) {
-        datePeremtion.classList = ("faux");
-        tabErreur[5]=-1;
+        datePeremtion.classList = ("incorrect");
+        tabErreur[6]=-1;
     } else {
         datePeremtion.classList = ("vrai");
-        tabErreur[5]=1;
+        tabErreur[6]=1;
     }
     afficheMsgErreur()
     boutonSubmit();
@@ -142,21 +142,22 @@ function verifRole() {
     let content = role.value;
     console.log(content);
     if (content=="defaut") {
-        tabErreur[6]=-1;
+        tabErreur[7]=-1;
+        role.classList = ("incorrect");
     }else {
-        tabErreur[6]=1;
+        tabErreur[7]=1;
     }
     afficheMsgErreur()
     boutonSubmit();
 }
 
 function verifEmail() {
-    if (listInput[2].checkValidity()) {
+    if (listInput[3].checkValidity()) {
         email.classList = ("vrai");
-        tabErreur[2]=1;
+        tabErreur[3]=1;
     } else {
-        email.classList = ("faux");
-        tabErreur[2]=-1;
+        email.classList = ("incorrect");
+        tabErreur[3]=-1;
     }
     afficheMsgErreur();
     boutonSubmit();
