@@ -178,6 +178,10 @@ footer {
 
     border: red solid 3px;
 }
+
+.incorrect{
+    border: red solid 3px;
+}
 .vrai{
 
     border: solid var(--BordureBouton)  3px;
@@ -185,12 +189,12 @@ footer {
 .rouge {
     color: red;
 }
-.absol{
+.absolu{
     position: absolute;
     top: 5em;
     left: 5em;
 }
-.relat{
+.relatif{
     position: relative;
 }
 
