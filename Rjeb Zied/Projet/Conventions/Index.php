@@ -61,6 +61,10 @@ $routes=[
 	"ListeEntreprises" => ["PHP/VIEW/", "ListeEntreprises", "Gestion des Entreprises"],
 	"FormEntreprise" => ["PHP/VIEW/", "FormEntreprise", "Gestion des Entreprises"],
 	"ActionEntreprise" => ["PHP/VIEW/", "ActionEntreprise", "Gestion des Entreprises"],
+
+
+	"FormFRCondition" => ["PHP/VIEW/", "FormFRCondition", "Gestion des Entreprises"],
+	// "ActionEntreprise" => ["PHP/VIEW/", "ActionEntreprise", "Gestion des Entreprises"],
 ];
 
 if(isset($_GET["page"]))

@@ -206,3 +206,6 @@ footer {
 button:disabled{
     border: solid var(--CouleurOmbre) 2px;
 }
+.border{
+    border: black solid 1px;
+}
