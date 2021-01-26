@@ -64,7 +64,7 @@ $routes=[
 
 
 	"FormFRCondition" => ["PHP/VIEW/", "FormFRCondition", "Gestion des Entreprises"],
-	// "ActionEntreprise" => ["PHP/VIEW/", "ActionEntreprise", "Gestion des Entreprises"],
+	"ActionFRCondition" => ["PHP/VIEW/", "ActionFRCondition", "Gestion des Entreprises"],
 ];
 
 if(isset($_GET["page"]))

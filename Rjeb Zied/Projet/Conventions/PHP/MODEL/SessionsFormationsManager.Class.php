@@ -54,17 +54,31 @@ class SessionsFormationsManager
 		}
 		return $liste;
 	}
-	public static function getByFormation($idFormation)
+	public static function getByFormation($idFormation,$api)
     {
         $db = DbConnect::getDb();
         $id = (int) $idFormation;
-        $liste = [];
-        $q = $db->query("SELECT * FROM SessionsFormations where idFormation=$id");
+		$liste = [];
+		$json=[];
+        $q = $db->query("SELECT * FROM SessionsFormations where idFormation=".$id);
         while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
             if ($donnees != false) {
-                $liste[] = new SessionsFormations($donnees);
+				$liste[] = new SessionsFormations($donnees);
+				$json[]=$donnees;
             }
-        }return $liste;
-
+		}
+		if(!$api) return $liste;
+		return $json;
 	}
+	public static function getByNumOffre($numOffre)
+    {
+        $db = DbConnect::getDb();
+        $numOffreRech = (int) $numOffre;
+        $q = $db->query("SELECT `idSessionFormation` FROM `sessionsformations` WHERE `numOffreFormation`=$numOffreRech");
+
+        $donnees = $q->fetch(PDO::FETCH_ASSOC);
+        $liste = new SessionsFormations($donnees);
+
+        return $liste;
+    }
 }

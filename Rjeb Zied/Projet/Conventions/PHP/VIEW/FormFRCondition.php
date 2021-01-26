@@ -1,7 +1,10 @@
+
+
+
 <section class="colonne">
 
 <!-- ******************Jours et heures de présence proposés****************** -->
-
+<form action="index.php?page=ActionFRCondition&mode=ajouter" method="POST">
     <div class="horaire colonne">
         <!-- libelle horaire et valeur horaire -->
         <h3 class="centre">Jours et heures de présence proposés</h3>
@@ -18,7 +21,7 @@
             <div class="ligne">
                 <div class="border double">Début de journée</div>
     <?php
-        for ($i=0; $i <6; $i++) { 
+        for ($i=1; $i <7; $i++) { 
             jours("horaireDebutJour",$i);
         }
     ?>
@@ -28,7 +31,7 @@
                 <div class="border double">Début déjeuner</div>
                 
     <?php
-        for ($i=0; $i <6; $i++) { 
+        for ($i=1; $i <7; $i++) { 
             jours("horaireDebutDej",$i);
         }
     ?>
@@ -37,7 +40,7 @@
                 <div class="border double">Fin déjeuner</div>
                 
     <?php
-        for ($i=0; $i <6; $i++) { 
+        for ($i=1; $i <7; $i++) { 
             jours("horaireFinDej",$i);
         }
     ?>
@@ -45,7 +48,7 @@
             <div class="ligne">
                 <div class="border double">Fin de journée</div>
     <?php
-        for ($i=0; $i <6; $i++) { 
+        for ($i=1; $i <7; $i++) { 
             jours("horaireFinJour",$i);
         }
     ?>
@@ -78,7 +81,7 @@
 
 <!-- ******************Lieu de réalisation****************** -->
 
-    <form action="">
+   
         <fieldset>
             <legend>Lieu de réalisation</legend>
             <!-- table stage -->
@@ -86,19 +89,19 @@
                 <div class="label centre demi">Lieu de réalisation</div>
                 <div class="colonne">
                     <div class="info">
-                        <input type="checkbox" id="" name="Lieu" required>
-                        <label for="Lieu">Locaux de l'entreprise </label>
+                        <input type="checkbox" id="" name="entreprise" value="entreprise">
+                        <label for="entreprise">Locaux de l'entreprise </label>
                         <div class="mini"></div>
-                        <input type="checkbox" id="" name="Lieu" required>
-                        <label for="Lieu">Chantier(s) </label>
+                        <input type="checkbox" id="" name="Chantier" value="Chantier">
+                        <label for="Chantier">Chantier(s) </label>
                         <div class="mini"></div>
-                        <input type="checkbox" id="" name="Lieu" required>
-                        <label for="Lieu">Locaux des clients</label>
+                        <input type="checkbox" id="" name="clients" value="clients">
+                        <label for="clients">Locaux des clients</label>
                     </div>
                     <div class="info centre">
-                        <input type="checkbox" id="" name="Lieu" required>
+                        <input type="checkbox" id="" name="autreLieu">
                         <label for="Lieu">Autre (préciser) : </label>
-                        <input type="text">
+                        <input type="text" name="autreLieu">
                     </div>
                 </div>
             </div>
@@ -108,10 +111,10 @@
                 <div class="label centre demi">Déplacements occasionnés par le stage</div>
 
                 <div class="info">
-                    <input type="radio" id="" name="deplacement" required>
+                    <input type="radio" id="" name="deplacement" value="OUI" required>
                     <label for="oui">OUI</label>
                     <div class="mini"></div>
-                    <input type="radio" id="" name="deplacement">
+                    <input type="radio" id="" name="deplacement" value="NON">
                     <label for="non">NON</label>
                 </div>
             </div>
@@ -120,16 +123,16 @@
                 <div class="label centre demi">Fréquence</div>
                 <div class="colonne">
                     <div class="info">
-                        <input type="radio" id="" name="frequenceDeplacement" required>
+                        <input type="radio" id="" name="frequenceDeplacement" value="Quotidien" required>
                         <label for="Quotidien">Quotidien </label>
                         <div class="mini"></div>
-                        <input type="radio" id="" name="frequenceDeplacement">
+                        <input type="radio" id="" name="frequenceDeplacement" value="Occasionnels">
                         <label for="Occasionnels">Occasionnels </label>
                     </div>
                     <div class="info centre">
                         <input type="radio" id="" name="frequenceDeplacement">
                         <label for="Autre">Autre (préciser) : </label>
-                        <input type="text">
+                        <input type="text" name="autreFrequence">
                          <!-- il faut faire un script -->
                     </div>
                 </div>
@@ -139,16 +142,16 @@
                 <div class="label centre demi">Modes de déplacement</div>
                 <div class="colonne">
                     <div class="info">
-                        <input type="checkbox" id="" name="vehEntreprise">
-                        <label for="vehEntreprise">Véhicule de l'entreprise </label>
+                        <input type="checkbox" id="" name="vehiculeEntreprise" value="vehiculeEntreprise">
+                        <label for="vehiculeEntreprise">Véhicule de l'entreprise </label>
                         <div class="mini"></div>
-                        <input type="checkbox" id="" name="vehStagiaire">
-                        <label for="vehStagiaire">Véhicule personnel du stagiaire </label>
+                        <input type="checkbox" id="" name="vehiculeStagiaire" value="vehiculeStagiaire">
+                        <label for="vehiculeStagiaire">Véhicule personnel du stagiaire </label>
                     </div>
                     <div class="info centre">
-                        <input type="checkbox" id="" name="Autre">
-                        <label for="Autre">Autre (préciser) : </label>
-                        <input type="text">
+                        <input type="checkbox" id="" name="AutreModeDeplacement">
+                        <label for="AutreModeDeplacement">Autre (préciser) : </label>
+                        <input type="text" name="AutreModeDeplacement">
                     </div>
                 </div>
             </div>
@@ -166,16 +169,16 @@
                 <div class="label centre demi">demandent une attestation de formation règlementaire</div>
                 <div class="colonne">
                     <div class="info">
-                        <input type="radio" id="" name="attFormReglement" required>
+                        <input type="radio" id="" name="attFormReglementaire" value="OUI" required>
                         <label for="lieu">OUI</label>
                         <div class="mini"></div>
-                        <input type="radio" id="" name="attFormReglement">
+                        <input type="radio" id="" name="attFormReglementaire" value="NON">
                         <label for="Chantier">NON</label>
                         <div class="mini"></div>
                     </div>
                     <div class="info centre">
-                        <input type="checkbox" id="" name="libelleAttFormReg">
-                        <label for="libelleAttFormReg">Si oui, laquelle : </label>
+                      
+                        <label for="libelleAttFormReg">laquelle : </label>
                         <input type="text" name="libelleAttFormReg">
                     </div>
                 </div>
@@ -326,7 +329,7 @@
 function jours($momentJours,$numJours)
 {
     
-    echo'<div class="border"><input type="text" id="'.$momentJours.$numJours.'"></div>';
+    echo'<div class="border"><input type="time" name="'.$momentJours.$numJours.'"></div>';
 
 }
 
