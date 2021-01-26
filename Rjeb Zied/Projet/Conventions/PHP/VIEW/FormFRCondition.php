@@ -1,5 +1,7 @@
 <section class="colonne">
 
+<!-- ******************Jours et heures de présence proposés****************** -->
+
     <div class="horaire colonne">
         <!-- libelle horaire et valeur horaire -->
         <h3 class="centre">Jours et heures de présence proposés</h3>
@@ -74,6 +76,8 @@
     </div>
     <div class="espaceHor"></div>
 
+<!-- ******************Lieu de réalisation****************** -->
+
     <form action="">
         <fieldset>
             <legend>Lieu de réalisation</legend>
@@ -82,18 +86,18 @@
                 <div class="label centre demi">Lieu de réalisation</div>
                 <div class="colonne">
                     <div class="info">
-                        <input type="checkbox" id="" name="lieu">
-                        <label for="lieu">Locaux de l'entreprise </label>
+                        <input type="checkbox" id="" name="Lieu" required>
+                        <label for="Lieu">Locaux de l'entreprise </label>
                         <div class="mini"></div>
-                        <input type="checkbox" id="" name="Chantier">
-                        <label for="Chantier">Chantier(s) </label>
+                        <input type="checkbox" id="" name="Lieu" required>
+                        <label for="Lieu">Chantier(s) </label>
                         <div class="mini"></div>
-                        <input type="checkbox" id="" name="Locaux">
-                        <label for="Locaux">Locaux des clients</label>
+                        <input type="checkbox" id="" name="Lieu" required>
+                        <label for="Lieu">Locaux des clients</label>
                     </div>
                     <div class="info centre">
-                        <input type="checkbox" id="" name="Autre">
-                        <label for="Autre">Autre (préciser) : </label>
+                        <input type="checkbox" id="" name="Lieu" required>
+                        <label for="Lieu">Autre (préciser) : </label>
                         <input type="text">
                     </div>
                 </div>
@@ -104,7 +108,7 @@
                 <div class="label centre demi">Déplacements occasionnés par le stage</div>
 
                 <div class="info">
-                    <input type="radio" id="" name="deplacement">
+                    <input type="radio" id="" name="deplacement" required>
                     <label for="oui">OUI</label>
                     <div class="mini"></div>
                     <input type="radio" id="" name="deplacement">
@@ -116,7 +120,7 @@
                 <div class="label centre demi">Fréquence</div>
                 <div class="colonne">
                     <div class="info">
-                        <input type="radio" id="" name="frequenceDeplacement">
+                        <input type="radio" id="" name="frequenceDeplacement" required>
                         <label for="Quotidien">Quotidien </label>
                         <div class="mini"></div>
                         <input type="radio" id="" name="frequenceDeplacement">
@@ -126,7 +130,7 @@
                         <input type="radio" id="" name="frequenceDeplacement">
                         <label for="Autre">Autre (préciser) : </label>
                         <input type="text">
-                        // il faut faire un script
+                         <!-- il faut faire un script -->
                     </div>
                 </div>
             </div>
@@ -150,6 +154,7 @@
             </div>
             <div class="espaceHor"></div>
 
+<!-- ******************Les activités****************** -->
         </fieldset>
         <div class="espaceHor"></div>
         <div class="espaceHor"></div>
@@ -161,17 +166,17 @@
                 <div class="label centre demi">demandent une attestation de formation règlementaire</div>
                 <div class="colonne">
                     <div class="info">
-                        <input type="checkbox" id="" name="lieu">
+                        <input type="radio" id="" name="attFormReglement" required>
                         <label for="lieu">OUI</label>
                         <div class="mini"></div>
-                        <input type="checkbox" id="" name="Chantier">
+                        <input type="radio" id="" name="attFormReglement">
                         <label for="Chantier">NON</label>
                         <div class="mini"></div>
                     </div>
                     <div class="info centre">
-                        <input type="checkbox" id="" name="Autre">
-                        <label for="Autre">Si oui, laquelle : </label>
-                        <input type="text">
+                        <input type="checkbox" id="" name="libelleAttFormReg">
+                        <label for="libelleAttFormReg">Si oui, laquelle : </label>
+                        <input type="text" name="libelleAttFormReg">
                     </div>
                 </div>
             </div>
@@ -180,10 +185,10 @@
                 <div class="label centre demi">exige une visite médicale d'aptitude:</div>
                 <div class="colonne">
                     <div class="info">
-                        <input type="checkbox" id="" name="lieu">
+                        <input type="radio" id="" name="visiteMedical" required>
                         <label for="lieu">OUI</label>
                         <div class="mini"></div>
-                        <input type="checkbox" id="" name="Chantier">
+                        <input type="radio" id="" name="visiteMedical">
                         <label for="Chantier">NON</label>
                         <div class="mini"></div>
                     </div>
@@ -194,10 +199,10 @@
                 <div class="label centre demi">comportent des travaux dangereux </div>
                 <div class="colonne">
                     <div class="info">
-                        <input type="checkbox" id="" name="lieu">
+                        <input type="radio" id="" name="travauxDang" required>
                         <label for="lieu">OUI</label>
                         <div class="mini"></div>
-                        <input type="checkbox" id="" name="Chantier">
+                        <input type="radio" id="" name="travauxDang">
                         <label for="Chantier">NON</label>
                         <div class="mini"></div>
                     </div>
@@ -309,7 +314,10 @@
 
         </fieldset>
         <div class="espaceHor"></div>
+        <input type="submit">
         <div class="espaceHor"></div>
+        <div class="espaceHor"></div>
+
     </form>
 </section>
 
