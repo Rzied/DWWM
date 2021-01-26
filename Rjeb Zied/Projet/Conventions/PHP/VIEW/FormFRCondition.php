@@ -185,7 +185,7 @@
             </div>
             <div class="espaceHor"></div>
             <div class="info">
-                <div class="label centre demi">exige une visite médicale d'aptitude:</div>
+                <div class="label centre demi">Exige une visite médicale d'aptitude:</div>
                 <div class="colonne">
                     <div class="info">
                         <input type="radio" id="" name="visiteMedical" required>
