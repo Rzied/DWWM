@@ -15,39 +15,38 @@
             </div>
             <div class="ligne">
                 <div class="border double">Début de journée</div>
-                <div class="border"><input type="text"></div>
-                <div class="border"><input type="text"></div>
-                <div class="border"><input type="text"></div>
-                <div class="border"></div>
-                <div class="border"></div>
-                <div class="border"></div>
+    <?php
+        for ($i=0; $i <6; $i++) { 
+            jours("horaireDebutJour",$i);
+        }
+    ?>
+
             </div>
             <div class="ligne">
                 <div class="border double">Début déjeuner</div>
-                <div class="border"><input type="text"></div>
-                <div class="border"><input type="text"></div>
-                <div class="border"></div>
-                <div class="border"></div>
-                <div class="border"></div>
-                <div class="border"></div>
+                
+    <?php
+        for ($i=0; $i <6; $i++) { 
+            jours("horaireDebutDej",$i);
+        }
+    ?>
             </div>
             <div class="ligne">
                 <div class="border double">Fin déjeuner</div>
-                <div class="border"></div>
-                <div class="border"></div>
-                <div class="border"></div>
-                <div class="border"></div>
-                <div class="border"></div>
-                <div class="border"></div>
+                
+    <?php
+        for ($i=0; $i <6; $i++) { 
+            jours("horaireFinDej",$i);
+        }
+    ?>
             </div>
             <div class="ligne">
                 <div class="border double">Fin de journée</div>
-                <div class="border"></div>
-                <div class="border"></div>
-                <div class="border"></div>
-                <div class="border"></div>
-                <div class="border"></div>
-                <div class="border"></div>
+    <?php
+        for ($i=0; $i <6; $i++) { 
+            jours("horaireFinJour",$i);
+        }
+    ?>
             </div>
             <div class="ligne">
                 <div class="mini border">Durée /<br> jour</div>
@@ -84,7 +83,7 @@
                 <div class="colonne">
                     <div class="info">
                         <input type="checkbox" id="" name="lieu">
-                        <label for="lieu">Lieu de réalisation</label>
+                        <label for="lieu">Locaux de l'entreprise </label>
                         <div class="mini"></div>
                         <input type="checkbox" id="" name="Chantier">
                         <label for="Chantier">Chantier(s) </label>
@@ -105,10 +104,10 @@
                 <div class="label centre demi">Déplacements occasionnés par le stage</div>
 
                 <div class="info">
-                    <input type="checkbox" id="" name="oui">
+                    <input type="radio" id="" name="deplacement">
                     <label for="oui">OUI</label>
                     <div class="mini"></div>
-                    <input type="checkbox" id="" name="non">
+                    <input type="radio" id="" name="deplacement">
                     <label for="non">NON</label>
                 </div>
             </div>
@@ -117,16 +116,17 @@
                 <div class="label centre demi">Fréquence</div>
                 <div class="colonne">
                     <div class="info">
-                        <input type="checkbox" id="" name="Quotidien">
+                        <input type="radio" id="" name="frequenceDeplacement">
                         <label for="Quotidien">Quotidien </label>
                         <div class="mini"></div>
-                        <input type="checkbox" id="" name="Occasionnels">
+                        <input type="radio" id="" name="frequenceDeplacement">
                         <label for="Occasionnels">Occasionnels </label>
                     </div>
                     <div class="info centre">
-                        <input type="checkbox" id="" name="Autre">
+                        <input type="radio" id="" name="frequenceDeplacement">
                         <label for="Autre">Autre (préciser) : </label>
                         <input type="text">
+                        // il faut faire un script
                     </div>
                 </div>
             </div>
@@ -315,9 +315,10 @@
 
 
 <?php
-function jours($numJours,$momentJours)
+function jours($momentJours,$numJours)
 {
-    echo'<div class="border"><input type="text" id=".'$momentJours'."></div>';
+    
+    echo'<div class="border"><input type="text" id="'.$momentJours.$numJours.'"></div>';
 
 }
 
