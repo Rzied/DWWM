@@ -54,4 +54,18 @@ class LibellesTravauxDangereuxManager
 		}
 		return $liste;
 	}
+	public static function getByLibelle($libelle)
+	{
+ 		$db=DbConnect::getDb();
+		$q=$db->query("SELECT * FROM LibellesTravauxDangereux WHERE libelleTravaux ='".$libelle."'");
+		$results = $q->fetch(PDO::FETCH_ASSOC);
+		if($results != false)
+		{
+			return new LibellesTravauxDangereux($results);
+		}
+		else
+		{
+			return false;
+		}
+	}
 }

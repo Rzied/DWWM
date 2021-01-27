@@ -101,7 +101,7 @@
                     <div class="info centre">
                         <input type="checkbox" id="" name="lieuRealisation4">
                         <label for="Lieu">Autre (préciser) : </label>
-                        <input type="text" name="lieuRealisation4">
+                        <input type="text" name="lieuRealisation5">
                     </div>
                 </div>
             </div>
@@ -142,16 +142,16 @@
                 <div class="label centre demi">Modes de déplacement</div>
                 <div class="colonne">
                     <div class="info">
-                        <input type="checkbox" id="" name="vehiculeEntreprise" value="vehiculeEntreprise">
+                        <input type="checkbox" id="" name="modeDeplacement1" value="vehicule de l'Entreprise">
                         <label for="vehiculeEntreprise">Véhicule de l'entreprise </label>
                         <div class="mini"></div>
-                        <input type="checkbox" id="" name="vehiculeStagiaire" value="vehiculeStagiaire">
+                        <input type="checkbox" id="" name="modeDeplacement2" value="vehicule de Stagiaire">
                         <label for="vehiculeStagiaire">Véhicule personnel du stagiaire </label>
                     </div>
                     <div class="info centre">
-                        <input type="checkbox" id="" name="AutreModeDeplacement">
+                        <input type="checkbox" id="" name="modeDeplacement3">
                         <label for="AutreModeDeplacement">Autre (préciser) : </label>
-                        <input type="text" name="AutreModeDeplacement">
+                        <input type="text" name="modeDeplacement4">
                     </div>
                 </div>
             </div>
@@ -169,11 +169,11 @@
                 <div class="label centre demi">demandent une attestation de formation règlementaire</div>
                 <div class="colonne">
                     <div class="info">
-                        <input type="radio" id="" name="attFormReglementaire" value="OUI" required>
-                        <label for="lieu">OUI</label>
+                        <input type="radio" id="" name="attFormReglement" value="OUI" required>
+                        <label for="attFormReglement">OUI</label>
                         <div class="mini"></div>
-                        <input type="radio" id="" name="attFormReglementaire" value="NON">
-                        <label for="Chantier">NON</label>
+                        <input type="radio" id="" name="attFormReglement" value="NON">
+                        <label for="attFormReglement">NON</label>
                         <div class="mini"></div>
                     </div>
                     <div class="info centre">
@@ -189,10 +189,10 @@
                 <div class="colonne">
                     <div class="info">
                         <input type="radio" id="" name="visiteMedical" value="OUI" required>
-                        <label for="lieu">OUI</label>
+                        <label for="visiteMedical">OUI</label>
                         <div class="mini"></div>
                         <input type="radio" id="" name="visiteMedical" value="NON">
-                        <label for="Chantier">NON</label>
+                        <label for="visiteMedical">NON</label>
                         <div class="mini"></div>
                     </div>
                 </div>
