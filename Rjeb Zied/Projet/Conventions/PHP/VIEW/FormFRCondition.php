@@ -89,19 +89,19 @@
                 <div class="label centre demi">Lieu de réalisation</div>
                 <div class="colonne">
                     <div class="info">
-                        <input type="checkbox" id="" name="entreprise" value="entreprise">
+                        <input type="checkbox" id="" name="lieuRealisation1" value="entreprise">
                         <label for="entreprise">Locaux de l'entreprise </label>
                         <div class="mini"></div>
-                        <input type="checkbox" id="" name="Chantier" value="Chantier">
+                        <input type="checkbox" id="" name="lieuRealisation2" value="Chantier">
                         <label for="Chantier">Chantier(s) </label>
                         <div class="mini"></div>
-                        <input type="checkbox" id="" name="clients" value="clients">
+                        <input type="checkbox" id="" name="lieuRealisation3" value="clients">
                         <label for="clients">Locaux des clients</label>
                     </div>
                     <div class="info centre">
-                        <input type="checkbox" id="" name="autreLieu">
+                        <input type="checkbox" id="" name="lieuRealisation4">
                         <label for="Lieu">Autre (préciser) : </label>
-                        <input type="text" name="autreLieu">
+                        <input type="text" name="lieuRealisation4">
                     </div>
                 </div>
             </div>
@@ -130,9 +130,9 @@
                         <label for="Occasionnels">Occasionnels </label>
                     </div>
                     <div class="info centre">
-                        <input type="radio" id="" name="frequenceDeplacement">
+                        <input type="radio" id="" name="frequenceDeplacement" value="autre">
                         <label for="Autre">Autre (préciser) : </label>
-                        <input type="text" name="autreFrequence">
+                        <input type="text" name="frequenceDeplacement1">
                          <!-- il faut faire un script -->
                     </div>
                 </div>
@@ -188,10 +188,10 @@
                 <div class="label centre demi">Exige une visite médicale d'aptitude:</div>
                 <div class="colonne">
                     <div class="info">
-                        <input type="radio" id="" name="visiteMedical" required>
+                        <input type="radio" id="" name="visiteMedical" value="OUI" required>
                         <label for="lieu">OUI</label>
                         <div class="mini"></div>
-                        <input type="radio" id="" name="visiteMedical">
+                        <input type="radio" id="" name="visiteMedical" value="NON">
                         <label for="Chantier">NON</label>
                         <div class="mini"></div>
                     </div>
@@ -202,10 +202,10 @@
                 <div class="label centre demi">comportent des travaux dangereux </div>
                 <div class="colonne">
                     <div class="info">
-                        <input type="radio" id="" name="travauxDang" required>
+                        <input type="radio" id="" name="travauxDang" value="OUI" required>
                         <label for="lieu">OUI</label>
                         <div class="mini"></div>
-                        <input type="radio" id="" name="travauxDang">
+                        <input type="radio" id="" name="travauxDang" value="NON">
                         <label for="Chantier">NON</label>
                         <div class="mini"></div>
                     </div>
@@ -213,17 +213,17 @@
             </div>
             <div class="espaceHor"></div>
             <div class="info">
-                <div class="label centre demi">Si oui, préciser</div>
+                <div class="label centre demi">Préciser</div>
                 <div class="colonne">
                     <div class="info colonne">
                         <div class="info">
                             <div>
-                                <input type="checkbox" id="" name="lieu">
+                                <input type="checkbox" id="" name="td1" value="Agents chimiques dangereux">
                                 <label for="lieu">Agents chimiques dangereux </label>
                             </div>
                             <div class="mini"></div>
                             <div>
-                                <input type="checkbox" id="" name="Chantier">
+                                <input type="checkbox" id="" name="td2" value="Milieu confiné">
                                 <label for="Chantier"> Milieu confiné </label>
                             </div>
                         </div>
@@ -233,12 +233,12 @@
 
                         <div class="info">
                             <div>
-                                <input type="checkbox" id="" name="lieu">
+                                <input type="checkbox" id="" name="td3" value="Agents biologiques">
                                 <label for="lieu">Agents biologiques </label>
                             </div>
                             <div class="mini"></div>
                             <div>
-                                <input type="checkbox" id="" name="Chantier">
+                                <input type="checkbox" id="" name="td4" value="Travaux en contact avec du verre ou du métal en fusion">
                                 <label for="Chantier">Travaux en contact avec du verre ou du métal en fusion</label>
 
 
@@ -247,61 +247,61 @@
                         </div>
 
                         <div>
-                            <input type="checkbox" id="" name="lieu">
+                            <input type="checkbox" id="" name="td5" value="Vibrations mécaniques">
                             <label for="lieu">Vibrations mécaniques</label>
 
                             <!-- <div class="mini"></div> -->
                             <div>
-                                <input type="checkbox" id="" name="Chantier">
+                                <input type="checkbox" id="" name="td6" value="Manutentions manuelles">
                                 <label for="Chantier">Manutentions manuelles</label>
                             </div>
 
                         </div>
                         <div>
-                            <input type="checkbox" id="" name="lieu">
+                            <input type="checkbox" id="" name="td7" value="Rayonnements">
                             <label for="lieu">Rayonnements </label>
 
                             <!-- <div class="mini"></div> -->
                             <div>
-                                <input type="checkbox" id="" name="Chantier">
+                                <input type="checkbox" id="" name="td8" value="Risques électriques">
                                 <label for="Chantier">Risques électriques </label>
                             </div>
                         </div>
                         <div>
-                            <input type="checkbox" id="" name="lieu">
+                            <input type="checkbox" id="" name="td9" value="Milieu hyperbare">
                             <label for="lieu">Milieu hyperbare </label>
 
                             <!-- <div class="mini"></div> -->
                             <div>
-                                <input type="checkbox" id="" name="Chantier">
+                                <input type="checkbox" id="" name="td10" value="Utilisation de machines">
                                 <label for="Chantier">Utilisation de machines </label>
                             </div>
 
                         </div>
                         <div>
-                            <input type="checkbox" id="" name="lieu">
+                            <input type="checkbox" id="" name="td11" value="Températures extrêmes">
                             <label for="lieu">Températures extrêmes</label>
 
                             <!-- <div class="mini"></div> -->
                             <div>
-                                <input type="checkbox" id="" name="Chantier">
+                                <input type="checkbox" id="" name="td12" value="Travaux en hauteur">
                                 <label for="Chantier">Travaux en hauteur </label>
                             </div>
 
                         </div>
                         <div>
-                            <input type="checkbox" id="" name="lieu">
+                            <input type="checkbox" id="" name="td13" value="Effondrement et ensevelissement">
                             <label for="lieu">Effondrement et ensevelissement </label>
 
                             <!-- <div class="mini"></div> -->
                             <div>
-                                <input type="checkbox" id="" name="Chantier">
+                                <input type="checkbox" id="" name="td14" value="Contact avec des animaux">
                                 <label for="Chantier">Contact avec des animaux</label>
                             </div>
 
                         </div>
                         <div>
-                            <input type="checkbox" id="" name="lieu">
+                            <input type="checkbox" id="" name="td15" value="Appareils sous pression">
                             <label for="lieu">Appareils sous pression</label>
 
                             <!-- <div class="mini"></div> -->
