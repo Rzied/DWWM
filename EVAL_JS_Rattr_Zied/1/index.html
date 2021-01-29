@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="Fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    
+    <section class="colonne">
+        <div class="titre">
+            Jeux de Questions / Réponses
+        </div> 
+        <div class="sousTitre">
+            <div>Questions</div>
+            <div class="espace"></div>
+            <div>Votre Proposition</div>
+            <div class="espace"></div>
+            <div>Messeage</div>
+        </div>
+        <form class="colonne">
+            <div class="contenu colonne">
+                <div class="ligne">
+                    <label for="qs1">Comment s'appelle le druide dans "Asterix"?</label>
+                    <input class="checkValidity" type="text" name="qs1" id="qs1" title="" pattern="^[v][i][o][l][o][n]$"
+                        required>
+                    <div class="msg"></div>
+                </div>
+                <div class="ligne">
+                    <label for="qs2">Jolly Jumper est le cheval de?</label>
+                    <input class="checkValidity" type="text" name="qs2" id="qs2" title=""
+                        pattern="^[1-9][0-9]?$|^100$" required>
+                    <div class="msg"></div>
+                </div>
+                <div class="ligne">
+                    <label for="qs3">Dans la BD "Les p'tits Diable" quel est le vrai prenom de microbe?</label>
+                    <input class="checkValidity" type="text" name="qs3" id="qs3" title="" pattern="^\d+$" required>
+                    <div class="msg"></div>
+                </div>
+                <div class="ligne">
+                    <label for="qs4">Qui joue Boulard dans le film "les profs"?</label>
+                    <input class="checkValidity" type="text" name="qs4" id="qs4" title="" pattern="^\d+$"
+                        required>
+                    <div class="msg"></div>
+                </div>
+                <div class="ligne">
+                    <label for="qs5">Comment s'appelle le capitaine de l'equipage dans le manga One Piece?</label>
+                    <input class="checkValidity" type="text" name="qs5" id="qs5" title="" pattern="^\d+$"
+                        required>
+                    <div class="msg"></div>
+                </div>
+                <div class="ligne">
+                    <label for="qs6">Comment s'appelle-t-on un fan de manga?</label>
+                    <input class="checkValidity" type="text" name="qs6" id="qs6" title="" pattern="^\d+$"
+                        required>
+                    <div class="msg"></div>
+                </div>
+            </div>            
+            <div class="espace"></div>
+            <div class="bouton">
+                <button id="submit" disabled>Soumettre</button>
+                <div class="mini"></div>
+                <button id="reset" type="reset">Effacer les réponses</button>
+            </div>
+        </form>
+
+    </section>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
