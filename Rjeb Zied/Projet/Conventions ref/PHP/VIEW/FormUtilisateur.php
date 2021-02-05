@@ -123,7 +123,7 @@ if(isset($_GET["id"]))
         <div>
             <div class="info colonne center">
                 <label for="datePeremption">Date de peremption :</label>
-                <input type="date" id="datePeremtion" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>name="datePeremption"  value="<?php if ($mode != "ajouter") echo $choix->getDatePeremption();?>" required>
+                <input type="date" id="datePeremtion" <?php if($mode=="details" || $mode=="supprimer" ) echo '" disabled "'; ?>name="datePeremption"  value="<?php if ($mode != "ajouter") echo $choix->getDatePeremption();?>" >
             </div>
             <div class="info colonne center">
                 <label for="idRole">Role :</label>

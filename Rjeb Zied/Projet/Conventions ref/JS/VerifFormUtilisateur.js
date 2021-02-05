@@ -7,9 +7,9 @@ var mdp = document.getElementById("mdp");
 var confirmation = document.getElementById('confirmation');
 var datePeremtion = document.getElementById("datePeremtion");
 var role = document.getElementById("role");
-var submit=document.getElementById("submit");
-var tabErreur=[1,0,0,0,0,0,0,0];
-var tabMsgErreur=["","Prenom Invalide ","Nom Invalide ","Adresse E-mail Invalide ","Mot de passe Invalide ","Confirmation Mot de passe Invalide ","Date de peremption Invalide ","Role Invalide "]
+var submit = document.getElementById("submit");
+var tabErreur = [1, 0, 0, 0, 0, 0, 1, 0];
+var tabMsgErreur = ["", "Prenom Invalide ", "Nom Invalide ", "Adresse E-mail Invalide ", "Mot de passe Invalide ", "Confirmation Mot de passe Invalide ", "Date de peremption Invalide ", "Role Invalide "]
 
 
 
@@ -42,13 +42,13 @@ mdp.addEventListener("input", function (event) {
         if (RegExp(lesCheck[i]).test(mdp.value)) {
             //la condition est vérifiée, on met la coche verte correspondente
             lesImages[i].classList = "far fa-check-circle vert";
-            tabErreur[4]=1;
+            tabErreur[4] = 1;
         } else {
             lesImages[i].classList = "far fa-times-circle rouge";
-            tabErreur[4]=-1;
+            tabErreur[4] = -1;
         }
-    afficheMsgErreur()
-    boutonSubmit();
+        afficheMsgErreur()
+        boutonSubmit();
     }
 })
 mdp.addEventListener("blur", function (event) {
@@ -59,10 +59,10 @@ mdp.addEventListener("blur", function (event) {
 confirmation.addEventListener("input", function (event) {
     if (confirmation.value == mdp.value) {
         confirmation.classList = ("correct");
-        tabErreur[5]=1;
+        tabErreur[5] = 1;
     } else {
         confirmation.classList = ("incorrect");
-        tabErreur[5]=-1;
+        tabErreur[5] = -1;
     }
     afficheMsgErreur()
     boutonSubmit();
@@ -84,7 +84,7 @@ oeil.addEventListener("mouseup", function () {
 
 
 
-datePeremtion.addEventListener("change", verifDdP);
+datePeremtion.addEventListener("input", verifDdP);
 role.addEventListener("change", verifRole);
 
 
@@ -92,13 +92,13 @@ role.addEventListener("change", verifRole);
 
 function verifPrenom() {
     //mettre la premiere lettre en MAJUSCULES 
-    prenom.value=(prenom.value.charAt(0).toUpperCase() + prenom.value.substring(1).toLowerCase())
+    prenom.value = (prenom.value.charAt(0).toUpperCase() + prenom.value.substring(1).toLowerCase())
     if (listInput[1].checkValidity()) {
         prenom.classList = ("correct");
-        tabErreur[1]=1;
+        tabErreur[1] = 1;
     } else {
         prenom.classList = ("incorrect");
-        tabErreur[1]=-1;
+        tabErreur[1] = -1;
     }
     afficheMsgErreur()
     boutonSubmit();
@@ -106,13 +106,13 @@ function verifPrenom() {
 
 function verifNom() {
     //mettre tout le nom en MAJUSCULES 
-    nom.value=nom.value.toUpperCase();
+    nom.value = nom.value.toUpperCase();
     if (listInput[2].checkValidity()) {
         nom.classList = ("correct");
-        tabErreur[2]=1;
+        tabErreur[2] = 1;
     } else {
         nom.classList = ("incorrect");
-        tabErreur[2]=-1;
+        tabErreur[2] = -1;
     }
     afficheMsgErreur()
     boutonSubmit();
@@ -127,12 +127,13 @@ function verifDdP() {
     let date = new Date(annee, mois - 1, jour);
     let dateSysteme = new Date();
 
+    tabErreur[6] = 0;
     if (date < dateSysteme) {
         datePeremtion.classList = ("incorrect");
-        tabErreur[6]=-1;
+        tabErreur[6] = -1;
     } else {
         datePeremtion.classList = ("correct");
-        tabErreur[6]=1;
+        tabErreur[6] = 1;
     }
     afficheMsgErreur()
     boutonSubmit();
@@ -141,12 +142,22 @@ function verifDdP() {
 function verifRole() {
     let content = role.value;
     console.log(content);
-    if (content=="defaut") {
-        tabErreur[7]=-1;
+    if (content == "defaut") {
+        tabErreur[7] = -1;
         role.classList = ("incorrect");
-    }else {
-        tabErreur[7]=1;
+    } else {
+        tabErreur[7] = 1;
     }
+    var valeurselectionnee = role.value;
+    console.log(valeurselectionnee);
+    if (valeurselectionnee == 3 || valeurselectionnee == 4) {
+        tabErreur[6] = 0;
+        console.log(tabErreur[6]);
+        datePeremtion.setAttribute("required", "required")
+    } else {
+        datePeremtion.removeAttribute("required")
+    }
+
     afficheMsgErreur()
     boutonSubmit();
 }
@@ -154,10 +165,10 @@ function verifRole() {
 function verifEmail() {
     if (listInput[3].checkValidity()) {
         email.classList = ("correct");
-        tabErreur[3]=1;
+        tabErreur[3] = 1;
     } else {
         email.classList = ("incorrect");
-        tabErreur[3]=-1;
+        tabErreur[3] = -1;
     }
     afficheMsgErreur();
     boutonSubmit();
@@ -176,20 +187,21 @@ function affichePassWord(flag) {
     else mdp.type = "password";
 }
 
-function afficheMsgErreur(){
-    spanInfo.textContent="";
+function afficheMsgErreur() {
+    spanInfo.textContent = "";
     for (let i = 0; i < tabErreur.length; i++) {
-       if (tabErreur[i]==-1) {
-        spanInfo.innerHTML += tabMsgErreur[i]+ "<br>";
-       }
+        if (tabErreur[i] == -1) {
+            spanInfo.innerHTML += tabMsgErreur[i] + "<br>";
+        }
     }
 }
-function boutonSubmit(){
-    
-    submit.disabled=false;
+
+function boutonSubmit() {
+
+    submit.disabled = false;
     for (let i = 0; i < tabErreur.length; i++) {
-        if (tabErreur[i]!=1) {
-            submit.disabled=true;
+        if (tabErreur[i] != 1) {
+            submit.disabled = true;
         }
     }
     console.log(tabErreur);
