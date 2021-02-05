@@ -8,8 +8,8 @@ var confirmation = document.getElementById('confirmation');
 var datePeremtion = document.getElementById("datePeremtion");
 var role = document.getElementById("role");
 var submit=document.getElementById("submit");
-var tabErreur=[0,0,0,0,0,0,0];
-var tabMsgErreur=["Prenom Invalide ","Nom Invalide ","Adresse E-mail Invalide ","Mot de passe Invalide ","Confirmation Mot de passe Invalide ","Date de peremption Invalide ","Role Invalide "]
+var tabErreur=[1,0,0,0,0,0,0,0];
+var tabMsgErreur=["","Prenom Invalide ","Nom Invalide ","Adresse E-mail Invalide ","Mot de passe Invalide ","Confirmation Mot de passe Invalide ","Date de peremption Invalide ","Role Invalide "]
 
 
 
@@ -42,11 +42,13 @@ mdp.addEventListener("input", function (event) {
         if (RegExp(lesCheck[i]).test(mdp.value)) {
             //la condition est vérifiée, on met la coche verte correspondente
             lesImages[i].classList = "far fa-check-circle vert";
-            tabErreur[3]=1;
+            tabErreur[4]=1;
         } else {
             lesImages[i].classList = "far fa-times-circle rouge";
-            tabErreur[3]=-1;
+            tabErreur[4]=-1;
         }
+    afficheMsgErreur()
+    boutonSubmit();
     }
 })
 mdp.addEventListener("blur", function (event) {
@@ -56,12 +58,14 @@ mdp.addEventListener("blur", function (event) {
 //gestion particulière de la confirmation de mot de passe
 confirmation.addEventListener("input", function (event) {
     if (confirmation.value == mdp.value) {
-        confirmation.classList = ("vrai");
-        tabErreur[4]=1;
+        confirmation.classList = ("correct");
+        tabErreur[5]=1;
     } else {
         confirmation.classList = ("incorrect");
-        tabErreur[4]=-1;
+        tabErreur[5]=-1;
     }
+    afficheMsgErreur()
+    boutonSubmit();
 })
 //empecher le copier dans la zone mdp et confirm
 mdp.addEventListener("contextmenu", annule);
@@ -89,27 +93,29 @@ role.addEventListener("change", verifRole);
 function verifPrenom() {
     //mettre la premiere lettre en MAJUSCULES 
     prenom.value=(prenom.value.charAt(0).toUpperCase() + prenom.value.substring(1).toLowerCase())
-    if (listInput[0].checkValidity()) {
-        prenom.classList = ("vrai");
-        tabErreur[0]=1;
+    if (listInput[1].checkValidity()) {
+        prenom.classList = ("correct");
+        tabErreur[1]=1;
     } else {
         prenom.classList = ("incorrect");
-        tabErreur[0]=-1;
+        tabErreur[1]=-1;
     }
     afficheMsgErreur()
+    boutonSubmit();
 }
 
 function verifNom() {
     //mettre tout le nom en MAJUSCULES 
     nom.value=nom.value.toUpperCase();
-    if (listInput[1].checkValidity()) {
-        nom.classList = ("vrai");
-        tabErreur[1]=1;
+    if (listInput[2].checkValidity()) {
+        nom.classList = ("correct");
+        tabErreur[2]=1;
     } else {
         nom.classList = ("incorrect");
-        tabErreur[1]=-1;
+        tabErreur[2]=-1;
     }
     afficheMsgErreur()
+    boutonSubmit();
 }
 
 function verifDdP() {
@@ -123,40 +129,38 @@ function verifDdP() {
 
     if (date < dateSysteme) {
         datePeremtion.classList = ("incorrect");
-        tabErreur[5]=1;
+        tabErreur[6]=-1;
     } else {
-        datePeremtion.classList = ("vrai");
-        tabErreur[5]=-1;
+        datePeremtion.classList = ("correct");
+        tabErreur[6]=1;
     }
     afficheMsgErreur()
-
+    boutonSubmit();
 }
 
 function verifRole() {
     let content = role.value;
     console.log(content);
     if (content=="defaut") {
-        tabErreur[6]=1;
-        // submit.disabled = true;
+        tabErreur[7]=-1;
+        role.classList = ("incorrect");
     }else {
-        tabErreur[6]=-1;
-        // submit.disabled = false;
+        tabErreur[7]=1;
     }
     afficheMsgErreur()
-
+    boutonSubmit();
 }
 
 function verifEmail() {
-    // console.log(checkInput[6].value);
-    if (listInput[2].checkValidity()) {
-        email.classList = ("vrai");
-        tabErreur[2]=1;
+    if (listInput[3].checkValidity()) {
+        email.classList = ("correct");
+        tabErreur[3]=1;
     } else {
         email.classList = ("incorrect");
-        tabErreur[2]=-1;
+        tabErreur[3]=-1;
     }
-    afficheMsgErreur()
-
+    afficheMsgErreur();
+    boutonSubmit();
 }
 
 function annule(event) {
@@ -178,32 +182,15 @@ function afficheMsgErreur(){
        if (tabErreur[i]==-1) {
         spanInfo.innerHTML += tabMsgErreur[i]+ "<br>";
        }
-    //    else if () {
-           
-    //    }
-        
     }
 }
-
-/**
- * Activation du bouton de formulaire
- * Vérification de tous les champs
- */
-function checkAllValidity() {
-    var pasErreur = true;
-    i = 0;
-    // on vérifie les inputs un à un
-    while (pasErreur && i < listInput.length) {
-        pasErreur = validateInput(listInput[i])
-        i++;
+function boutonSubmit(){
+    
+    submit.disabled=false;
+    for (let i = 0; i < tabErreur.length; i++) {
+        if (tabErreur[i]!=1) {
+            submit.disabled=true;
+        }
     }
-    if (pasErreur) {
-        submit.disabled = false;
-        submit.style.color = "white";
-        submit.style.borderBottom = "4px solid white";
-    } else {
-        submit.disabled = true;
-        submit.style.color = "#666666";
-        submit.style.borderBottom = "4px solid #666666";
-    }
+    console.log(tabErreur);
 }
