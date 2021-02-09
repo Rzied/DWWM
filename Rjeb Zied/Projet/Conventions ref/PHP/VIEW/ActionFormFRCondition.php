@@ -39,7 +39,7 @@ if (isset($_POST["lieuRealisation5"]) && $_POST["lieuRealisation5"] != "")
 }
 else
 {
-    $lieuRealisation = substr($lieuRealisation, 0, strlen($lieuRealisation) - 2);
+    $lieuRealisation = substr($lieuRealisation, 0, strlen($lieuRealisation) - 1);
 }
 
 // gerer le deplacement oui ou non !
@@ -58,7 +58,7 @@ for ($i = 1; $i < 3; $i++)
 {
     if (isset($_POST["modeDeplacement" . $i]))
     {
-        $modeDeplacement = $modeDeplacement . $_POST["modeDeplacement" . $i] . ", ";
+        $modeDeplacement = $modeDeplacement . $_POST["modeDeplacement" . $i] . ",";
     }
 }
 if (isset($_POST["modeDeplacement4"]) && $_POST["modeDeplacement4"] != "")
@@ -75,7 +75,7 @@ for ($i = 1; $i < 16; $i++)
 {
     if (isset($_POST["td" . $i]))
     {
-        $td = $td . $_POST["td" . $i] . ", ";
+        $td = $td . $_POST["td" . $i] . ",";
     }
 
 }

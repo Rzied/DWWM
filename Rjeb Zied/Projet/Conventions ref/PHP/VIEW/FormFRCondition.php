@@ -165,24 +165,34 @@ for ($i = 1; $i < 7; $i++)
                     <div class="label centre ">Fréquence</div>
                     <div class="mini"></div>
                     <div class="info double colonne " groupe="<?php if ($stage->getDeplacement() == 0) echo "ko";else echo "ok"?>">
+                        <?php 
+                            $frDeplacement=$stage->getFrequenceDeplacement();
+                            if ($frDeplacement!="Quotidien" && $frDeplacement!="Occasionnels") {
+                                $valeurAutre=$frDeplacement;
+                            }
+
+                        ?>
+                    
                         <div class="">
                             <div class="left">
                                 <input type="radio" id="" name="frequenceDeplacement" value="Quotidien" required
-                                    <?php if ($stage->getDeplacement() == "Quotidien") echo " checked ";?>>&nbsp
+                                    <?php if ($stage->getFrequenceDeplacement() == "Quotidien") echo " checked ";?>>&nbsp
                                 <label for="Quotidien">Quotidien </label>
                             </div>
                             <div class="left">
                                 <input type="radio" id="" name="frequenceDeplacement" value="Occasionnels"
-                                    <?php if ($stage->getDeplacement() == "Occasionnels") echo " checked ";?>>&nbsp
+                                    <?php if ($stage->getFrequenceDeplacement() == "Occasionnels") echo " checked ";?>>&nbsp
                                 <label for="Occasionnels">Occasionnels </label>
                             </div>
                         </div>
                         <div class=" ">
                             <div class="left"></div>
                             <div class="left centerItem">
-                                <input type="radio" autre="ok" id="" name="frequenceDeplacement" value="autre">&nbsp
+                                <input type="radio" autre="ok" id="" name="frequenceDeplacement" value="autre"
+                                <?php if ($valeurAutre!="") echo " checked ";?>>
+                                &nbsp
                                 <label for="Autre">Autre (préciser)</label>&nbsp
-                                <input type="text" name="frequenceDeplacement1">
+                                <input type="text" name="frequenceDeplacement1" <?php echo " value='".$valeurAutre."' ";?>>
                             </div>
                         </div>
                     </div>
@@ -192,13 +202,30 @@ for ($i = 1; $i < 7; $i++)
                     <div class="label centre ">Modes de déplacement</div>
                     <div class="mini"></div>
                     <div class="info double colonne " groupe="<?php if ($stage->getDeplacement() == 0) echo "ko";else echo "ok"?>">
+                            <?php 
+                                $modeDep=$stage->getModeDeplacement();
+                                $modeDeps=explode(",",$modeDep);
+                                $valeurAutre ="";
+                                /* On cherche un element contenant autre */
+                                    /* preg_grep cherche une valeur dans le tableau qui correspond à la regex*/
+                                $result = preg_grep("/^autre/i", $modeDeps);
+                                if (count($result)>0)
+                                {   /* array_values réindexe le tableau pour emettre d'accéder à la 1ere valeur*/
+                                    $valeurAutre = substr(array_values($result)[0],5);
+                                }
+                                var_dump($modeDeps)
+                            ?>
                         <div class="">
                             <div class="left">
-                                <input type="checkbox" id="" name="modeDeplacement1" value="vehicule de l'Entreprise">&nbsp
+                                <input type="checkbox" id="" name="modeDeplacement1" value="vehicule de l'Entreprise"
+                                <?php if (in_array("vehicule de l'Entreprise",$modeDeps)) echo " checked ";?>
+                                >&nbsp
                                 <label for="vehiculeEntreprise">Véhicule de l'entreprise </label>
                             </div>
                             <div class="left">
-                                <input type="checkbox" id="" name="modeDeplacement2" value="vehicule de Stagiaire">&nbsp
+                                <input type="checkbox" id="" name="modeDeplacement2" value="vehicule de Stagiaire"
+                                <?php if (in_array("vehicule de Stagiaire",$modeDeps))echo'tot'; echo " checked ";?>
+                                >&nbsp
                                 <label for="vehiculeStagiaire">Véhicule personnel du stagiaire </label>
                             </div>
                         </div>
