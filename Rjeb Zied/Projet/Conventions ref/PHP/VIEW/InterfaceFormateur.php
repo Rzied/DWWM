@@ -45,6 +45,14 @@
             <div><a class="bouton" id="objectif">Objectifs P.A.E</a></div>
         </div>
         <div class="espaceHor"></div>
+        <div class="espaceHor"></div>
+        
+        <div>
+        <div></div>
+        <a href="index.php?page=FormAdmin"><div class="bouton"><i class="far fa-arrow-alt-circle-left"></i>&nbsp Retour</div></a>
+        <div></div>
+        </div>
+        <div class="espaceHor"></div>
         <div class="colonne" id="affichage">
         </div>
         </section>';
