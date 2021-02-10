@@ -63,11 +63,11 @@ for ($i = 1; $i < 3; $i++)
 }
 if (isset($_POST["modeDeplacement4"]) && $_POST["modeDeplacement4"] != "")
 {
-    $modeDeplacement = $modeDeplacement . $_POST["modeDeplacement4"];
+    $modeDeplacement = $modeDeplacement . "autre".$_POST["modeDeplacement4"];
 }
 else
 {
-    $modeDeplacement = substr($modeDeplacement, 0, strlen($modeDeplacement) - 2);
+    $modeDeplacement = substr($modeDeplacement, 0, strlen($modeDeplacement) - 1);
 }
 
 $td = "";

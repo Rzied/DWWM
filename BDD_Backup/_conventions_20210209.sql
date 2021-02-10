@@ -102,6 +102,8 @@ CREATE TABLE `entreprises` (
   `mailRepresentant` varchar(100) NOT NULL,
   `idVille` int(11) NOT NULL,
   PRIMARY KEY (`idEntreprise`),
+  UNIQUE KEY `email` (`mailRepresentant`),
+  UNIQUE KEY `numSiret` (`numSiretEnt`),
   KEY `FK_Entreprises_Villes` (`idVille`),
   CONSTRAINT `FK_Entreprises_Villes` FOREIGN KEY (`idVille`) REFERENCES `villes` (`idVille`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -155,8 +157,10 @@ DROP TABLE IF EXISTS `formations`;
 CREATE TABLE `formations` (
   `idFormation` int(11) NOT NULL AUTO_INCREMENT,
   `libelleFormation` varchar(200) NOT NULL,
+  `grn` int(4) NOT NULL,
+  `finaliteFormation` varchar(250) NOT NULL,
   PRIMARY KEY (`idFormation`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -165,7 +169,7 @@ CREATE TABLE `formations` (
 
 LOCK TABLES `formations` WRITE;
 /*!40000 ALTER TABLE `formations` DISABLE KEYS */;
-INSERT INTO `formations` VALUES (1,'DWWM'),(2,'TSAII'),(3,'ADVF'),(4,'');
+INSERT INTO `formations` VALUES (1,'DWWM',164,''),(2,'TSAII',172,''),(3,'ADVF',120,'');
 /*!40000 ALTER TABLE `formations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,6 +257,8 @@ DROP TABLE IF EXISTS `participations`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `participations` (
   `idParticipation` int(11) NOT NULL AUTO_INCREMENT,
+  `dateDebut` date NOT NULL,
+  `dateFin` date NOT NULL,
   `idSessionFormation` int(11) NOT NULL,
   `idStagiaire` int(11) NOT NULL,
   PRIMARY KEY (`idParticipation`),
@@ -269,7 +275,7 @@ CREATE TABLE `participations` (
 
 LOCK TABLES `participations` WRITE;
 /*!40000 ALTER TABLE `participations` DISABLE KEYS */;
-INSERT INTO `participations` VALUES (1,1,1),(2,1,2),(3,1,3);
+INSERT INTO `participations` VALUES (1,'2020-08-31','2021-05-20',1,1),(2,'2020-08-31','2021-05-20',1,2),(3,'2020-08-31','2021-05-20',1,3);
 /*!40000 ALTER TABLE `participations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -415,7 +421,7 @@ CREATE TABLE `stages` (
   KEY `FK_Stages_Tuteurs` (`idTuteur`),
   CONSTRAINT `FK_Stages_Stagiaires` FOREIGN KEY (`idStagiaire`) REFERENCES `stagiaires` (`idStagiaire`),
   CONSTRAINT `FK_Stages_Tuteurs` FOREIGN KEY (`idTuteur`) REFERENCES `tuteurs` (`idTuteur`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -424,7 +430,7 @@ CREATE TABLE `stages` (
 
 LOCK TABLES `stages` WRITE;
 /*!40000 ALTER TABLE `stages` DISABLE KEYS */;
-INSERT INTO `stages` VALUES (1,3,NULL,NULL,'entreprise',1,'Quotidien','vehicule de l\'Entreprise',0,'',0,0,NULL,NULL,NULL,'','2021-02-15','2021-05-14',1,1,1);
+INSERT INTO `stages` VALUES (1,3,NULL,NULL,'entreprise,chantier',1,'Quotidien','vehicule de l\'Entreprise,vehicule de Stagiaire',0,'',1,0,NULL,NULL,NULL,'','2021-02-15','2021-05-14',1,1,1),(2,3,NULL,NULL,'entreprise',1,'deux jours par semaine','vehicule de l\'Entreprise',0,'',0,0,NULL,NULL,NULL,'','2021-02-15','2021-05-14',1,1,1),(3,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','2021-02-15','2021-05-14',1,1,1);
 /*!40000 ALTER TABLE `stages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -475,7 +481,14 @@ CREATE TABLE `stagiaires` (
   `numBenefStagiaire` varchar(15) NOT NULL,
   `dateNaissanceStagiaire` date NOT NULL,
   `emailStagiaire` varchar(50) NOT NULL,
-  PRIMARY KEY (`idStagiaire`)
+  `adresse` varchar(100) NOT NULL,
+  `idVilleHabitation` int(5) NOT NULL,
+  `villeNaissance` varchar(100) NOT NULL,
+  `telStagiaire` varchar(10) NOT NULL,
+  PRIMARY KEY (`idStagiaire`),
+  UNIQUE KEY `email` (`emailStagiaire`),
+  KEY `FK_Stagiaires_VillesHabitation` (`idVilleHabitation`),
+  CONSTRAINT `FK_Stagiaires_VillesHabitation` FOREIGN KEY (`idVilleHabitation`) REFERENCES `villes` (`idVille`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -485,7 +498,7 @@ CREATE TABLE `stagiaires` (
 
 LOCK TABLES `stagiaires` WRITE;
 /*!40000 ALTER TABLE `stagiaires` DISABLE KEYS */;
-INSERT INTO `stagiaires` VALUES (1,'H','dwOne','dwOne','1211121111222','12345678','1995-02-01','dwone@gmail.com'),(2,'M','dwTwo','dwTwo','1230212123123','45678945','1996-02-01','dwtwo@gmail.com'),(3,'M','dwThree','dwThree','1451212456456','12345654','2025-02-01','dwthree@gmail.com');
+INSERT INTO `stagiaires` VALUES (1,'F','dwOne','dwOne','1211121111222','12345678','1995-02-01','dwone@gmail.com','rue des champignons',12,'dunkerque','0123456789'),(2,'M','dwTwo','dwTwo','1230212123123','45678945','1996-02-01','dwtwo@gmail.com','rue des champignons',12,'Paris','0123456789'),(3,'M','dwThree','dwThree','1451212456456','12345654','2025-02-01','dwthree@gmail.com','rue des champignons',15,'lille','0123456789');
 /*!40000 ALTER TABLE `stagiaires` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -505,6 +518,7 @@ CREATE TABLE `tuteurs` (
   `emailTuteur` varchar(100) NOT NULL,
   `idEntreprise` int(11) DEFAULT NULL,
   PRIMARY KEY (`idTuteur`),
+  UNIQUE KEY `email` (`emailTuteur`),
   KEY `FK_Tuteurs_Entreprises` (`idEntreprise`),
   CONSTRAINT `FK_Tuteurs_Entreprises` FOREIGN KEY (`idEntreprise`) REFERENCES `entreprises` (`idEntreprise`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -539,7 +553,7 @@ CREATE TABLE `utilisateurs` (
   UNIQUE KEY `email` (`emailUtilisateur`),
   KEY `FK_Utilisateurs_Roles` (`idRole`),
   CONSTRAINT `FK_Utilisateurs_Roles` FOREIGN KEY (`idRole`) REFERENCES `roles` (`idRole`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -548,7 +562,7 @@ CREATE TABLE `utilisateurs` (
 
 LOCK TABLES `utilisateurs` WRITE;
 /*!40000 ALTER TABLE `utilisateurs` DISABLE KEYS */;
-INSERT INTO `utilisateurs` VALUES (1,'admin','admin','admin@gmail.com','admin',NULL,1),(2,'POIX','Martine','martine.poix@gmail.com','Az1+1111','2099-01-01',2),(3,'dwOne','dwOne','dwone@gmail.com','dwOnedwOne12345678','2021-06-05',4),(4,'dwTwo','dwTwo','dwtwo@gmail.com','dwTwodwTwo45678945','2021-06-05',4),(5,'dwThree','dwThree','dwthree@gmail.com','dwThreedwThree12345654','2021-06-05',4),(7,'tuteur','tuteur','tuteur@gmail.com','tuteurtuteur12345678','2021-05-29',3),(8,'TEST','Test','test@gmail.com','Azerty123+','',1),(10,'TESTT','Testtt','testtt@gmail.com','Azerty123+','',3),(13,'QGQSDF','Qdfsghdssqdfg','dsqfqsdf@gmail.com','Azerty123+','2021-02-06',4),(14,'RJEB','Zied','dssds@gmail.com','Azerty123+','',1);
+INSERT INTO `utilisateurs` VALUES (1,'admin','admin','admin@gmail.com','admin',NULL,1),(2,'POIX','Martine','martine.poix@gmail.com','Az1+1111','2099-01-01',2),(3,'dwOne','dwOne','dwone@gmail.com','dwOnedwOne12345678','2021-06-05',4),(4,'dwTwo','dwTwo','dwtwo@gmail.com','dwTwodwTwo45678945','2021-06-05',4),(5,'dwThree','dwThree','dwthree@gmail.com','dwThreedwThree12345654','2021-06-05',4),(7,'tuteur','tuteur','tuteur@gmail.com','tuteurtuteur12345678','2021-05-29',3);
 /*!40000 ALTER TABLE `utilisateurs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -626,7 +640,7 @@ CREATE TABLE `valeurshoraires` (
   KEY `FK_ValeurHoraires_LibelleHoraires` (`idLibelleHoraire`),
   CONSTRAINT `FK_ValeurHoraires_LibelleHoraires` FOREIGN KEY (`idLibelleHoraire`) REFERENCES `libelleshoraires` (`idLibelleHoraire`),
   CONSTRAINT `FK_ValeurHoraires_Stages` FOREIGN KEY (`idStage`) REFERENCES `stages` (`idStage`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -635,7 +649,7 @@ CREATE TABLE `valeurshoraires` (
 
 LOCK TABLES `valeurshoraires` WRITE;
 /*!40000 ALTER TABLE `valeurshoraires` DISABLE KEYS */;
-INSERT INTO `valeurshoraires` VALUES (1,1,1,'08:00:00'),(2,1,13,'12:00:00'),(3,1,19,'14:00:00'),(4,1,7,'17:00:00'),(5,1,2,'08:00:00'),(6,1,14,'12:00:00'),(7,1,20,'14:00:00'),(8,1,8,'17:00:00'),(9,1,3,'08:00:00'),(10,1,15,'12:00:00'),(11,1,21,'14:00:00'),(12,1,9,'17:00:00'),(13,1,4,'08:00:00'),(14,1,16,'12:00:00'),(15,1,22,'14:00:00'),(16,1,10,'17:00:00'),(17,1,5,'08:00:00'),(18,1,17,'12:00:00'),(19,1,23,'14:00:00'),(20,1,11,'17:00:00'),(21,1,6,'00:00:00'),(22,1,18,'00:00:00'),(23,1,24,'00:00:00'),(24,1,12,'00:00:00');
+INSERT INTO `valeurshoraires` VALUES (1,1,1,'08:30:00'),(2,1,13,'12:30:00'),(3,1,19,'13:30:00'),(4,1,7,'17:30:00'),(5,1,2,'08:03:00'),(6,1,14,'12:03:00'),(7,1,20,'13:03:00'),(8,1,8,'17:03:00'),(9,1,3,'08:03:00'),(10,1,15,'12:03:00'),(11,1,21,'13:03:00'),(12,1,9,'17:03:00'),(13,1,4,'08:03:00'),(14,1,16,'12:03:00'),(15,1,22,'13:03:00'),(16,1,10,'17:03:00'),(17,1,5,'09:30:00'),(18,1,17,'12:30:00'),(19,1,23,'14:30:00'),(20,1,11,'00:00:00'),(21,1,6,'00:00:00'),(22,1,18,'00:00:00'),(23,1,24,'00:00:00'),(24,1,12,'00:00:00'),(25,2,1,'08:30:00'),(26,2,13,'12:30:00'),(27,2,19,'13:30:00'),(28,2,7,'17:30:00'),(29,2,2,'08:30:00'),(30,2,14,'12:30:00'),(31,2,20,'13:30:00'),(32,2,8,'17:30:00'),(33,2,3,'08:30:00'),(34,2,15,'12:30:00'),(35,2,21,'13:30:00'),(36,2,9,'17:30:00'),(37,2,4,'08:30:00'),(38,2,16,'12:30:00'),(39,2,22,'13:30:00'),(40,2,10,'17:30:00'),(41,2,5,'08:30:00'),(42,2,17,'11:30:00'),(43,2,23,'00:00:00'),(44,2,11,'00:00:00'),(45,2,6,'00:00:00'),(46,2,18,'00:00:00'),(47,2,24,'00:00:00'),(48,2,12,'00:00:00');
 /*!40000 ALTER TABLE `valeurshoraires` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -728,4 +742,4 @@ USE `conventions`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-09 12:10:53
+-- Dump completed on 2021-02-09 17:21:54

@@ -213,7 +213,6 @@ for ($i = 1; $i < 7; $i++)
                                 {   /* array_values réindexe le tableau pour emettre d'accéder à la 1ere valeur*/
                                     $valeurAutre = substr(array_values($result)[0],5);
                                 }
-                                var_dump($modeDeps)
                             ?>
                         <div class="">
                             <div class="left">
@@ -224,7 +223,7 @@ for ($i = 1; $i < 7; $i++)
                             </div>
                             <div class="left">
                                 <input type="checkbox" id="" name="modeDeplacement2" value="vehicule de Stagiaire"
-                                <?php if (in_array("vehicule de Stagiaire",$modeDeps))echo'tot'; echo " checked ";?>
+                                <?php if (in_array("vehicule de Stagiaire",$modeDeps)) echo " checked ";?>
                                 >&nbsp
                                 <label for="vehiculeStagiaire">Véhicule personnel du stagiaire </label>
                             </div>
@@ -232,9 +231,11 @@ for ($i = 1; $i < 7; $i++)
                         <div class="">
                             <div class="left"></div>
                             <div class="left centerItem">
-                                <input type="checkbox" autre="ok" id="" name="modeDeplacement3">&nbsp
+                                <input type="checkbox" autre="ok" id="" name="modeDeplacement3"
+                                <?php if ($valeurAutre!="") echo " checked ";?>
+                                >&nbsp
                                 <label for="AutreModeDeplacement">Autre (préciser)</label>&nbsp
-                                <input type="text" name="modeDeplacement4">
+                                <input type="text" name="modeDeplacement4"<?php echo " value='".$valeurAutre."' ";?>>
                             </div>
                         </div>
                     </div>
@@ -256,11 +257,14 @@ for ($i = 1; $i < 7; $i++)
                 <div class="info double colonne " groupe="ok">
                     <div class="">
                         <div class="left">
-                            <input type="radio" autre="ok" id="" name="attFormReglement" value="1" required>&nbsp
+                            <input type="radio" autre="ok" id="" name="attFormReglement" value="1" required 
+                            <?php if ($stage->getAttFormReglement() == 1)echo " checked ";?>
+                            >&nbsp
                             <label for="attFormReglement">OUI</label>
                         </div>
                         <div class="left">
-                            <input type="radio" id="" name="attFormReglement" value="0">&nbsp
+                            <input type="radio" id="" name="attFormReglement" value="0" 
+                            <?php if ($stage->getAttFormReglement() == 0)echo " checked ";?>>&nbsp
                             <label for="attFormReglement">NON</label>
                         </div>
                     </div>
@@ -294,17 +298,17 @@ for ($i = 1; $i < 7; $i++)
                 <div class="mini"></div>
                 <div class="info double " groupe="ok">
                     <div class="left">
-                        <input type="radio" preciser="ok" id="" name="travauxDang" value="1" required <?php if ($stage->getDeplacement() == 1) echo " checked "?>>&nbsp
+                        <input type="radio" preciser="ok" id="" name="travauxDang" value="1" required <?php if ($stage->getTravauxDang() == 1) echo " checked "?>>&nbsp
                         <label for="lieu">OUI</label>
                     </div>
                     <div class="left">
-                        <input type="radio" preciser="ko" id="" name="travauxDang" value="0" <?php if ($stage->getDeplacement() == 0) echo " checked "?> >&nbsp
+                        <input type="radio" preciser="ko" id="" name="travauxDang" value="0" <?php if ($stage->getTravauxDang() == 0) echo " checked "?> >&nbsp
                         <label for="Chantier">NON</label>
                     </div>
                 </div>
             </div>
             <div class="espaceHor"></div>
-            <div class="info <?php if ($stage->getDeplacement() == 0) echo "cache"?>" preciser="ok">
+            <div class="info <?php if ($stage->getTravauxDang() == 0) echo "cache"?>" preciser="ok">
                 <div class="label centre ">Préciser</div>
                 <div class="mini"></div>
                 <div class="info double colonne" groupe="<?php if ($stage->getTravauxDang() == 0) echo "ko";else echo "ok"?>">
